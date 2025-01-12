@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, Text, Heading, Flex, Box, Button, Separator, Badge, Checkbox } from '@radix-ui/themes';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 
 type Activity = {
@@ -14,6 +14,13 @@ type Activity = {
 type DaySchedule = {
   day: string;
   activities: Activity[];
+};
+
+const calculateCurrentDay = () => {
+  // Create a date in Eastern Time
+  const date = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' });
+  const easternDate = new Date(date);
+  return easternDate.getDay();
 };
 
 export default function Schedule() {
@@ -118,6 +125,11 @@ export default function Schedule() {
 
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [checkedActivities, setCheckedActivities] = useState<{[key: string]: boolean}>({});
+
+  useEffect(() => {
+    // Set initial day based on Eastern Time
+    setCurrentDayIndex(calculateCurrentDay());
+  }, []);
 
   const handlePrevDay = () => {
     setCurrentDayIndex((prev) => (prev === 0 ? weekSchedule.length - 1 : prev - 1));
