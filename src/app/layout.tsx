@@ -1,26 +1,28 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+'use client';
+
 import { Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'One Goal',
-  description: 'Focus on what matters most',
-};
+import './globals.css';
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Theme appearance="dark" accentColor="blue" radius="large">
-          {children}
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+      </head>
+      <body>
+        <Theme>
+          <main style={{ 
+            maxWidth: '100vw', 
+            overflowX: 'hidden',
+            padding: '1rem'
+          }}>
+            {children}
+          </main>
         </Theme>
       </body>
     </html>
