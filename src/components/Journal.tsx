@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, Text, Button, TextField, Flex } from '@radix-ui/themes';
 import { supabase } from '../lib/supabase';
 import type { JournalEntry } from '../lib/supabase';
@@ -18,25 +18,37 @@ export default function Journal() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  // Reset form on mount
+  useEffect(() => {
+    setEntries({});
+    setIsSubmitted(false);
+    setError('');
+    setSuccessMessage('');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
+    setSuccessMessage('');
 
     try {
-      const { error: supabaseError } = await supabase
+      const { data, error: supabaseError } = await supabase
         .from('journal_entries')
         .insert([
           {
             entries,
             created_at: new Date().toISOString()
           }
-        ]);
+        ])
+        .select();
 
       if (supabaseError) throw supabaseError;
 
       setIsSubmitted(true);
+      setSuccessMessage('Journal entry saved successfully!');
       // Clear form after successful submission
       setEntries({});
     } catch (err) {
@@ -52,6 +64,11 @@ export default function Journal() {
       ...prev,
       [prompt]: value
     }));
+    // Reset submission status when user starts typing again
+    if (isSubmitted) {
+      setIsSubmitted(false);
+      setSuccessMessage('');
+    }
   };
 
   const isFormComplete = () => {
@@ -72,7 +89,7 @@ export default function Journal() {
                   value={entries[prompt] || ''}
                   onChange={(e) => handleChange(prompt, e.target.value)}
                   placeholder="Your response..."
-                  disabled={isSubmitted}
+                  disabled={isSubmitting}
                 />
               </TextField.Root>
             </Flex>
@@ -82,11 +99,15 @@ export default function Journal() {
             <Text color="red" size="2">{error}</Text>
           )}
 
+          {successMessage && (
+            <Text color="green" size="2">{successMessage}</Text>
+          )}
+
           <Button 
             type="submit" 
-            disabled={!isFormComplete() || isSubmitted || isSubmitting}
+            disabled={!isFormComplete() || isSubmitting}
           >
-            {isSubmitting ? 'Saving...' : isSubmitted ? 'Submitted' : 'Submit Journal Entry'}
+            {isSubmitting ? 'Saving...' : 'Submit Journal Entry'}
           </Button>
         </Flex>
       </form>
