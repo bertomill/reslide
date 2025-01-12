@@ -5,9 +5,6 @@ const nextConfig = {
   images: {
     remotePatterns: [],
     unoptimized: true
-  },
-  experimental: {
-    optimizeCss: true
   }
 }
 
