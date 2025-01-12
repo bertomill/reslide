@@ -3,27 +3,36 @@
 import { useState, useEffect } from 'react';
 import { Card, Text, Button, TextField, Flex } from '@radix-ui/themes';
 import { supabase } from '../lib/supabase';
-import type { JournalEntry } from '../lib/supabase';
 
-const DAILY_PROMPTS = [
-  "What am I grateful for today?",
-  "What's my main focus for today?",
-  "How will I embody my warrior king principles today?",
-  "What will I learn today?",
-  "How will I push my limits today?"
-];
+const PROMPTS = {
+  gratitude: "What am I grateful for today?",
+  energy: "What's my main focus for today?",
+  growth: "How will I push my limits today?",
+  obstacles: "What will I learn today?",
+  impact: "How will I embody my warrior king principles today?"
+};
 
 export default function Journal() {
-  const [entries, setEntries] = useState<{[key: string]: string}>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [entries, setEntries] = useState<{[key: string]: string}>({
+    gratitude: '',
+    energy: '',
+    growth: '',
+    obstacles: '',
+    impact: ''
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
   // Reset form on mount
   useEffect(() => {
-    setEntries({});
-    setIsSubmitted(false);
+    setEntries({
+      gratitude: '',
+      energy: '',
+      growth: '',
+      obstacles: '',
+      impact: ''
+    });
     setError('');
     setSuccessMessage('');
   }, []);
@@ -37,20 +46,23 @@ export default function Journal() {
     try {
       const { data, error: supabaseError } = await supabase
         .from('journal_entries')
-        .insert([
-          {
-            entries,
-            created_at: new Date().toISOString()
-          }
-        ])
+        .insert([{
+          created_at: new Date().toISOString(),
+          ...entries
+        }])
         .select();
 
       if (supabaseError) throw supabaseError;
 
-      setIsSubmitted(true);
       setSuccessMessage('Journal entry saved successfully!');
       // Clear form after successful submission
-      setEntries({});
+      setEntries({
+        gratitude: '',
+        energy: '',
+        growth: '',
+        obstacles: '',
+        impact: ''
+      });
     } catch (err) {
       console.error('Error saving journal entry:', err);
       setError('Failed to save journal entry. Please try again.');
@@ -59,20 +71,19 @@ export default function Journal() {
     }
   };
 
-  const handleChange = (prompt: string, value: string) => {
+  const handleChange = (field: string, value: string) => {
     setEntries(prev => ({
       ...prev,
-      [prompt]: value
+      [field]: value
     }));
-    // Reset submission status when user starts typing again
-    if (isSubmitted) {
-      setIsSubmitted(false);
+    // Reset success message when user starts typing again
+    if (successMessage) {
       setSuccessMessage('');
     }
   };
 
   const isFormComplete = () => {
-    return DAILY_PROMPTS.every(prompt => entries[prompt]?.trim());
+    return Object.values(entries).every(value => value.trim());
   };
 
   return (
@@ -81,13 +92,13 @@ export default function Journal() {
         <Flex direction="column" gap="4">
           <Text size="5" weight="bold" align="center">Daily Journal</Text>
           
-          {DAILY_PROMPTS.map((prompt) => (
-            <Flex key={prompt} direction="column" gap="2">
+          {Object.entries(PROMPTS).map(([field, prompt]) => (
+            <Flex key={field} direction="column" gap="2">
               <Text size="2" weight="bold">{prompt}</Text>
               <TextField.Root>
                 <TextField.Input
-                  value={entries[prompt] || ''}
-                  onChange={(e) => handleChange(prompt, e.target.value)}
+                  value={entries[field]}
+                  onChange={(e) => handleChange(field, e.target.value)}
                   placeholder="Your response..."
                   disabled={isSubmitting}
                 />
