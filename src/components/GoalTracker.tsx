@@ -37,10 +37,10 @@ export default function GoalTracker() {
       timeline: "2025",
       imageUrl: "/Jack Dorsey.avif",
       why: [
-        "Leverage my coding and management expertise",
-        "Work with brilliant minds in AI",
-        "Build stakeholder relationship skills",
-        "Step towards entrepreneurship"
+        "The skills required match your talents",
+        "You will get to work with really smart people that energize and push you",
+        "You're going to help a lot of people",
+        "It's the next step towards building your own company"
       ],
       benefits: [
         "Tech Leadership",
