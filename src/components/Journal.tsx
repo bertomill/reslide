@@ -1,107 +1,95 @@
 'use client';
 
-import { Card, Text, Heading, Flex, Box, TextArea, Button } from '@radix-ui/themes';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Card, Text, Button, TextField, Flex } from '@radix-ui/themes';
+import { supabase } from '../lib/supabase';
+import type { JournalEntry } from '../lib/supabase';
 
-type JournalPrompt = {
-  id: string;
-  question: string;
-  category: 'gratitude' | 'goals' | 'reflection' | 'growth';
-};
-
-const DAILY_PROMPTS: JournalPrompt[] = [
-  { 
-    id: 'gratitude',
-    question: 'What are you deeply grateful for in this moment?',
-    category: 'gratitude'
-  },
-  {
-    id: 'energy',
-    question: 'How will you channel your energy to achieve your warrior king vision today?',
-    category: 'goals'
-  },
-  {
-    id: 'growth',
-    question: 'What is one way you will push beyond your comfort zone today?',
-    category: 'growth'
-  },
-  {
-    id: 'obstacles',
-    question: 'What obstacles might arise, and how will you overcome them with strength?',
-    category: 'reflection'
-  },
-  {
-    id: 'impact',
-    question: 'How will you make a positive impact on others today?',
-    category: 'goals'
-  }
+const DAILY_PROMPTS = [
+  "What am I grateful for today?",
+  "What's my main focus for today?",
+  "How will I embody my warrior king principles today?",
+  "What will I learn today?",
+  "How will I push my limits today?"
 ];
 
 export default function Journal() {
   const [entries, setEntries] = useState<{[key: string]: string}>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-  // Reset form on mount/refresh
-  useEffect(() => {
-    setEntries({});
-    setIsSubmitted(false);
-  }, []);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
 
-  const handleChange = (promptId: string, value: string) => {
+    try {
+      const { error: supabaseError } = await supabase
+        .from('journal_entries')
+        .insert([
+          {
+            entries,
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (supabaseError) throw supabaseError;
+
+      setIsSubmitted(true);
+      // Clear form after successful submission
+      setEntries({});
+    } catch (err) {
+      console.error('Error saving journal entry:', err);
+      setError('Failed to save journal entry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (prompt: string, value: string) => {
     setEntries(prev => ({
       ...prev,
-      [promptId]: value
+      [prompt]: value
     }));
   };
 
-  const handleSubmit = () => {
-    const allAnswered = DAILY_PROMPTS.every(prompt => entries[prompt.id]?.trim());
-    if (allAnswered) {
-      setIsSubmitted(true);
-      // Here we'll later add the Supabase submission
-    }
+  const isFormComplete = () => {
+    return DAILY_PROMPTS.every(prompt => entries[prompt]?.trim());
   };
 
   return (
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-      <Flex direction="column" gap="5" p="4">
-        <Box>
-          <Heading size="4" mb="2">Morning Journal</Heading>
-          <Text size="2" color="gray">Set your intention for the day ahead</Text>
-        </Box>
-
+      <form onSubmit={handleSubmit}>
         <Flex direction="column" gap="4">
+          <Text size="5" weight="bold" align="center">Daily Journal</Text>
+          
           {DAILY_PROMPTS.map((prompt) => (
-            <Box key={prompt.id}>
-              <Text 
-                size="2" 
-                mb="2" 
-                style={{ 
-                  color: prompt.category === 'gratitude' ? 'var(--purple-a11)' :
-                         prompt.category === 'goals' ? 'var(--blue-a11)' :
-                         prompt.category === 'growth' ? 'var(--green-a11)' :
-                         'var(--orange-a11)'
-                }}
-              >
-                {prompt.question}
-              </Text>
-              <TextArea 
-                value={entries[prompt.id] || ''}
-                onChange={(e) => handleChange(prompt.id, e.target.value)}
-                disabled={isSubmitted}
-                placeholder="Type your response..."
-              />
-            </Box>
+            <Flex key={prompt} direction="column" gap="2">
+              <Text size="2" weight="bold">{prompt}</Text>
+              <TextField.Root>
+                <TextField.Input
+                  value={entries[prompt] || ''}
+                  onChange={(e) => handleChange(prompt, e.target.value)}
+                  placeholder="Your response..."
+                  disabled={isSubmitted}
+                />
+              </TextField.Root>
+            </Flex>
           ))}
-        </Flex>
 
-        <Button 
-          onClick={handleSubmit}
-          disabled={isSubmitted || !DAILY_PROMPTS.every(prompt => entries[prompt.id]?.trim())}
-        >
-          {isSubmitted ? 'Submitted for Today' : 'Submit Journal Entry'}
-        </Button>
-      </Flex>
+          {error && (
+            <Text color="red" size="2">{error}</Text>
+          )}
+
+          <Button 
+            type="submit" 
+            disabled={!isFormComplete() || isSubmitted || isSubmitting}
+          >
+            {isSubmitting ? 'Saving...' : isSubmitted ? 'Submitted' : 'Submit Journal Entry'}
+          </Button>
+        </Flex>
+      </form>
     </Card>
   );
 } 
