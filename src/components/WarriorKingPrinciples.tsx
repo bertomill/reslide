@@ -19,6 +19,7 @@ type Principle = string;
 export default function WarriorKingPrinciples() {
   const [checkedHabits, setCheckedHabits] = useState<{[key: string]: boolean}>({});
   const [checkedPrinciples, setCheckedPrinciples] = useState<{[key: string]: boolean}>({});
+  const [checkedActivities, setCheckedActivities] = useState<{[key: string]: boolean}>({});
   
   const dailyActivities: DailyActivity[] = [
     { name: "Reading", hours: 2, category: "mind" },
@@ -26,9 +27,9 @@ export default function WarriorKingPrinciples() {
     { name: "Sleep", hours: 8, category: "body" },
     { name: "Physical Training", hours: 3, category: "body" },
     { name: "Project Management", hours: 2, category: "work" },
-    { name: "Social Connection", hours: 1, category: "social" },
+    { name: "Quality Time Together", hours: 1, category: "social" },
     { name: "Meditation", hours: 1, category: "spirit" },
-    { name: "Relaxation", hours: 1, category: "spirit" }
+    { name: "Blogging", hours: 1, category: "mind" }
   ];
 
   const habits: Habit[] = [
@@ -91,12 +92,23 @@ export default function WarriorKingPrinciples() {
     }));
   };
 
+  const handleActivityCheck = (activityIndex: number) => {
+    setCheckedActivities(prev => ({
+      ...prev,
+      [activityIndex]: !prev[activityIndex]
+    }));
+  };
+
   const resetChecks = () => {
     setCheckedHabits({});
   };
 
   const resetPrinciples = () => {
     setCheckedPrinciples({});
+  };
+
+  const resetActivities = () => {
+    setCheckedActivities({});
   };
 
   return (
@@ -113,15 +125,73 @@ export default function WarriorKingPrinciples() {
           <Heading size="4" mb="3">Daily Schedule</Heading>
           <Flex direction="column" gap="2">
             {dailyActivities.map((activity, idx) => (
-              <Flex key={idx} justify="between" align="center">
-                <Text size="2">{activity.name}</Text>
-                <Flex gap="2" align="center">
-                  <Badge size="1" color={getCategoryColor(activity.category)}>
+              <Box key={idx}>
+                <Flex 
+                  align="center" 
+                  gap="3"
+                  style={{ 
+                    padding: '16px',
+                    borderRadius: 'var(--radius-2)',
+                    backgroundColor: 'var(--gray-2)',
+                    cursor: 'pointer',
+                    minHeight: '60px',
+                    touchAction: 'manipulation',
+                    WebkitTapHighlightColor: 'transparent'
+                  }}
+                  onClick={() => handleActivityCheck(idx)}
+                >
+                  <Checkbox 
+                    checked={checkedActivities[idx] || false}
+                    onCheckedChange={() => handleActivityCheck(idx)}
+                    style={{ 
+                      transform: 'scale(1.4)',
+                      minWidth: '24px',
+                      minHeight: '24px'
+                    }}
+                  />
+                  <Text 
+                    size="2"
+                    style={{ 
+                      textDecoration: checkedActivities[idx] ? 'line-through' : 'none',
+                      opacity: checkedActivities[idx] ? 0.6 : 1,
+                      flex: 1,
+                      paddingLeft: '8px',
+                      paddingRight: '8px'
+                    }}
+                  >
+                    {activity.name}
+                  </Text>
+                  <Badge 
+                    size="1" 
+                    color={getCategoryColor(activity.category)}
+                    style={{
+                      minWidth: '40px',
+                      textAlign: 'center'
+                    }}
+                  >
                     {activity.hours}h
                   </Badge>
                 </Flex>
-              </Flex>
+                {idx < dailyActivities.length - 1 && (
+                  <Box style={{ 
+                    height: '1px', 
+                    backgroundColor: 'var(--gray-5)', 
+                    opacity: 0.2,
+                    margin: '1px 0'
+                  }} />
+                )}
+              </Box>
             ))}
+          </Flex>
+          <Flex justify="end" mt="4">
+            <Text 
+              size="2" 
+              color="blue" 
+              style={{ cursor: 'pointer' }}
+              onClick={resetActivities}
+            >
+              Reset all
+            </Text>
           </Flex>
         </Box>
 
