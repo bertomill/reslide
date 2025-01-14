@@ -37,11 +37,12 @@ export default function WarriorKingPrinciples() {
     { description: "All I do is hustle", category: "mindset" },
     { description: "I'm obssed with fitness", category: "health" },
     { description: "I play on the edge of hunger", category: "health" },
-    { description: "I dance and clean when stressed", category: "mindset" },
+    { description: "I do long straw exhales when stressed", category: "mindset" },
+    { description: "I dance and clean when down", category: "mindset" },
     { description: "I never cheat on my diet", category: "discipline" },
-    { description: "I never consume media unless its my evening show", category: "discipline" },
+    { description: "I never consume media unless its going to inspire me", category: "discipline" },
     { description: "I never wear headphones around people", category: "social" },
-    { description: "I find pain to connect with peope", category: "social" },
+    { description: "I connect with people easily", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
     { description: "I listen my ass off with people", category: "social" },
     { description: "I give people 10x no matter what", category: "social" },
@@ -55,8 +56,8 @@ export default function WarriorKingPrinciples() {
   ];
 
   const principles: Principle[] = [
-    "I don't have an ounce of fear in my body",
-    "I have a demonic work ethic",
+    "I attack my fears",
+    "I ",
     "I'm the most earnest person you've ever seen",
     "I stay humble no matter what",
     "I only cook blue crack"
@@ -102,14 +103,14 @@ export default function WarriorKingPrinciples() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="5" p="4">
         <Box>
-          <Heading size="6" mb="4">Modern Day Warrior King</Heading>
+          <Heading size="6" mb="4">Living up to my identity</Heading>
           <Text size="2" color="gray" mb="4">
-            The path of physical and mental excellence
+            The price I have to pay to live up to my identity
           </Text>
         </Box>
 
         <Box>
-          <Heading size="4" mb="3">Daily Schedule ({dailyActivities.reduce((acc, curr) => acc + curr.hours, 0)} hours)</Heading>
+          <Heading size="4" mb="3">Daily Schedule</Heading>
           <Flex direction="column" gap="2">
             {dailyActivities.map((activity, idx) => (
               <Flex key={idx} justify="between" align="center">
@@ -188,7 +189,7 @@ export default function WarriorKingPrinciples() {
         <Box>
           <Heading size="4" mb="2">Guiding Principles</Heading>
           <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-            State each principle aloud and check it off as you go
+            These are the principles that I live by
           </Text>
           <Grid columns="1" gap="4">
             {principles.map((principle, idx) => (
