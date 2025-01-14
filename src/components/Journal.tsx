@@ -9,7 +9,8 @@ const PROMPTS = {
   energy: "What's my main focus for today?",
   growth: "How will I push my limits today?",
   obstacles: "What will I learn today?",
-  impact: "How will I embody my warrior king principles today?"
+  impact: "How will I embody my warrior king principles today?",
+  uplift: "How will I lift others up today?"
 };
 
 type JournalEntry = {
@@ -18,6 +19,7 @@ type JournalEntry = {
   growth: string;
   obstacles: string;
   impact: string;
+  uplift: string;
   created_at?: string;
   user_id?: string;
 };
@@ -28,7 +30,8 @@ export default function Journal() {
     energy: '',
     growth: '',
     obstacles: '',
-    impact: ''
+    impact: '',
+    uplift: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -46,7 +49,8 @@ export default function Journal() {
       energy: '',
       growth: '',
       obstacles: '',
-      impact: ''
+      impact: '',
+      uplift: ''
     });
     setError('');
     setSuccessMessage('');
@@ -87,7 +91,8 @@ export default function Journal() {
         energy: '',
         growth: '',
         obstacles: '',
-        impact: ''
+        impact: '',
+        uplift: ''
       });
     } catch (err) {
       console.error('Error saving journal entry:', err);
@@ -101,7 +106,12 @@ export default function Journal() {
     <Card size="3">
       <form onSubmit={handleSubmit}>
         <Flex direction="column" gap="4">
-          <Text size="5" weight="bold">Daily Journal</Text>
+          <Flex direction="column" gap="1">
+            <Text size="5" weight="bold">Daily Journal</Text>
+            <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
+              A warrior king has fully mastered his mind, body, heart and soul
+            </Text>
+          </Flex>
           {Object.entries(PROMPTS).map(([key, prompt]) => (
             <Flex key={key} direction="column" gap="2">
               <Text size="2" weight="bold">{prompt}</Text>

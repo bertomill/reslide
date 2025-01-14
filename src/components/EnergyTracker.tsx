@@ -31,6 +31,9 @@ export default function EnergyTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="5" p="4">
         <Flex direction="column" align="center" gap="4">
+          <Text size="2" color="gray" align="center" mb="2">
+            Berto, child of the cohort 1999-2080
+          </Text>
           <Box 
             style={{
               width: '50px',

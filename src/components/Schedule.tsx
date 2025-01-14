@@ -28,7 +28,12 @@ export default function Schedule() {
     {
       day: 'Sunday',
       activities: [
-        { time: '07:00', name: 'Morning Meditation', category: 'spirit', note: 'I will relentlessly concentrate on my third eye going deeper and deeper into the bliss state' },
+        { 
+          time: '07:00', 
+          name: 'Morning Meditation', 
+          category: 'spirit', 
+          note: 'I will relentlessly concentrate on my third eye going deeper and deeper into the bliss state - remember to fast all day' 
+        },
         { time: '08:00', name: 'Active Recovery', category: 'body', note: 'Audiobook only (no music) - inspiring bios work best - get blood moving and stretch muscles' },
         { time: '09:00', name: 'Reading', category: 'mind', note: 'Train your mind on the world\'s best information' },
         { time: '11:00', name: 'Building AI Apps', category: 'work', note: 'Relentless attention to detail - master clear communication' },
@@ -111,7 +116,12 @@ export default function Schedule() {
     {
       day: 'Saturday',
       activities: [
-        { time: '07:00', name: 'Morning Meditation', category: 'spirit', note: 'Extended third eye concentration - weekend session for profound bliss state' },
+        { 
+          time: '07:00', 
+          name: 'Morning Meditation', 
+          category: 'spirit', 
+          note: 'Extended third eye concentration - weekend session for profound bliss state - remember to fast all day' 
+        },
         { time: '08:00', name: 'Active Recovery', category: 'body', note: 'Audiobook only (no music) - inspiring bios work best - get blood moving and stretch muscles' },
         { time: '09:00', name: 'Reading', category: 'mind', note: 'Train your mind on the world\'s best information' },
         { time: '11:00', name: 'Building AI Apps', category: 'work', note: 'Relentless attention to detail - master clear communication' },

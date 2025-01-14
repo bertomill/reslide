@@ -25,7 +25,10 @@ export default function Vision() {
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
             To achieve the highest state of energy, I have to pursue my highest calling
           </Text>
-          <Heading size="6" mb="4">Become a Modern Day Warrior King</Heading>
+          <Heading size="6" mb="2">Become a Modern Day Warrior King</Heading>
+          <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
+            A warrior king has fully mastered his mind, body, heart and soul
+          </Text>
         </Box>
 
         <Grid columns="2" gap="3" width="100%">

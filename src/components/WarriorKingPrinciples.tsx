@@ -33,10 +33,12 @@ export default function WarriorKingPrinciples() {
 
   const habits: Habit[] = [
     { description: "I have creatine and protein every day", category: "health" },
+    { description: "I play on the edge of hunger", category: "health" },
     { description: "I dance and clean when stressed", category: "mindset" },
     { description: "I never cheat on my diet", category: "discipline" },
     { description: "I never consume media unless its my evening show", category: "discipline" },
     { description: "I never wear headphones around people", category: "social" },
+    { description: "I find pain to connect with peope", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
     { description: "I listen my ass off with people", category: "social" },
     { description: "I give people 10x no matter what", category: "social" },
@@ -51,9 +53,10 @@ export default function WarriorKingPrinciples() {
 
   const principles: Principle[] = [
     "I don't have an ounce of fear in my body",
-    "I work harder than anyone else",
-    "I am earnest in everything I do",
-    "I stay humble no matter what"
+    "I have a demonic work ethic",
+    "I'm the most earnest person you've ever seen",
+    "I stay humble no matter what",
+    "I only cook blue crack"
   ];
 
   const getCategoryColor = (category: string): "gray" | "blue" | "green" | "purple" | "orange" | "cyan" | "red" | "yellow" => {

@@ -8,6 +8,7 @@ type Goal = {
   title: string;
   why: string[];
   benefits: string[];
+  requirements?: string[];
   timeline?: string;
   imageUrl: string;
 };
@@ -29,6 +30,12 @@ export default function GoalTracker() {
         "Community Connection",
         "Personal Growth",
         "Health Focus"
+      ],
+      requirements: [
+        "Work on your body 2x per day",
+        "8 hours of sleep every day",
+        "No alcohol",
+        "No cheating on the diet"
       ]
     },
     {
@@ -47,6 +54,33 @@ export default function GoalTracker() {
         "AI Innovation",
         "Career Growth",
         "Entrepreneurial Path"
+      ],
+      requirements: [
+        "6 hours of coding, 7 days a week",
+        "2 hours of reading, every day",
+        "Leading a team to the highest level, every single day"
+      ]
+    },
+    {
+      id: "meditation",
+      title: "1000 Hours of Meditation Mastery",
+      timeline: "2025",
+      imageUrl: "/chad.png",
+      why: [
+        "Develop unshakeable mental clarity and focus",
+        "Master emotional intelligence and inner peace",
+        "Build the foundation for spiritual growth",
+        "Transform consciousness through dedicated practice"
+      ],
+      benefits: [
+        "Mental Mastery",
+        "Emotional Intelligence",
+        "Spiritual Growth",
+        "Inner Peace"
+      ],
+      requirements: [
+        "Waking up at 4-5am every morning",
+        "Meditating 30 mins to 2 hours daily"
       ]
     }
   ];
@@ -113,6 +147,21 @@ export default function GoalTracker() {
                 sizes="(max-width: 500px) 100vw, 500px"
               />
             </Box>
+
+            {goal.requirements && (
+              <Box>
+                <Heading as="h4" size="3" mb="2">
+                  What's it going to take?
+                </Heading>
+                <Flex direction="column" gap="2">
+                  {goal.requirements.map((req, idx) => (
+                    <Text key={idx} size="2">
+                      • {req}
+                    </Text>
+                  ))}
+                </Flex>
+              </Box>
+            )}
           </Flex>
         </Card>
       ))}
