@@ -23,7 +23,7 @@ export default function Vision() {
       <Flex direction="column" gap="4" p="4">
         <Box>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            To achieve the highest state of energy, I have to pursue my highest calling
+            To achieve the highest state of energy, I have to relentlessly attack my highest calling
           </Text>
           <Heading size="6" mb="2">Become a Modern Day Warrior King</Heading>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
