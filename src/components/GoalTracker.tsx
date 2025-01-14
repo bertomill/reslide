@@ -65,7 +65,7 @@ export default function GoalTracker() {
       id: "meditation",
       title: "1000 Hours of Meditation Mastery",
       timeline: "2025",
-      imageUrl: "/chad.png",
+      imageUrl: "/Chad.png",
       why: [
         "Develop unshakeable mental clarity and focus",
         "Master emotional intelligence and inner peace",
