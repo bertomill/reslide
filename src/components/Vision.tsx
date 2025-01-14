@@ -12,7 +12,7 @@ export default function Vision() {
   const warriorKings: WarriorKing[] = [
     { id: "1", imageUrl: "/Channing.webp" },
     { id: "2", imageUrl: "/Christiano.webp" },
-    { id: "3", imageUrl: "/Mark Whalburg.jpg" },
+    { id: "3", imageUrl: "/Kobe.jpg" },
     { id: "4", imageUrl: "/The Rock Ballers.webp" },
     { id: "5", imageUrl: "/Tom Brady.webp" },
     { id: "6", imageUrl: "/Russ.png" }
@@ -25,9 +25,9 @@ export default function Vision() {
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
             To achieve the highest state of energy, I have to relentlessly attack my highest calling
           </Text>
-          <Heading size="6" mb="2">Become a Modern Day Warrior King</Heading>
+          <Heading size="6" mb="2">My identity is the most earnest, kind, hard-working person you've ever me</Heading>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            A warrior king has fully mastered his mind, body, heart and soul
+            I'm that kid in the gym, all I know is work
           </Text>
         </Box>
 

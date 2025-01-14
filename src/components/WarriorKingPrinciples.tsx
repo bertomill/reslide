@@ -33,6 +33,8 @@ export default function WarriorKingPrinciples() {
 
   const habits: Habit[] = [
     { description: "I have creatine and protein every day", category: "health" },
+    { description: "All I do is hustle", category: "mindset" },
+    { description: "I'm obssed with fitness", category: "health" },
     { description: "I play on the edge of hunger", category: "health" },
     { description: "I dance and clean when stressed", category: "mindset" },
     { description: "I never cheat on my diet", category: "discipline" },
@@ -124,9 +126,9 @@ export default function WarriorKingPrinciples() {
         <Separator size="4" />
 
         <Box>
-          <Heading size="4" mb="2">Core Habits</Heading>
+          <Heading size="4" mb="2">Berto Identity</Heading>
           <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-            State each habit aloud and check it off as you go
+            This is who I am
           </Text>
           <Grid columns="1" gap="4">
             {habits.map((habit, idx) => (

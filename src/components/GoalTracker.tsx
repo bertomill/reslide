@@ -86,85 +86,98 @@ export default function GoalTracker() {
   ];
 
   return (
-    <Flex direction="column" gap="4">
-      <Text size="2" color="gray" align="center">Manifesting the Vision Through</Text>
-      {goals.map((goal, index) => (
-        <Card key={goal.id} size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-          <Flex direction="column" gap="5" p="4">
-            <Box>
-              <Flex justify="between" align="center">
-                <Heading as="h3" size="4" mb="2">
-                  Goal {index + 1}
-                </Heading>
-                <Badge size="2" color="blue">
-                  {goal.timeline}
-                </Badge>
-              </Flex>
-              <Text size="5" weight="bold" mb="4">
-                {goal.title}
-              </Text>
-            </Box>
+    <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
+      <Flex direction="column" gap="4" p="4">
+        <Box>
+          <Heading size="6" align="center" mb="1">Identity-aligned Goals</Heading>
+          <Text size="2" color="gray" align="center">Manifesting the Vision Through</Text>
+        </Box>
 
-            <Box>
-              <Heading as="h4" size="3" mb="2">
-                Why This Matters
-              </Heading>
-              <Flex direction="column" gap="2">
-                {goal.why.map((reason, idx) => (
-                  <Text key={idx} size="2">
-                    • {reason}
-                  </Text>
-                ))}
-              </Flex>
-            </Box>
+        {goals.map((goal, index) => (
+          <Box 
+            key={goal.id} 
+            style={{
+              padding: '24px',
+              borderRadius: 'var(--radius-3)',
+              backgroundColor: 'var(--gray-2)'
+            }}
+          >
+            <Flex direction="column" gap="5">
+              <Box>
+                <Flex justify="between" align="center">
+                  <Heading as="h3" size="4" mb="2">
+                    Goal {index + 1}
+                  </Heading>
+                  <Badge size="2" color="blue">
+                    {goal.timeline}
+                  </Badge>
+                </Flex>
+                <Text size="5" weight="bold" mb="4">
+                  {goal.title}
+                </Text>
+              </Box>
 
-            <Flex gap="2" wrap="wrap">
-              {goal.benefits.map((benefit, idx) => (
-                <Badge key={idx} size="2" color={index === 0 ? "green" : "purple"}>
-                  {benefit}
-                </Badge>
-              ))}
-            </Flex>
-
-            <Box
-              style={{
-                position: 'relative',
-                width: '100%',
-                height: '200px',
-                borderRadius: 'var(--radius-3)',
-                overflow: 'hidden',
-                marginTop: '8px'
-              }}
-            >
-              <Image
-                src={goal.imageUrl}
-                alt={goal.title}
-                fill
-                style={{ 
-                  objectFit: 'cover',
-                  objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 'center center'
-                }}
-                sizes="(max-width: 500px) 100vw, 500px"
-              />
-            </Box>
-
-            {goal.requirements && (
               <Box>
                 <Heading as="h4" size="3" mb="2">
-                  What's it going to take?
+                  Why This Matters
                 </Heading>
                 <Flex direction="column" gap="2">
-                  {goal.requirements.map((req, idx) => (
+                  {goal.why.map((reason, idx) => (
                     <Text key={idx} size="2">
-                      • {req}
+                      • {reason}
                     </Text>
                   ))}
                 </Flex>
               </Box>
-            )}
-          </Flex>
-        </Card>
-      ))}
-    </Flex>
+
+              <Flex gap="2" wrap="wrap">
+                {goal.benefits.map((benefit, idx) => (
+                  <Badge key={idx} size="2" color={index === 0 ? "green" : "purple"}>
+                    {benefit}
+                  </Badge>
+                ))}
+              </Flex>
+
+              <Box
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '200px',
+                  borderRadius: 'var(--radius-3)',
+                  overflow: 'hidden',
+                  marginTop: '8px'
+                }}
+              >
+                <Image
+                  src={goal.imageUrl}
+                  alt={goal.title}
+                  fill
+                  style={{ 
+                    objectFit: 'cover',
+                    objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 'center center'
+                  }}
+                  sizes="(max-width: 500px) 100vw, 500px"
+                />
+              </Box>
+
+              {goal.requirements && (
+                <Box>
+                  <Heading as="h4" size="3" mb="2">
+                    What's it going to take?
+                  </Heading>
+                  <Flex direction="column" gap="2">
+                    {goal.requirements.map((req, idx) => (
+                      <Text key={idx} size="2">
+                        • {req}
+                      </Text>
+                    ))}
+                  </Flex>
+                </Box>
+              )}
+            </Flex>
+          </Box>
+        ))}
+      </Flex>
+    </Card>
   );
 } 

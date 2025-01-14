@@ -5,6 +5,7 @@ import { Card, Text, Button, TextArea, Flex } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
 
 const PROMPTS = {
+  yesterday: "Review Yesterday - What did I learn?",
   gratitude: "What am I grateful for today?",
   energy: "What's my main focus for today?",
   growth: "How will I push my limits today?",
@@ -14,6 +15,7 @@ const PROMPTS = {
 };
 
 type JournalEntry = {
+  yesterday: string;
   gratitude: string;
   energy: string;
   growth: string;
@@ -26,6 +28,7 @@ type JournalEntry = {
 
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
+    yesterday: '',
     gratitude: '',
     energy: '',
     growth: '',
@@ -45,6 +48,7 @@ export default function Journal() {
   // Reset form on mount
   useEffect(() => {
     setEntries({
+      yesterday: '',
       gratitude: '',
       energy: '',
       growth: '',
@@ -75,6 +79,7 @@ export default function Journal() {
         .insert([{
           created_at: new Date().toISOString(),
           user_id: session.user.id,
+          yesterday: entries.yesterday,
           gratitude: entries.gratitude,
           energy: entries.energy,
           growth: entries.growth,
@@ -87,6 +92,7 @@ export default function Journal() {
       setSuccessMessage('Journal entry saved successfully!');
       // Clear form after successful submission
       setEntries({
+        yesterday: '',
         gratitude: '',
         energy: '',
         growth: '',
