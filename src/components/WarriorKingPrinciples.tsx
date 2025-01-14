@@ -2,6 +2,7 @@
 
 import { Card, Text, Heading, Flex, Box, Badge, Separator, Grid, Checkbox } from '@radix-ui/themes';
 import { useState } from 'react';
+import ExponentialChart from './ExponentialChart';
 
 type DailyActivity = {
   name: string;
@@ -114,7 +115,7 @@ export default function WarriorKingPrinciples() {
 
   return (
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-      <Flex direction="column" gap="5" p="4">
+      <Flex direction="column" gap="5" p="4" style={{ width: '100%' }}>
         <Box>
           <Heading size="6" mb="4">Living up to my identity</Heading>
           <Text size="2" color="gray" mb="4">
@@ -305,6 +306,11 @@ export default function WarriorKingPrinciples() {
               Reset all
             </Text>
           </Flex>
+        </Box>
+
+        <Box style={{ width: '100%' }}>
+          <Separator size="4" />
+          <ExponentialChart />
         </Box>
       </Flex>
     </Card>
