@@ -39,6 +39,7 @@ export default function WarriorKingPrinciples() {
     { description: "I'm obssed with fitness", category: "health" },
     { description: "I play on the edge of hunger", category: "health" },
     { description: "I do long straw exhales when stressed", category: "mindset" },
+    { description: "I get 30 mins of sunlight no matter what", category: "mindset" },
     { description: "I dance and clean when down", category: "mindset" },
     { description: "I never cheat on my diet", category: "discipline" },
     { description: "I never consume media unless its going to inspire me", category: "discipline" },
