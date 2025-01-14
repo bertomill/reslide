@@ -27,7 +27,7 @@ export default function Vision() {
           </Text>
           <Heading size="6" mb="2">Berto is the most kind, ernest, hard-working person you've ever met</Heading>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            I'm that kid in the gym, all I know is work
+            Never lose that kid in the gym mentality, who loves to work because its fun
           </Text>
         </Box>
 
