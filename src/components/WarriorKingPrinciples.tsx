@@ -59,10 +59,10 @@ export default function WarriorKingPrinciples() {
 
   const principles: Principle[] = [
     "I attack my fears",
-    "I ",
-    "I'm the most earnest person you've ever seen",
-    "I stay humble no matter what",
-    "I only cook blue crack"
+    "I hustle hard",
+    "I'm easy going",
+    "I stay humble",
+    "I aim to put out the absolute best"
   ];
 
   const getCategoryColor = (category: string): "gray" | "blue" | "green" | "purple" | "orange" | "cyan" | "red" | "yellow" => {
