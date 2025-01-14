@@ -56,9 +56,12 @@ export default function GoalTracker() {
         "Entrepreneurial Path"
       ],
       requirements: [
-        "6 hours of coding, 7 days a week",
-        "2 hours of reading, every day",
-        "Leading a team to the highest level, every single day"
+        "6 hours of coding every day",
+        "2 hours of reading every day",
+        "5 high-quality reach-outs to AI companies every day",
+        "1 pitch meeting per day showing my AI application",
+        "Build an AI app with 100+ subscribers",
+        "10 5-star reviews"
       ]
     },
     {
@@ -69,8 +72,8 @@ export default function GoalTracker() {
       why: [
         "Develop unshakeable mental clarity and focus",
         "Master emotional intelligence and inner peace",
-        "Build the foundation for spiritual growth",
-        "Transform consciousness through dedicated practice"
+        "Develop an incredibly sharp mind",
+        "Live a way happier, more meaningful life"
       ],
       benefits: [
         "Mental Mastery",
@@ -79,8 +82,8 @@ export default function GoalTracker() {
         "Inner Peace"
       ],
       requirements: [
-        "Waking up at 4-5am every morning",
-        "Meditating 30 mins to 2 hours daily"
+        "Waking up at 4-5am every day",
+        "Meditating 30 mins to 2 hours every day"
       ]
     }
   ];
