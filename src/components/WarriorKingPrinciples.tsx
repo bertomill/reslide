@@ -33,6 +33,7 @@ export default function WarriorKingPrinciples() {
 
   const habits: Habit[] = [
     { description: "I have creatine and protein every day", category: "health" },
+    { description: "I'm a world-class team mate", category: "mindset" },
     { description: "All I do is hustle", category: "mindset" },
     { description: "I'm obssed with fitness", category: "health" },
     { description: "I play on the edge of hunger", category: "health" },
