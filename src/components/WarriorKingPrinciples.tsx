@@ -47,7 +47,8 @@ export default function WarriorKingPrinciples() {
     { description: "I never wear headphones around people", category: "social" },
     { description: "I wear clothes that match my aura", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
-    { description: "I listen my ass off with people", category: "social" },
+    { description: "I give everything I got to listen to others", category: "social" },
+    { description: "I express my truth no matter wha", category: "social" },
     { description: "I give people 10x no matter what", category: "social" },
     { description: "I never waste money - cash is freedom", category: "discipline" },
     { description: "I read every night before bed", category: "discipline" },
@@ -59,12 +60,13 @@ export default function WarriorKingPrinciples() {
   ];
 
   const principles: Principle[] = [
-    "I find fear and attack fear",
-    "I hustle hard",
-    "I forever will remain that kid from WSF",
-    "I'm easy going",
-    "I stay humble",
-    "I aim to put out the absolute best"
+    "Find fear attack fear (business)",
+    "Find pain attack pain (workouts)",
+    "Be the kid from WSF",
+    "Be easy going",
+    "Be humble",
+    "Treat all as fellow brothers and sisters of this cohort (21st century)",
+    "Go all in, 100%"
   ];
 
   const getCategoryColor = (category: string): "gray" | "blue" | "green" | "purple" | "orange" | "cyan" | "red" | "yellow" => {
@@ -124,74 +126,52 @@ export default function WarriorKingPrinciples() {
           </Text>
         </Box>
 
+        <Separator size="4" />
+
         <Box>
-          <Heading size="4" mb="3">Daily Schedule</Heading>
-          <Flex direction="column" gap="2">
-            {dailyActivities.map((activity, idx) => (
-              <Box key={idx}>
-                <Flex 
-                  align="center" 
-                  gap="3"
+          <Heading size="4" mb="2">Guiding Principles</Heading>
+          <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
+            These are the principles that I live by
+          </Text>
+          <Grid columns="1" gap="4">
+            {principles.map((principle, idx) => (
+              <Flex 
+                key={idx} 
+                align="center" 
+                gap="3"
+                style={{ 
+                  padding: '8px',
+                  borderRadius: 'var(--radius-2)',
+                  backgroundColor: 'var(--gray-2)',
+                  cursor: 'pointer'
+                }}
+                onClick={() => handlePrincipleCheck(idx)}
+              >
+                <Checkbox 
+                  checked={checkedPrinciples[idx] || false}
+                  onCheckedChange={() => handlePrincipleCheck(idx)}
+                  style={{ transform: 'scale(1.2)' }}
+                />
+                <Text 
+                  size="3" 
+                  weight="bold"
                   style={{ 
-                    padding: '16px',
-                    borderRadius: 'var(--radius-2)',
-                    backgroundColor: 'var(--gray-2)',
-                    cursor: 'pointer',
-                    minHeight: '60px',
-                    touchAction: 'manipulation',
-                    WebkitTapHighlightColor: 'transparent'
+                    textDecoration: checkedPrinciples[idx] ? 'line-through' : 'none',
+                    opacity: checkedPrinciples[idx] ? 0.6 : 1,
+                    flex: 1
                   }}
-                  onClick={() => handleActivityCheck(idx)}
                 >
-                  <Checkbox 
-                    checked={checkedActivities[idx] || false}
-                    onCheckedChange={() => handleActivityCheck(idx)}
-                    style={{ 
-                      transform: 'scale(1.4)',
-                      minWidth: '24px',
-                      minHeight: '24px'
-                    }}
-                  />
-                  <Text 
-                    size="2"
-                    style={{ 
-                      textDecoration: checkedActivities[idx] ? 'line-through' : 'none',
-                      opacity: checkedActivities[idx] ? 0.6 : 1,
-                      flex: 1,
-                      paddingLeft: '8px',
-                      paddingRight: '8px'
-                    }}
-                  >
-                    {activity.name}
-                  </Text>
-                  <Badge 
-                    size="1" 
-                    color={getCategoryColor(activity.category)}
-                    style={{
-                      minWidth: '40px',
-                      textAlign: 'center'
-                    }}
-                  >
-                    {activity.hours}h
-                  </Badge>
-                </Flex>
-                {idx < dailyActivities.length - 1 && (
-                  <Box style={{ 
-                    height: '1px', 
-                    backgroundColor: 'var(--gray-5)', 
-                    opacity: 0.2,
-                    margin: '1px 0'
-                  }} />
-                )}
-              </Box>
+                  {principle}
+                </Text>
+              </Flex>
             ))}
-          </Flex>
+          </Grid>
           <Flex justify="end" mt="4">
             <Text 
               size="2" 
               color="blue" 
               style={{ cursor: 'pointer' }}
-              onClick={resetActivities}
+              onClick={resetPrinciples}
             >
               Reset all
             </Text>
@@ -251,58 +231,6 @@ export default function WarriorKingPrinciples() {
               color="blue" 
               style={{ cursor: 'pointer' }}
               onClick={resetChecks}
-            >
-              Reset all
-            </Text>
-          </Flex>
-        </Box>
-
-        <Separator size="4" />
-
-        <Box>
-          <Heading size="4" mb="2">Guiding Principles</Heading>
-          <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-            These are the principles that I live by
-          </Text>
-          <Grid columns="1" gap="4">
-            {principles.map((principle, idx) => (
-              <Flex 
-                key={idx} 
-                align="center" 
-                gap="3"
-                style={{ 
-                  padding: '8px',
-                  borderRadius: 'var(--radius-2)',
-                  backgroundColor: 'var(--gray-2)',
-                  cursor: 'pointer'
-                }}
-                onClick={() => handlePrincipleCheck(idx)}
-              >
-                <Checkbox 
-                  checked={checkedPrinciples[idx] || false}
-                  onCheckedChange={() => handlePrincipleCheck(idx)}
-                  style={{ transform: 'scale(1.2)' }}
-                />
-                <Text 
-                  size="3" 
-                  weight="bold"
-                  style={{ 
-                    textDecoration: checkedPrinciples[idx] ? 'line-through' : 'none',
-                    opacity: checkedPrinciples[idx] ? 0.6 : 1,
-                    flex: 1
-                  }}
-                >
-                  {principle}
-                </Text>
-              </Flex>
-            ))}
-          </Grid>
-          <Flex justify="end" mt="4">
-            <Text 
-              size="2" 
-              color="blue" 
-              style={{ cursor: 'pointer' }}
-              onClick={resetPrinciples}
             >
               Reset all
             </Text>
