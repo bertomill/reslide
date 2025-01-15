@@ -23,11 +23,11 @@ export default function Vision() {
       <Flex direction="column" gap="4" p="4">
         <Box>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            To achieve the highest state of energy, I have to relentlessly attack my highest calling
+            To achieve the highest state of energy, I have to relentlessly attack my calling
           </Text>
           <Heading size="6" mb="2">Berto is the most kind, ernest, hard-working person you've ever met</Heading>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            Never lose that kid in the gym mentality, who loves to work because its fun
+            Never lose your identity, always be the kid from WSF
           </Text>
         </Box>
 

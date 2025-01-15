@@ -45,7 +45,7 @@ export default function WarriorKingPrinciples() {
     { description: "I never cheat on my diet", category: "discipline" },
     { description: "I never consume media unless its going to inspire me", category: "discipline" },
     { description: "I never wear headphones around people", category: "social" },
-    { description: "I connect with people easily", category: "social" },
+    { description: "I wear clothes that match my aura", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
     { description: "I listen my ass off with people", category: "social" },
     { description: "I give people 10x no matter what", category: "social" },
@@ -59,8 +59,9 @@ export default function WarriorKingPrinciples() {
   ];
 
   const principles: Principle[] = [
-    "I attack my fears",
+    "I find fear and attack fear",
     "I hustle hard",
+    "I forever will remain that kid from WSF",
     "I'm easy going",
     "I stay humble",
     "I aim to put out the absolute best"

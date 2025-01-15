@@ -92,7 +92,7 @@ export default function GoalTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="4" p="4">
         <Box>
-          <Heading size="6" align="center" mb="1">Identity-aligned Goals</Heading>
+          <Heading size="6" align="center" mb="1">Goals that align with your identity</Heading>
           <Text size="2" color="gray" align="center">Manifesting the Vision Through</Text>
         </Box>
 
