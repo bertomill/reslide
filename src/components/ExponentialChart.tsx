@@ -123,22 +123,23 @@ const ExponentialChart = () => {
                 dataKey="y"
                 stroke="var(--blue-9)"
                 name="Exponential Growth"
-                dot={({ cx, cy, payload }: { cx: number; cy: number; payload: any }) => {
-                  if (payload.showDot) {
-                    return (
-                      <svg x={cx - 4} y={cy - 4} width={8} height={8}>
-                        <circle
-                          cx="4"
-                          cy="4"
-                          r="4"
-                          fill="var(--blue-9)"
-                          stroke="var(--blue-9)"
-                        />
-                      </svg>
-                    );
-                  }
-                  return null;
-                }}
+                dot={({ cx, cy, payload }: { cx: number; cy: number; payload: any }) => (
+                  <svg 
+                    x={cx - 4} 
+                    y={cy - 4} 
+                    width={8} 
+                    height={8} 
+                    style={{ visibility: payload.showDot ? 'visible' : 'hidden' }}
+                  >
+                    <circle
+                      cx="4"
+                      cy="4"
+                      r="4"
+                      fill="var(--blue-9)"
+                      stroke="var(--blue-9)"
+                    />
+                  </svg>
+                )}
                 strokeWidth={2}
               />
             </LineChart>
