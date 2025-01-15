@@ -111,7 +111,7 @@ const ExponentialChart = () => {
                 width={45}
                 tickFormatter={(value) => value.toLocaleString()}
               />
-              <Tooltip formatter={(value) => Math.round(value).toLocaleString()} />
+              <Tooltip formatter={(value: number) => Math.round(value).toLocaleString()} />
               <Legend 
                 wrapperStyle={{ 
                   bottom: -35,
