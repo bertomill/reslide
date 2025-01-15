@@ -38,6 +38,7 @@ export default function WarriorKingPrinciples() {
     { description: "I'm a world-class team mate", category: "mindset" },
     { description: "All I do is hustle", category: "mindset" },
     { description: "I'm obssed with fitness", category: "health" },
+    { description: "I fast til 1-4 pm", category: "health" },
     { description: "I play on the edge of hunger", category: "health" },
     { description: "I do long straw exhales when stressed", category: "mindset" },
     { description: "I get 30 mins of sunlight no matter what", category: "mindset" },
