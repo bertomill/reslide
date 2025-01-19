@@ -9,6 +9,7 @@ type Inspiration = {
   id: string;
   title: string;
   content: string;
+  created_at: string;
 };
 
 export default function DailyInspiration() {
@@ -192,45 +193,45 @@ export default function DailyInspiration() {
 
         <Box>
           {inspirations.map((inspiration) => (
-            <Box 
-              key={inspiration.id}
-              style={{ 
-                borderBottom: '1px solid var(--gray-4)',
-                marginBottom: '4px'
-              }}
-            >
-              <Flex justify="between" align="center" style={{ width: '100%', padding: '8px 0' }}>
-                <Text size="2" weight="bold">{inspiration.title}</Text>
-                <Flex gap="2" align="center">
-                  <IconButton 
-                    size="1" 
-                    variant="ghost" 
-                    onClick={() => setIsEditing(inspiration.id)}
-                  >
-                    <Pencil1Icon width="12" height="12" />
-                  </IconButton>
-                  <IconButton 
-                    size="1" 
-                    variant="ghost" 
-                    color="red" 
-                    onClick={() => setDeleteId(inspiration.id)}
-                  >
-                    <TrashIcon width="12" height="12" />
-                  </IconButton>
-                </Flex>
-              </Flex>
-              <Box style={{
-                padding: '2px 0 8px 24px',
-                width: '100%'
-              }}>
-                <Text size="1" style={{ 
-                  color: 'var(--gray-11)', 
-                  lineHeight: '1.4',
-                  whiteSpace: 'pre-wrap',
-                  width: '100%',
-                  display: 'block'
-                }}>{inspiration.content}</Text>
-              </Box>
+            <Box key={inspiration.id} style={{ marginBottom: '2px' }}>
+              {isEditing === inspiration.id ? (
+                renderForm(inspiration.id)
+              ) : (
+                <Box style={{ 
+                  padding: '4px 8px', 
+                  backgroundColor: 'var(--gray-2)', 
+                  borderRadius: 'var(--radius-2)'
+                }}>
+                  <Flex justify="between" align="center" gap="1">
+                    <Box style={{ flex: 1 }}>
+                      <Flex gap="1" align="baseline">
+                        <Text size="2" weight="bold" style={{ marginRight: '4px' }}>{inspiration.title}</Text>
+                        <Text size="1" style={{ color: 'var(--gray-11)', lineHeight: '1.2' }}>{inspiration.content}</Text>
+                      </Flex>
+                    </Box>
+                    <Flex gap="1" align="center" style={{ flexShrink: 0 }}>
+                      <Text size="1" color="gray">
+                        {new Date(inspiration.created_at).toLocaleDateString()}
+                      </Text>
+                      <IconButton 
+                        size="1" 
+                        variant="ghost" 
+                        onClick={() => startEditing(inspiration)}
+                      >
+                        <Pencil1Icon />
+                      </IconButton>
+                      <IconButton 
+                        size="1" 
+                        variant="ghost" 
+                        color="red" 
+                        onClick={() => setDeleteId(inspiration.id)}
+                      >
+                        <TrashIcon />
+                      </IconButton>
+                    </Flex>
+                  </Flex>
+                </Box>
+              )}
             </Box>
           ))}
         </Box>
