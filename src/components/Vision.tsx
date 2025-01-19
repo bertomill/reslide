@@ -15,7 +15,8 @@ export default function Vision() {
     { id: "3", imageUrl: "/Kobe.jpg" },
     { id: "4", imageUrl: "/The Rock Ballers.webp" },
     { id: "5", imageUrl: "/Tom Brady.webp" },
-    { id: "6", imageUrl: "/Russ.png" }
+    { id: "6", imageUrl: "/Russ.png" },
+    { id: "7", imageUrl: "/John Wooden.png" }
   ];
 
   return (
@@ -25,7 +26,7 @@ export default function Vision() {
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
             To achieve the highest state of energy, I have to relentlessly attack my calling
           </Text>
-          <Heading size="6" mb="2">Berto is the most kind, ernest, hard-working person you've ever met</Heading>
+          <Heading size="6" mb="2">I am humble, kind, sincere, disciplined, charismatic, relentless, tough, honest, purpose-driven</Heading>
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
             Never lose your identity, always be the kid from WSF
           </Text>

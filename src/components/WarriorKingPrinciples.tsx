@@ -15,7 +15,10 @@ type Habit = {
   category: 'discipline' | 'social' | 'mindset' | 'health';
 };
 
-type Principle = string;
+type Principle = {
+  title: string;
+  description: string;
+};
 
 export default function WarriorKingPrinciples() {
   const [checkedHabits, setCheckedHabits] = useState<{[key: string]: boolean}>({});
@@ -35,9 +38,6 @@ export default function WarriorKingPrinciples() {
 
   const habits: Habit[] = [
     { description: "I have creatine and protein every day", category: "health" },
-    { description: "I'm a world-class team mate", category: "mindset" },
-    { description: "All I do is hustle", category: "mindset" },
-    { description: "I'm obssed with fitness", category: "health" },
     { description: "I use whim Hoff breathing to increase adrenaline", category: "health" },
     { description: "I use 2 big inhale, one slow excale breathing to increase seretonin", category: "health" },
     { description: "I fast til 1-4 pm", category: "health" },
@@ -45,8 +45,9 @@ export default function WarriorKingPrinciples() {
     { description: "I do long straw exhales when stressed", category: "mindset" },
     { description: "I get 30 mins of sunlight no matter what", category: "mindset" },
     { description: "I dance and clean when down", category: "mindset" },
-    { description: "I never cheat on my diet", category: "discipline" },
-    { description: "I never consume media unless its going to inspire me", category: "discipline" },
+    { description: "I don't eat dairy", category: "discipline" },
+    { description: "I don't eat gluten", category: "discipline" },
+    { description: "I don't eat added sugar", category: "discipline" },
     { description: "I never wear headphones around people", category: "social" },
     { description: "I wear clothes that match my aura", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
@@ -59,17 +60,73 @@ export default function WarriorKingPrinciples() {
     { description: "I smile and nod to strangers", category: "social" },
     { description: "I always say yes to possibility", category: "social" },
     { description: "I never drink alcohol", category: "discipline" },
-    { description: "I do jazz only once a month", category: "discipline" }
+    { description: "I do jazz only once a month", category: "discipline" },
+    { description: "I find fear and move towards it", category: "mindset" },
+    { description: "I never sabotage my confidence", category: "mindset" },
+    { description: "I make friends no matter what", category: "social" }
   ];
 
   const principles: Principle[] = [
-    "Find fear attack fear (business)",
-    "Find pain attack pain (workouts)",
-    "Be the kid from WSF",
-    "Be easy going",
-    "Be humble",
-    "Treat all as fellow brothers and sisters of this cohort (21st century)",
-    "Go all in, 100%"
+    {
+      title: "Industriousness",
+      description: "There is no substitute for work. Worthwhile results come from hard work and careful planning."
+    },
+    {
+      title: "Friendship",
+      description: "Comes from mutual esteem, respect, and devotion. Like marriage it must not be taken for granted but requires a joint effort."
+    },
+    {
+      title: "Loyalty",
+      description: "To yourself and all those depending upon you. Keep your self-respect."
+    },
+    {
+      title: "Cooperation",
+      description: "With all levels of your co-workers. Listen if you want to be heard. Be interested in finding the best way, not having your own way."
+    },
+    {
+      title: "Enthusiasm",
+      description: "Brushes off upon those whom you come in contact. You must truly enjoy what you are doing."
+    },
+    {
+      title: "Intentness",
+      description: "Setting a realistic goal. Concentrate on its achievement by resisting all temptations and being determined and persistent."
+    },
+    {
+      title: "Initiative",
+      description: "Cultivate the ability to make decisions and think alone. Do not be afraid of failure, and learn from it."
+    },
+    {
+      title: "Alertness",
+      description: "Be observing constantly. Stay open-minded. Be eager to learn and improve."
+    },
+    {
+      title: "Self-Control",
+      description: "Practice self-discipline and keep emotions under control. Good judgment and common sense are essential."
+    },
+    {
+      title: "Condition",
+      description: "Mental-moral-physical. Rest, exercise and diet must be considered."
+    },
+    {
+      title: "Skill",
+      description: "A knowledge of and the ability to quickly execute the fundamentals. Be prepared and cover every detail."
+    },
+    {
+      title: "Team Spirit",
+      description: "A genuine consideration for others. An eagerness to sacrifice personal interests of glory for the welfare of all."
+    },
+    {
+      title: "Confidence",
+      description: "Respect without fear, may come from being prepared and keeping all things in proper perspective."
+    },
+    {
+      title: "Poise",
+      description: "Just being yourself. Being at ease in any situation. Never fighting yourself."
+    },
+    {
+      title: "Competitive Greatness",
+      description: "Be at your best when your best is needed. Enjoyment of a difficult challenge."
+    }
   ];
 
   const getCategoryColor = (category: string): "gray" | "blue" | "green" | "purple" | "orange" | "cyan" | "red" | "yellow" => {
@@ -140,10 +197,10 @@ export default function WarriorKingPrinciples() {
             {principles.map((principle, idx) => (
               <Flex 
                 key={idx} 
-                align="center" 
+                align="start" 
                 gap="3"
                 style={{ 
-                  padding: '8px',
+                  padding: '12px',
                   borderRadius: 'var(--radius-2)',
                   backgroundColor: 'var(--gray-2)',
                   cursor: 'pointer'
@@ -153,19 +210,30 @@ export default function WarriorKingPrinciples() {
                 <Checkbox 
                   checked={checkedPrinciples[idx] || false}
                   onCheckedChange={() => handlePrincipleCheck(idx)}
-                  style={{ transform: 'scale(1.2)' }}
+                  style={{ transform: 'scale(1.2)', marginTop: '4px' }}
                 />
-                <Text 
-                  size="3" 
-                  weight="bold"
-                  style={{ 
-                    textDecoration: checkedPrinciples[idx] ? 'line-through' : 'none',
-                    opacity: checkedPrinciples[idx] ? 0.6 : 1,
-                    flex: 1
-                  }}
-                >
-                  {principle}
-                </Text>
+                <Box>
+                  <Text 
+                    size="3" 
+                    weight="bold"
+                    style={{ 
+                      textDecoration: checkedPrinciples[idx] ? 'line-through' : 'none',
+                      opacity: checkedPrinciples[idx] ? 0.6 : 1
+                    }}
+                  >
+                    {principle.title}
+                  </Text>
+                  <Text
+                    size="1"
+                    color="gray"
+                    style={{ 
+                      marginTop: '2px',
+                      opacity: checkedPrinciples[idx] ? 0.6 : 0.8
+                    }}
+                  >
+                    {principle.description}
+                  </Text>
+                </Box>
               </Flex>
             ))}
           </Grid>
@@ -184,7 +252,7 @@ export default function WarriorKingPrinciples() {
         <Separator size="4" />
 
         <Box>
-          <Heading size="4" mb="2">Berto Identity</Heading>
+          <Heading size="4" mb="2">My habits make me</Heading>
           <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
             This is who I am
           </Text>
@@ -212,6 +280,11 @@ export default function WarriorKingPrinciples() {
                   color={habit.category === 'discipline' ? 'red' : 
                          habit.category === 'social' ? 'orange' :
                          habit.category === 'mindset' ? 'yellow' : 'green'}
+                  style={{
+                    width: '80px',
+                    textAlign: 'center',
+                    justifyContent: 'center'
+                  }}
                 >
                   {habit.category}
                 </Badge>

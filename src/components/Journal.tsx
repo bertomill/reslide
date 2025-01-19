@@ -5,36 +5,39 @@ import { Card, Text, Button, TextArea, Flex } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
 
 const PROMPTS = {
-  yesterday: "Review Yesterday - What did I learn?",
-  gratitude: "What am I grateful for today?",
-  energy: "What's my main focus for today?",
-  growth: "How will I push my limits today?",
-  obstacles: "What will I learn today?",
-  impact: "How will I embody my warrior king principles today?",
-  uplift: "How will I lift others up today?"
+  gratitude: "What am I grateful for?",
+  scared_yesterday: "What did I do that scared me yesterday?",
+  beyond_yesterday: "What did I do that went above and beyond for others yesterday?",
+  scared_today: "What am I going to do today that scares me?",
+  beyond_today: "What will I do today to go above and beyond for others?",
+  fitness: "How am I going to work my fitness today?",
+  craft: "How am I going to work my craft today?",
+  plan: "What's my plan today?"
 };
 
 type JournalEntry = {
-  yesterday: string;
   gratitude: string;
-  energy: string;
-  growth: string;
-  obstacles: string;
-  impact: string;
-  uplift: string;
+  scared_yesterday: string;
+  beyond_yesterday: string;
+  scared_today: string;
+  beyond_today: string;
+  fitness: string;
+  craft: string;
+  plan: string;
   created_at?: string;
   user_id?: string;
 };
 
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
-    yesterday: '',
     gratitude: '',
-    energy: '',
-    growth: '',
-    obstacles: '',
-    impact: '',
-    uplift: ''
+    scared_yesterday: '',
+    beyond_yesterday: '',
+    scared_today: '',
+    beyond_today: '',
+    fitness: '',
+    craft: '',
+    plan: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -48,13 +51,14 @@ export default function Journal() {
   // Reset form on mount
   useEffect(() => {
     setEntries({
-      yesterday: '',
       gratitude: '',
-      energy: '',
-      growth: '',
-      obstacles: '',
-      impact: '',
-      uplift: ''
+      scared_yesterday: '',
+      beyond_yesterday: '',
+      scared_today: '',
+      beyond_today: '',
+      fitness: '',
+      craft: '',
+      plan: ''
     });
     setError('');
     setSuccessMessage('');
@@ -79,12 +83,14 @@ export default function Journal() {
         .insert([{
           created_at: new Date().toISOString(),
           user_id: session.user.id,
-          yesterday: entries.yesterday,
           gratitude: entries.gratitude,
-          energy: entries.energy,
-          growth: entries.growth,
-          obstacles: entries.obstacles,
-          impact: entries.impact
+          scared_yesterday: entries.scared_yesterday,
+          beyond_yesterday: entries.beyond_yesterday,
+          scared_today: entries.scared_today,
+          beyond_today: entries.beyond_today,
+          fitness: entries.fitness,
+          craft: entries.craft,
+          plan: entries.plan
         }]);
 
       if (supabaseError) throw supabaseError;
@@ -92,13 +98,14 @@ export default function Journal() {
       setSuccessMessage('Journal entry saved successfully!');
       // Clear form after successful submission
       setEntries({
-        yesterday: '',
         gratitude: '',
-        energy: '',
-        growth: '',
-        obstacles: '',
-        impact: '',
-        uplift: ''
+        scared_yesterday: '',
+        beyond_yesterday: '',
+        scared_today: '',
+        beyond_today: '',
+        fitness: '',
+        craft: '',
+        plan: ''
       });
     } catch (err) {
       console.error('Error saving journal entry:', err);
@@ -128,6 +135,7 @@ export default function Journal() {
                   [key]: e.target.value
                 }))}
                 placeholder="Write your thoughts here..."
+                style={{ minHeight: '100px', lineHeight: '1.5' }}
               />
             </Flex>
           ))}

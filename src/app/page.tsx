@@ -2,7 +2,6 @@ import EnergyTracker from '../components/EnergyTracker';
 import GoalTracker from '../components/GoalTracker';
 import Vision from '../components/Vision';
 import WarriorKingPrinciples from '../components/WarriorKingPrinciples';
-import Schedule from '../components/Schedule';
 import Journal from '../components/Journal';
 import DailyInspiration from '../components/DailyInspiration';
 import ThingsILove from '../components/ThingsILove';
@@ -45,7 +44,6 @@ export default function Home() {
           <Vision />
           <GoalTracker />
           <WarriorKingPrinciples />
-          <Schedule />
           <Journal />
           <ThingsILove />
           <DailyInspiration />

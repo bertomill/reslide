@@ -1,8 +1,7 @@
 'use client';
 
-import { Box, Heading, Text, Card, Button, TextField, Flex, IconButton } from '@radix-ui/themes';
-import * as Accordion from '@radix-ui/react-accordion';
-import { ChevronDownIcon, PlusIcon, Pencil1Icon, TrashIcon, HeartFilledIcon } from '@radix-ui/react-icons';
+import { Box, Heading, Text, Card, Button, TextField, TextArea, Flex, IconButton, AlertDialog } from '@radix-ui/themes';
+import { PlusIcon, Pencil1Icon, TrashIcon, HeartFilledIcon } from '@radix-ui/react-icons';
 import { useState, useEffect } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
 
@@ -16,6 +15,7 @@ export default function ThingsILove() {
   const [things, setThings] = useState<Thing[]>([]);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState<string | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [error, setError] = useState('');
@@ -109,6 +109,7 @@ export default function ThingsILove() {
 
       if (deleteError) throw deleteError;
 
+      setDeleteId(null);
       await fetchThings();
     } catch (err) {
       console.error('Error deleting thing:', err);
@@ -134,18 +135,26 @@ export default function ThingsILove() {
   const renderForm = (id?: string) => (
     <Box mb="3" style={{ padding: '8px', backgroundColor: 'var(--gray-3)', borderRadius: '4px' }}>
       <Flex direction="column" gap="2">
-        <TextField.Root size="1">
+        <TextField.Root size="1" style={{ width: '100%' }}>
           <TextField.Input 
             placeholder="What do you love?" 
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
+            style={{ width: '100%' }}
           />
         </TextField.Root>
-        <TextField.Root size="1">
-          <TextField.Input 
+        <TextField.Root size="1" style={{ width: '100%' }}>
+          <TextArea 
             placeholder="Why do you love it?"
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
+            style={{ 
+              minHeight: '80px',
+              lineHeight: '1.4',
+              fontSize: 'var(--font-size-1)',
+              width: '100%',
+              boxSizing: 'border-box'
+            }}
           />
         </TextField.Root>
         {error && <Text size="1" color="red" mb="2">{error}</Text>}
@@ -184,75 +193,74 @@ export default function ThingsILove() {
 
         {isAdding && renderForm()}
 
-        <Accordion.Root type="single" collapsible>
+        <Box>
           {things.map((thing) => (
-            <Accordion.Item 
-              key={thing.id} 
-              value={thing.id}
-              style={{ marginBottom: '2px' }}
+            <Box 
+              key={thing.id}
+              style={{ 
+                borderBottom: '1px solid var(--gray-4)',
+                marginBottom: '4px'
+              }}
             >
-              {isEditing === thing.id ? (
-                renderForm(thing.id)
-              ) : (
-                <>
-                  <Accordion.Trigger style={{
-                    width: '100%',
-                    padding: '2px 0',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    border: 'none',
-                    background: 'none',
-                    cursor: 'pointer'
-                  }}>
-                    <Text size="1" weight="bold" style={{ color: 'var(--gray-12)' }}>{thing.title}</Text>
-                    <Flex gap="1" align="center">
-                      <IconButton 
-                        size="1" 
-                        variant="ghost" 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          startEditing(thing);
-                        }}
-                      >
-                        <Pencil1Icon width="12" height="12" />
-                      </IconButton>
-                      <IconButton 
-                        size="1" 
-                        variant="ghost" 
-                        color="red" 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDeleteThing(thing.id);
-                        }}
-                      >
-                        <TrashIcon width="12" height="12" />
-                      </IconButton>
-                      <ChevronDownIcon
-                        style={{
-                          width: '14px',
-                          height: '14px',
-                          transition: 'transform 300ms',
-                          transform: 'rotate(0deg)',
-                          color: 'var(--gray-11)',
-                          '[data-state=open] &': {
-                            transform: 'rotate(180deg)',
-                          },
-                        }}
-                      />
-                    </Flex>
-                  </Accordion.Trigger>
-                  <Accordion.Content style={{
-                    padding: '2px 0 4px 8px',
-                  }}>
-                    <Text size="1" style={{ color: 'var(--gray-11)', lineHeight: '1.2' }}>{thing.description}</Text>
-                  </Accordion.Content>
-                </>
-              )}
-            </Accordion.Item>
+              <Flex justify="between" align="center" style={{ width: '100%', padding: '8px 0' }}>
+                <Flex gap="2" align="center">
+                  <HeartFilledIcon style={{ color: 'var(--red-9)' }} />
+                  <Text size="2" weight="bold">{thing.title}</Text>
+                </Flex>
+                <Flex gap="2" align="center">
+                  <IconButton 
+                    size="1" 
+                    variant="ghost" 
+                    onClick={() => setIsEditing(thing.id)}
+                  >
+                    <Pencil1Icon width="12" height="12" />
+                  </IconButton>
+                  <IconButton 
+                    size="1" 
+                    variant="ghost" 
+                    color="red" 
+                    onClick={() => setDeleteId(thing.id)}
+                  >
+                    <TrashIcon width="12" height="12" />
+                  </IconButton>
+                </Flex>
+              </Flex>
+              <Box style={{
+                padding: '2px 0 8px 24px',
+                width: '100%'
+              }}>
+                <Text size="1" style={{ 
+                  color: 'var(--gray-11)', 
+                  lineHeight: '1.4',
+                  whiteSpace: 'pre-wrap',
+                  width: '100%',
+                  display: 'block'
+                }}>{thing.description}</Text>
+              </Box>
+            </Box>
           ))}
-        </Accordion.Root>
+        </Box>
       </Box>
+      <AlertDialog.Root open={deleteId !== null}>
+        <AlertDialog.Content>
+          <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
+          <AlertDialog.Description>
+            Are you sure you want to delete this item? This action cannot be undone.
+          </AlertDialog.Description>
+          <Flex gap="3" mt="4" justify="end">
+            <AlertDialog.Cancel>
+              <Button variant="soft" onClick={() => setDeleteId(null)}>
+                Cancel
+              </Button>
+            </AlertDialog.Cancel>
+            <AlertDialog.Action>
+              <Button variant="solid" color="red" onClick={() => deleteId && handleDeleteThing(deleteId)}>
+                Delete
+              </Button>
+            </AlertDialog.Action>
+          </Flex>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </Card>
   );
 }

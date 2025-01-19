@@ -50,12 +50,12 @@ export default function EnergyTracker() {
             <Text style={{ fontSize: '28px' }}>⚡</Text>
           </Box>
           <Heading as="h2" size="5" align="center">
-            Life&apos;s goal is to be in the highest energy state
+            Life&apos;s goal is to spend your fleeting moment in the highest energy state
           </Heading>
         </Flex>
         
         <Text size="2" color="gray" align="center" mb="4">
-          These are the highest energy states
+          Your time to pursue the highest energy state it right now, there is no other time, and it's fleeting
         </Text>
         
         <Flex wrap="wrap" gap="2" justify="center">
