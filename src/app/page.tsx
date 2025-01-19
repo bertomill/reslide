@@ -4,6 +4,8 @@ import Vision from '../components/Vision';
 import WarriorKingPrinciples from '../components/WarriorKingPrinciples';
 import Schedule from '../components/Schedule';
 import Journal from '../components/Journal';
+import DailyInspiration from '../components/DailyInspiration';
+import ThingsILove from '../components/ThingsILove';
 import { Container, Heading, Flex, Separator, Box } from '@radix-ui/themes';
 
 export default function Home() {
@@ -45,6 +47,8 @@ export default function Home() {
           <WarriorKingPrinciples />
           <Schedule />
           <Journal />
+          <ThingsILove />
+          <DailyInspiration />
         </Flex>
       </Container>
     </>
