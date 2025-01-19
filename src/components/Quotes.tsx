@@ -1,6 +1,7 @@
 import { Box, Heading, Text } from '@radix-ui/themes';
 import * as Accordion from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
+import React from 'react';
 
 const quotes = [
   {
@@ -18,41 +19,50 @@ const quotes = [
 ];
 
 export default function Quotes() {
+  const [openItem, setOpenItem] = React.useState<string | undefined>();
+
   return (
     <Box>
       <Heading size="4" mb="2">Daily Inspiration</Heading>
-      <Accordion.Root type="single" collapsible>
-        {quotes.map((quote, index) => (
-          <Accordion.Item key={index} value={`item-${index}`}>
-            <Accordion.Trigger style={{
-              width: '100%',
-              padding: '4px 0',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              border: 'none',
-              background: 'none',
-              cursor: 'pointer'
-            }}>
-              <Text size="2" weight="bold" style={{ color: 'var(--gray-12)' }}>{quote.title}</Text>
-              <ChevronDownIcon
-                style={{
-                  transition: 'transform 300ms',
-                  transform: 'rotate(0deg)',
-                  color: 'var(--gray-11)',
-                  '[data-state=open] &': {
-                    transform: 'rotate(180deg)',
-                  },
-                }}
-              />
-            </Accordion.Trigger>
-            <Accordion.Content style={{
-              padding: '4px 0 8px 16px',
-            }}>
-              <Text size="2" style={{ color: 'var(--gray-11)' }}>{quote.content}</Text>
-            </Accordion.Content>
-          </Accordion.Item>
-        ))}
+      <Accordion.Root 
+        type="single" 
+        collapsible
+        value={openItem}
+        onValueChange={setOpenItem}
+      >
+        {quotes.map((quote, index) => {
+          const itemValue = `item-${index}`;
+          const isOpen = openItem === itemValue;
+          
+          return (
+            <Accordion.Item key={index} value={itemValue}>
+              <Accordion.Trigger style={{
+                width: '100%',
+                padding: '4px 0',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                border: 'none',
+                background: 'none',
+                cursor: 'pointer'
+              }}>
+                <Text size="2" weight="bold" style={{ color: 'var(--gray-12)' }}>{quote.title}</Text>
+                <ChevronDownIcon
+                  style={{
+                    transition: 'transform 300ms',
+                    transform: `rotate(${isOpen ? '180deg' : '0deg'})`,
+                    color: 'var(--gray-11)'
+                  }}
+                />
+              </Accordion.Trigger>
+              <Accordion.Content style={{
+                padding: '4px 0 8px 16px',
+              }}>
+                <Text size="2" style={{ color: 'var(--gray-11)' }}>{quote.content}</Text>
+              </Accordion.Content>
+            </Accordion.Item>
+          );
+        })}
       </Accordion.Root>
     </Box>
   );
