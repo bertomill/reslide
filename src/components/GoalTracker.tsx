@@ -17,37 +17,35 @@ export default function GoalTracker() {
   const goals: Goal[] = [
     {
       id: "hyrox",
-      title: "Make it to the Hyrox World Championships",
+      title: "Be in the Hyrox World Championships",
       timeline: "2025",
       imageUrl: "/hyrox world champs.webp",
       why: [
-        "Join a fast-growing community of fitness enthusiasts",
-        "Build confidence through athletic achievement",
-        "Maintain focus on health and wellness",
-        "You love this and you can do it"
+        "Be around your people",
+        "Build your confidence",
+        "You love it"
       ],
       benefits: [
-        "Community Connection",
-        "Personal Growth",
-        "Health Focus"
+        "Improved physical fitness",
+        "Mental toughness",
+        "Competitive achievement",
+        "Community connection"
       ],
       requirements: [
-        "Work on your body 2x per day",
-        "8 hours of sleep every day",
-        "No alcohol",
-        "No cheating on the diet"
+        "Obsession with your training",
+        "Obsession with sleep",
+        "Obsession with your nutrition"
       ]
     },
     {
       id: "tech-pm",
-      title: "Join an AI-focused Tech Company as Product Manager",
+      title: "Own a brand that makes money while you sleep",
       timeline: "2025",
       imageUrl: "/Jack Dorsey.avif",
       why: [
-        "The skills required match your talents",
-        "You will get to work with really smart people that energize and push you",
-        "You're going to help a lot of people",
-        "It's the next step towards building your own company"
+        "Freedom from work",
+        "Be around your people",
+        "Inspire millions",
       ],
       benefits: [
         "Tech Leadership",
@@ -90,8 +88,8 @@ export default function GoalTracker() {
 
   return (
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-      <Flex direction="column" gap="4" p="4">
-        <Box>
+      <Flex direction="column" gap="2" p="4">
+        <Box mb="2">
           <Heading size="6" align="center" mb="1">Goals that align with your identity</Heading>
           <Text size="2" color="gray" align="center">Manifesting the Vision Through</Text>
         </Box>
@@ -100,55 +98,42 @@ export default function GoalTracker() {
           <Box 
             key={goal.id} 
             style={{
-              padding: '24px',
-              borderRadius: 'var(--radius-3)',
+              padding: '12px',
+              borderRadius: 'var(--radius-2)',
+              border: '1px solid var(--gray-5)',
               backgroundColor: 'var(--gray-2)'
             }}
           >
-            <Flex direction="column" gap="5">
+            <Flex direction="column" gap="2">
               <Box>
                 <Flex justify="between" align="center">
-                  <Heading as="h3" size="4" mb="2">
-                    Goal {index + 1}
-                  </Heading>
                   <Badge size="2" color="blue">
                     {goal.timeline}
                   </Badge>
                 </Flex>
-                <Text size="5" weight="bold" mb="4">
+                <Text size="4" weight="bold" style={{ marginTop: '4px', marginBottom: '8px' }}>
                   {goal.title}
                 </Text>
               </Box>
 
               <Box>
-                <Heading as="h4" size="3" mb="2">
-                  Why This Matters
-                </Heading>
-                <Flex direction="column" gap="2">
+                <Flex direction="column" gap="1">
                   {goal.why.map((reason, idx) => (
-                    <Text key={idx} size="2">
+                    <Text key={idx} size="2" style={{ lineHeight: '1.2' }}>
                       • {reason}
                     </Text>
                   ))}
                 </Flex>
               </Box>
 
-              <Flex gap="2" wrap="wrap">
-                {goal.benefits.map((benefit, idx) => (
-                  <Badge key={idx} size="2" color={index === 0 ? "green" : "purple"}>
-                    {benefit}
-                  </Badge>
-                ))}
-              </Flex>
-
               <Box
                 style={{
                   position: 'relative',
                   width: '100%',
-                  height: '200px',
-                  borderRadius: 'var(--radius-3)',
+                  height: '150px',
+                  borderRadius: 'var(--radius-2)',
                   overflow: 'hidden',
-                  marginTop: '8px'
+                  marginTop: '4px'
                 }}
               >
                 <Image
@@ -165,12 +150,12 @@ export default function GoalTracker() {
 
               {goal.requirements && (
                 <Box>
-                  <Heading as="h4" size="3" mb="2">
+                  <Heading as="h4" size="2" mb="1">
                     What's it going to take?
                   </Heading>
-                  <Flex direction="column" gap="2">
+                  <Flex direction="column" gap="1">
                     {goal.requirements.map((req, idx) => (
-                      <Text key={idx} size="2">
+                      <Text key={idx} size="2" style={{ lineHeight: '1.2' }}>
                         • {req}
                       </Text>
                     ))}

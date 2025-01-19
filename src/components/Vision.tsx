@@ -26,10 +26,7 @@ export default function Vision() {
           <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
             To achieve the highest state of energy, I have to relentlessly attack my calling
           </Text>
-          <Heading size="6" mb="2">I am humble, kind, sincere, disciplined, charismatic, relentless, tough, honest, purpose-driven</Heading>
-          <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            Never lose your identity, always be the kid from WSF
-          </Text>
+          <Heading size="6" mb="2">I'm here to be a great athelete, a great entrepreneur, and a great dad</Heading>
         </Box>
 
         <Grid columns="2" gap="3" width="100%">
