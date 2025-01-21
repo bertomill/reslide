@@ -12,7 +12,7 @@ type DailyActivity = {
 
 type Habit = {
   description: string;
-  category: 'discipline' | 'social' | 'mindset' | 'health';
+  category: 'discipline' | 'social' | 'mindset' | 'health' | 'craft';
 };
 
 type Principle = {
@@ -51,19 +51,19 @@ export default function WarriorKingPrinciples() {
     { description: "I never wear headphones around people", category: "social" },
     { description: "I wear clothes that match my aura", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
-    { description: "I give everything I got to listen to others", category: "social" },
-    { description: "I express my truth no matter wha", category: "social" },
     { description: "I give people 10x no matter what", category: "social" },
     { description: "I never waste money - cash is freedom", category: "discipline" },
     { description: "I read every night before bed", category: "discipline" },
-    { description: "I listen to inspiring audiobooks during active recovery", category: "mindset" },
-    { description: "I smile and nod to strangers", category: "social" },
+    { description: "I listen to audiobooks during active recovery", category: "mindset" },
     { description: "I always say yes to possibility", category: "social" },
     { description: "I never drink alcohol", category: "discipline" },
     { description: "I do jazz only once a month", category: "discipline" },
     { description: "I find fear and move towards it", category: "mindset" },
-    { description: "I never sabotage my confidence", category: "mindset" },
-    { description: "I make friends no matter what", category: "social" }
+    { description: "I make friends no matter what - there's no other option", category: "social" },
+    { description: "I clean compulsively", category: "discipline" },
+    { description: "I find boring work and attack it because boring work leads to exceptional results", category: "craft" },
+    { description: "I go for at least one quiet walk every day", category: "mindset" },
+    { description: "I work in timed sprints - no matter how I'm feeling", category: "craft" }
   ];
 
   const principles: Principle[] = [
@@ -138,7 +138,8 @@ export default function WarriorKingPrinciples() {
       work: "cyan",
       discipline: "red",
       mindset: "yellow",
-      health: "green"
+      health: "green",
+      craft: "gray"
     };
     return colors[category] || "gray";
   };
@@ -180,19 +181,15 @@ export default function WarriorKingPrinciples() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="5" p="4" style={{ width: '100%' }}>
         <Box>
-          <Heading size="6" mb="4">Living up to my identity</Heading>
+          <Heading size="6" mb="4">Guiding Principles</Heading>
           <Text size="2" color="gray" mb="4">
-            The price I have to pay to live up to my identity
+            What it takes to live a successful life
           </Text>
         </Box>
 
         <Separator size="4" />
 
         <Box>
-          <Heading size="4" mb="2">Guiding Principles</Heading>
-          <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-            These are the principles that I live by
-          </Text>
           <Grid columns="1" gap="4">
             {principles.map((principle, idx) => (
               <Flex 
@@ -200,7 +197,7 @@ export default function WarriorKingPrinciples() {
                 align="start" 
                 gap="3"
                 style={{ 
-                  padding: '12px',
+                  padding: '4px',
                   borderRadius: 'var(--radius-2)',
                   backgroundColor: 'var(--gray-2)',
                   cursor: 'pointer'
@@ -277,9 +274,7 @@ export default function WarriorKingPrinciples() {
                 />
                 <Badge 
                   size="2" 
-                  color={habit.category === 'discipline' ? 'red' : 
-                         habit.category === 'social' ? 'orange' :
-                         habit.category === 'mindset' ? 'yellow' : 'green'}
+                  color={getCategoryColor(habit.category)}
                   style={{
                     width: '80px',
                     textAlign: 'center',

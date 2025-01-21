@@ -21,9 +21,9 @@ export default function GoalTracker() {
       timeline: "2025",
       imageUrl: "/hyrox world champs.webp",
       why: [
-        "Be around your people",
-        "Build your confidence",
-        "You love it"
+        "Hangout around people who share your passion",
+        "Get super shredded",
+        "Make content that thousands of people love"
       ],
       benefits: [
         "Improved physical fitness",
@@ -39,13 +39,13 @@ export default function GoalTracker() {
     },
     {
       id: "tech-pm",
-      title: "Own a brand that makes money while you sleep",
+      title: "Build the Berto Mill brand",
       timeline: "2025",
       imageUrl: "/Jack Dorsey.avif",
       why: [
-        "Freedom from work",
-        "Be around your people",
-        "Inspire millions",
+        "Financial Freedom",
+        "Be around your people who share my passion",
+        "Serve thousands of people who love what I do",
       ],
       benefits: [
         "Tech Leadership",
@@ -54,24 +54,20 @@ export default function GoalTracker() {
         "Entrepreneurial Path"
       ],
       requirements: [
-        "6 hours of coding every day",
-        "2 hours of reading every day",
-        "5 high-quality reach-outs to AI companies every day",
-        "1 pitch meeting per day showing my AI application",
-        "Build an AI app with 100+ subscribers",
-        "10 5-star reviews"
+        "Coding 8 hours a day",
+        "Share something on social media every day",
+        "Get super ripped"
       ]
     },
     {
       id: "meditation",
-      title: "1000 Hours of Meditation Mastery",
+      title: "Be a genuinely peaceful happy person",
       timeline: "2025",
       imageUrl: "/Chad.png",
       why: [
-        "Develop unshakeable mental clarity and focus",
-        "Master emotional intelligence and inner peace",
-        "Develop an incredibly sharp mind",
-        "Live a way happier, more meaningful life"
+        "Attract other happy people",
+        "Never having panic attacks",
+        "Great sense of charecter"
       ],
       benefits: [
         "Mental Mastery",
@@ -87,24 +83,26 @@ export default function GoalTracker() {
   ];
 
   return (
-    <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-      <Flex direction="column" gap="2" p="4">
-        <Box mb="2">
-          <Heading size="6" align="center" mb="1">Goals that align with your identity</Heading>
-          <Text size="2" color="gray" align="center">Manifesting the Vision Through</Text>
+    <Card size="3" style={{ maxWidth: 500, margin: '0 auto', padding: '8px' }}>
+      <Flex direction="column" gap="1" p="2">
+        <Box mb="1">
+          <Heading size="6" align="center" mb="1">Goals coming up</Heading>
+          <Text size="2" color="gray" align="center" style={{ fontStyle: 'italic' }}>
+            Time is flying right by
+          </Text>
         </Box>
 
         {goals.map((goal, index) => (
           <Box 
             key={goal.id} 
             style={{
-              padding: '12px',
+              padding: '8px',
               borderRadius: 'var(--radius-2)',
               border: '1px solid var(--gray-5)',
               backgroundColor: 'var(--gray-2)'
             }}
           >
-            <Flex direction="column" gap="2">
+            <Flex direction="column" gap="1">
               <Box>
                 <Flex justify="between" align="center">
                   <Badge size="2" color="blue">

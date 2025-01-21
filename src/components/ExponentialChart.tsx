@@ -65,9 +65,9 @@ const ExponentialChart = () => {
   return (
     <Card style={{ width: '100%', marginTop: '24px' }}>
       <Flex direction="column" gap="4" p="4" align="center">
-        <Heading size="4" mb="2">The Path to Greatness</Heading>
+        <Heading size="4" mb="2">Focus Is The Way</Heading>
         <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-          Small improvements at the highest level yield exponential rewards
+          Focusing 100% of your energy into your dream is the only way to achieve it. Anything less yields mediocrity.
         </Text>
         
         <div style={{ 

@@ -20,16 +20,18 @@ export default function Vision() {
   ];
 
   return (
-    <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-      <Flex direction="column" gap="4" p="4">
+    <Card size="3" style={{ maxWidth: 500, margin: '0 auto', padding: '8px' }}>
+      <Flex direction="column" gap="2" p="2">
         <Box>
-          <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-            To achieve the highest state of energy, I have to relentlessly attack my calling
+          <Heading size="6" mb="2">
+            2030 Vision: Financial Freedom
+          </Heading>
+          <Text size="3" mb="4" style={{ lineHeight: '1.5' }}>
+            The ability to do what I want, with who I want, where I want.
           </Text>
-          <Heading size="6" mb="2">I'm here to be a great athelete, a great entrepreneur, and a great dad</Heading>
         </Box>
 
-        <Grid columns="2" gap="3" width="100%">
+        <Grid columns="2" gap="1" width="100%" mb="4">
           {warriorKings.map((warrior) => (
             <Box 
               key={warrior.id}
@@ -56,6 +58,28 @@ export default function Vision() {
             </Box>
           ))}
         </Grid>
+
+        <Text size="2" color="gray" style={{ fontStyle: 'italic' }} mb="4">
+          And that requires me to own part of a business that makes money while I sleep.
+        </Text>
+
+        <Box mb="4">
+          <Text size="2" weight="bold" mb="2">
+            My Unique Assets:
+          </Text>
+          <Text size="2" style={{ lineHeight: '1.5' }}>
+            I must leverage my fitness, my meditation, my ability to code, my ability to create content, and my ability to sell/network.
+          </Text>
+        </Box>
+
+        <Box>
+          <Text size="2" weight="bold" mb="2">
+            The Price of Success:
+          </Text>
+          <Text size="2" style={{ lineHeight: '1.5' }}>
+            I must fully commit to this lifestyle - No parties, no junk food, no wasting money or time on the weekends, no trips. It's just going to be 24/7 work for the next 4 years, but you will reach escape velocity.
+          </Text>
+        </Box>
       </Flex>
     </Card>
   );
