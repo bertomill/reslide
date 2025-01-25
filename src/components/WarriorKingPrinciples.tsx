@@ -15,6 +15,11 @@ type Habit = {
   category: 'discipline' | 'social' | 'mindset' | 'health' | 'craft';
 };
 
+type HabitGroup = {
+  title: string;
+  habits: string[];
+};
+
 type Principle = {
   title: string;
   description: string;
@@ -36,41 +41,80 @@ export default function WarriorKingPrinciples() {
     { name: "Blogging", hours: 1, category: "mind" }
   ];
 
-  const habits: Habit[] = [
-    { description: "I have creatine and protein every day", category: "health" },
-    { description: "I use whim Hoff breathing to increase adrenaline", category: "health" },
-    { description: "I use 2 big inhale, one slow excale breathing to increase seretonin", category: "health" },
-    { description: "I fast til 1-4 pm", category: "health" },
-    { description: "I play on the edge of hunger", category: "health" },
-    { description: "I have 1 or less coffees per day - crucial for my sleep health", category: "health" },
-    { description: "I'm a perfectionist with my nutrition", category: "health" },
-    { description: "I do long straw exhales when stressed", category: "mindset" },
-    { description: "I get 30 mins of sunlight no matter what", category: "mindset" },
-    { description: "I dance and clean when down", category: "mindset" },
-    { description: "I watch fitness videos during dinner (if alone)", category: "mindset" },
-    { description: "I don't eat dairy", category: "discipline" },
-    { description: "I don't eat gluten", category: "discipline" },
-    { description: "I don't eat added sugar", category: "discipline" },
-    { description: "I never wear headphones around people", category: "social" },
-    { description: "I wear clothes that match my aura", category: "social" },
-    { description: "I'm never late for people", category: "discipline" },
-    { description: "I never waste money - cash is freedom", category: "discipline" },
-    { description: "I read a book every morning and every evening for 30 mins", category: "discipline" },
-    { description: "I listen to audiobooks during active recovery", category: "mindset" },
-    { description: "I always say yes to possibility", category: "social" },
-    { description: "I never drink alcohol", category: "discipline" },
-    { description: "I do jazz only once a month", category: "discipline" },
-    { description: "I find fear and move towards it", category: "mindset" },
-    { description: "I make friends no matter what - there's no other option", category: "social" },
-    { description: "I clean compulsively", category: "discipline" },
-    { description: "I find boring work and attack it because boring work leads to exceptional results", category: "craft" },
-    { description: "I go for at least one quiet walk every day", category: "mindset" },
-    { description: "I never listen to anything during walks - pure presence", category: "mindset" },
-    { description: "I work in timed sprints - no matter how I'm feeling", category: "craft" },
-    { description: "I workout till I cannot walk", category: "discipline" },
-    { description: "I open my heart until I'm utterly embarrassed", category: "social" },
-    { description: "I work my craft until my brain is exhausted", category: "craft" },
-    { description: "I do 5 hours AI industry analysis and 5 hours AI application development every day", category: "craft" }
+  const habitGroups: HabitGroup[] = [
+    {
+      title: "In the morning",
+      habits: [
+        "I stretch for two minutes",
+        "I meditate 30 minutes or more",
+        "I have creatine",
+        "I have a big glass of water",
+        "I get my 30 minutes of sunlight",
+        "I read for 30 minutes",
+        "I force myself to get 8 hours of sleep on weekends"
+      ]
+    },
+    {
+      title: "At the gym",
+      habits: [
+        "If I'm doing active recovery, I will listen to an audiobook",
+        "If its a heavy lift, I workout till I can't walk",
+        "I find the spot of most pain, and focus my energy there"
+      ]
+    },
+    {
+      title: "When walking",
+      habits: [
+        "I don't listen to anything - giving my mind some time to clear"
+      ]
+    },
+    {
+      title: "At work",
+      habits: [
+        "I use whim hoff breathing when I need energy",
+        "I use slow exhales when i need seretonin",
+        "I fast & play on the edge of hunger",
+        "I have 1 or less coffees per day",
+        "I don't waste money",
+        "I'm constantly seeking areas of most curiosity and exploring",
+        "I work in timed sprints",
+        "I work until I'm exausted"
+      ]
+    },
+    {
+      title: "At home",
+      habits: [
+        "I do jazz 1x per month",
+        "I clean whenever I can"
+      ]
+    },
+    {
+      title: "With others",
+      habits: [
+        "I open up to others, even if it's uncomfortable",
+        "I never wear headphones around people",
+        "I always say yes to possibility",
+        "I don't leave myself an option to not make friends"
+      ]
+    },
+    {
+      title: "In the kitchen",
+      habits: [
+        "I'm a perfectinist with my nutrition",
+        "I'll watch a fitness video with dinner if i'm alone",
+        "I don't eat dairy",
+        "I don't eat gluten",
+        "I don't eat added sugar",
+        "I don't drink alcohol"
+      ]
+    },
+    {
+      title: "Before bed",
+      habits: [
+        "I read for 30 minutes",
+        "I stretch for two minutes"
+      ]
+    }
   ];
 
   const principles: Principle[] = [
@@ -185,7 +229,7 @@ export default function WarriorKingPrinciples() {
   };
 
   return (
-    <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
+    <Card size="3" style={{ maxWidth: 800, margin: '0 auto' }}>
       <Flex direction="column" gap="5" p="4" style={{ width: '100%' }}>
         <Box>
           <Heading size="6" mb="4">Guiding Principles</Heading>
@@ -257,51 +301,58 @@ export default function WarriorKingPrinciples() {
 
         <Box>
           <Heading size="4" mb="2">My habits make me</Heading>
-          <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-            This is who I am
-          </Text>
           <Grid columns="1" gap="4">
-            {habits.map((habit, idx) => (
-              <Flex 
-                key={idx} 
-                align="center" 
-                gap="3"
-                style={{ 
-                  padding: '8px',
-                  borderRadius: 'var(--radius-2)',
+            {habitGroups.map((group, groupIdx) => (
+              <Box 
+                key={groupIdx}
+                style={{
                   backgroundColor: 'var(--gray-2)',
-                  cursor: 'pointer'
+                  padding: '16px',
+                  borderRadius: '8px',
+                  width: '100%'
                 }}
-                onClick={() => handleCheck(idx)}
               >
-                <Checkbox 
-                  checked={checkedHabits[idx] || false}
-                  onCheckedChange={() => handleCheck(idx)}
-                  style={{ transform: 'scale(1.2)' }}
-                />
-                <Badge 
-                  size="2" 
-                  color={getCategoryColor(habit.category)}
-                  style={{
-                    width: '80px',
-                    textAlign: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  {habit.category}
-                </Badge>
-                <Text 
-                  size="2" 
-                  style={{ 
-                    textDecoration: checkedHabits[idx] ? 'line-through' : 'none',
-                    opacity: checkedHabits[idx] ? 0.6 : 1,
-                    flex: 1
-                  }}
-                >
-                  {habit.description}
-                </Text>
-              </Flex>
-            ))}
+                <Flex align="center" gap="2" mb="3">
+                  <Text weight="bold" size="3" style={{ color: 'var(--gray-12)' }}>
+                    {group.title}
+                  </Text>
+                </Flex>
+                <Flex direction="column" gap="3">
+                  {group.habits.map((habit, habitIdx) => {
+                    const globalIdx = groupIdx * 100 + habitIdx; // Unique index for each habit
+                    return (
+                      <Flex 
+                        key={habitIdx} 
+                        align="center" 
+                        gap="3"
+                        style={{ 
+                          padding: '4px',
+                          cursor: 'pointer',
+                          marginBottom: '4px',
+                          width: '100%'
+                        }}
+                        onClick={() => handleCheck(globalIdx)}
+                      >
+                        <Checkbox 
+                          checked={checkedHabits[globalIdx] || false}
+                          onCheckedChange={() => handleCheck(globalIdx)}
+                          style={{ transform: 'scale(1)' }}
+                        />
+                        <Text 
+                          size="1" 
+                          style={{ 
+                            textDecoration: checkedHabits[globalIdx] ? 'line-through' : 'none',
+                            opacity: checkedHabits[globalIdx] ? 0.6 : 0.8,
+                            flex: 1
+                          }}
+                        >
+                          {habit}
+                        </Text>
+                      </Flex>
+                    );
+                  })}
+                </Flex>
+              </Box>            ))}
           </Grid>
           <Flex justify="end" mt="4">
             <Text 

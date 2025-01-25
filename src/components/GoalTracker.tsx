@@ -4,6 +4,13 @@ import { useState, useEffect, CSSProperties } from 'react';
 import { Card, Text, Heading, Flex, Box } from '@radix-ui/themes';
 import Image from 'next/image';
 import { createBrowserClient } from '@supabase/ssr';
+import { 
+  StarIcon, 
+  EyeOpenIcon, 
+  HeartIcon, 
+  MoonIcon, 
+  PersonIcon 
+} from '@radix-ui/react-icons';
 
 type ProgressUpdate = {
   value: string;
@@ -14,20 +21,13 @@ type ProgressUpdate = {
 type Goal = {
   id: string;
   title: string;
-  why: string[];
-  benefits: string[];
-  requirements?: string[];
   imageUrl: string;
-  target: {
-    value: string;
-    description: string;
-  };
   progress: ProgressUpdate[];
 };
 
 export default function GoalTracker() {
   const [goals, setGoals] = useState<Goal[]>([]);
-  const [newProgress, setNewProgress] = useState({ value: '', timestamp: new Date().toISOString().split('T')[0], note: '' });
+  const [progressForms, setProgressForms] = useState<{[key: string]: { value: string; timestamp: string; note: string }}>({});
   const [isLoading, setIsLoading] = useState(true);
 
   const supabase = createBrowserClient(
@@ -38,106 +38,33 @@ export default function GoalTracker() {
   const staticGoals: Goal[] = [
     {
       id: "hyrox",
-      title: "Pure Body - Hyrox World Championship",
+      title: "Hyrox Sub 70",
       imageUrl: "/hyrox world champs.webp",
-      target: {
-        value: "70",
-        description: "sub 70-minute"
-      },
-      progress: [],
-      why: [
-        "Next goal: sub 70-minute",
-        "Inspire others through pure dedication",
-        "Create content that showcases true athleticism"
-      ],
-      benefits: [
-        "Improved physical fitness",
-        "Mental toughness",
-        "Competitive achievement",
-        "Community connection"
-      ],
-      requirements: [
-        "Obsession with your training",
-        "Obsession with sleep",
-        "Obsession with your nutrition"
-      ]
+      progress: []
     },
     {
       id: "tech-pm",
-      title: "Pure Mind - Founder of AI Company",
+      title: "100 Subscribers",
       imageUrl: "/Ivan.png",
-      target: {
-        value: "100",
-        description: "100 subscribers to bertomill.com"
-      },
-      progress: [],
-      why: [
-        "Next goal: 100 subs",
-        "Push the boundaries of what's possible",
-        "Build with absolute technical excellence"
-      ],
-      benefits: [
-        "Technological Breakthrough",
-        "Societal Impact",
-        "Engineering Mastery",
-        "Vision Manifestation"
-      ],
-      requirements: [
-        "Deep mastery of AI/ML systems",
-        "Build and ship something meaningful every day",
-        "Relentless focus on technical excellence"
-      ]
+      progress: []
     },
     {
       id: "meditation",
-      title: "Pure Heart - 100% Confidence'",
+      title: "50 Dates",
       imageUrl: "/jlegend.png",
-      target: {
-        value: "50",
-        description: "50 dates"
-      },
-      progress: [],
-      why: [
-        "Next goal: 50 dates",
-        "Maintain unwavering presence",
-        "Radiate authentic joy"
-      ],
-      benefits: [
-        "Mental Mastery",
-        "Emotional Intelligence",
-        "Spiritual Growth",
-        "Inner Peace"
-      ],
-      requirements: [
-        "Putting your heart out there every day",
-        "Being 100% authentic through fear"
-      ]
+      progress: []
     },
     {
       id: "soul",
-      title: "Pure Soul - Author of Spiritual Wisdom",
+      title: "1000 Hours Meditated",
       imageUrl: "/robin.png",
-      target: {
-        value: "1000",
-        description: "1000 hours meditated"
-      },
-      progress: [],
-      why: [
-        "Next goal: 1000 hours meditated",
-        "Bridge ancient truth with modern living",
-        "Guide others to their highest potential"
-      ],
-      benefits: [
-        "Spiritual Legacy",
-        "Wisdom Transmission",
-        "Global Impact",
-        "Soul Evolution"
-      ],
-      requirements: [
-        "Daily deep contemplation and writing",
-        "Living the principles you teach",
-        "Constant refinement of wisdom"
-      ]
+      progress: []
+    },
+    {
+      id: "sleep",
+      title: "80% Sleep Score",
+      imageUrl: "/Phelps_Sleep.png",
+      progress: []
     }
   ];
 
@@ -170,6 +97,12 @@ export default function GoalTracker() {
 
   useEffect(() => {
     fetchProgressUpdates();
+    // Initialize progress forms for each goal
+    const initialForms = staticGoals.reduce((acc, goal) => ({
+      ...acc,
+      [goal.id]: { value: '', timestamp: new Date().toISOString().split('T')[0], note: '' }
+    }), {});
+    setProgressForms(initialForms);
   }, []);
 
   const addProgressUpdate = async (goalId: string) => {
@@ -178,15 +111,18 @@ export default function GoalTracker() {
         .from('progress_updates')
         .insert([{
           goal_id: goalId,
-          value: newProgress.value,
-          timestamp: new Date(newProgress.timestamp).toISOString(),
-          note: newProgress.note
+          value: progressForms[goalId].value,
+          timestamp: new Date(progressForms[goalId].timestamp).toISOString(),
+          note: progressForms[goalId].note
         }]);
 
       if (error) throw error;
 
-      // Reset form and refresh data
-      setNewProgress({ value: '', timestamp: new Date().toISOString().split('T')[0], note: '' });
+      // Reset only this goal's form
+      setProgressForms(prev => ({
+        ...prev,
+        [goalId]: { value: '', timestamp: new Date().toISOString().split('T')[0], note: '' }
+      }));
       fetchProgressUpdates();
     } catch (error) {
       console.error('Error adding progress update:', error);
@@ -230,11 +166,31 @@ export default function GoalTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
-          <Heading size="6" align="center" mb="1">I'm all-in for this</Heading>
-          <Text size="2" color="gray" align="center" style={{ fontStyle: 'italic' }}>
-            When all else is removed, you are left with the following
-          </Text>
+          <Heading size="6" align="center" mb="1">All-in for</Heading>
         </Box>
+
+        <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
+          <Flex align="center" gap="1">
+            <StarIcon width={20} height={20} />
+            <Text size="3" weight="bold">70H</Text>
+          </Flex>
+          <Flex align="center" gap="1">
+            <PersonIcon width={20} height={20} />
+            <Text size="3" weight="bold">100S</Text>
+          </Flex>
+          <Flex align="center" gap="1">
+            <HeartIcon width={20} height={20} />
+            <Text size="3" weight="bold">50D</Text>
+          </Flex>
+          <Flex align="center" gap="1">
+            <EyeOpenIcon width={20} height={20} />
+            <Text size="3" weight="bold">1000M</Text>
+          </Flex>
+          <Flex align="center" gap="1">
+            <MoonIcon width={20} height={20} />
+            <Text size="3" weight="bold">80%S</Text>
+          </Flex>
+        </Flex>
 
         {goals.map((goal) => (
           <Box 
@@ -252,7 +208,6 @@ export default function GoalTracker() {
               </Text>
 
               <Flex direction="column" gap="2" mb="2">
-                <Text size="2" weight="bold">Target: {goal.target.description}</Text>
                 {goal.progress.map((update, idx) => (
                   <Text key={idx} size="2" style={{ color: 'var(--gray-11)' }}>
                     {update.value} - {new Date(update.timestamp).toLocaleDateString()} 
@@ -272,16 +227,22 @@ export default function GoalTracker() {
                   type="text"
                   name="value"
                   placeholder="Value"
-                  value={newProgress.value}
-                  onChange={(e) => setNewProgress(prev => ({ ...prev, value: e.target.value }))}
+                  value={progressForms[goal.id]?.value || ''}
+                  onChange={(e) => setProgressForms(prev => ({
+                    ...prev,
+                    [goal.id]: { ...prev[goal.id], value: e.target.value }
+                  }))}
                   required
                   style={inputStyle}
                 />
                 <input
                   type="date"
                   name="timestamp"
-                  value={newProgress.timestamp}
-                  onChange={(e) => setNewProgress(prev => ({ ...prev, timestamp: e.target.value }))}
+                  value={progressForms[goal.id]?.timestamp || new Date().toISOString().split('T')[0]}
+                  onChange={(e) => setProgressForms(prev => ({
+                    ...prev,
+                    [goal.id]: { ...prev[goal.id], timestamp: e.target.value }
+                  }))}
                   required
                   style={inputStyle}
                 />
@@ -289,22 +250,15 @@ export default function GoalTracker() {
                   type="text"
                   name="note"
                   placeholder="Note"
-                  value={newProgress.note}
-                  onChange={(e) => setNewProgress(prev => ({ ...prev, note: e.target.value }))}
+                  value={progressForms[goal.id]?.note || ''}
+                  onChange={(e) => setProgressForms(prev => ({
+                    ...prev,
+                    [goal.id]: { ...prev[goal.id], note: e.target.value }
+                  }))}
                   style={inputStyle}
                 />
                 <button type="submit" style={buttonStyle}>Add Progress</button>
               </form>
-
-              <Box>
-                <Flex direction="column" gap="1">
-                  {goal.why.map((reason, idx) => (
-                    <Text key={idx} size="2" style={{ lineHeight: '1.2' }}>
-                      • {reason}
-                    </Text>
-                  ))}
-                </Flex>
-              </Box>
 
               <Box
                 style={{
@@ -327,21 +281,6 @@ export default function GoalTracker() {
                   sizes="(max-width: 500px) 100vw, 500px"
                 />
               </Box>
-
-              {goal.requirements && (
-                <Box>
-                  <Heading as="h4" size="2" mb="1">
-                    What's it going to take?
-                  </Heading>
-                  <Flex direction="column" gap="1">
-                    {goal.requirements.map((req, idx) => (
-                      <Text key={idx} size="2" style={{ lineHeight: '1.2' }}>
-                        • {req}
-                      </Text>
-                    ))}
-                  </Flex>
-                </Box>
-              )}
             </Flex>
           </Box>
         ))}
