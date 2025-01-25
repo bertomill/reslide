@@ -24,10 +24,10 @@ export default function Vision() {
       <Flex direction="column" gap="2" p="2">
         <Box>
           <Heading size="6" mb="2">
-            2030 Vision: Financial Freedom
+            Just keep purifying your product - body, mind, heart, and soul
           </Heading>
           <Text size="3" mb="4" style={{ lineHeight: '1.5' }}>
-            The ability to do what I want, with who I want, where I want.
+            It's done through relentless refinement of your process
           </Text>
         </Box>
 
@@ -60,24 +60,38 @@ export default function Vision() {
         </Grid>
 
         <Text size="2" color="gray" style={{ fontStyle: 'italic' }} mb="4">
-          And that requires me to own part of a business that makes money while I sleep.
+          It's simple. Just chip away everything that is not Berto.
         </Text>
 
         <Box mb="4">
-          <Text size="2" weight="bold" mb="2">
-            My Unique Assets:
+          <Text size="2" weight="bold" mb="3">
+            The Four Pillars of Purification
           </Text>
-          <Text size="2" style={{ lineHeight: '1.5' }}>
-            I must leverage my fitness, my meditation, my ability to code, my ability to create content, and my ability to sell/network.
-          </Text>
+          <Flex direction="column" gap="2">
+            <Text size="2" style={{ lineHeight: '1.6' }}>
+              • Body through movement and nutrition
+            </Text>
+            <Text size="2" style={{ lineHeight: '1.6' }}>
+              • Mind through meditation and learning
+            </Text>
+            <Text size="2" style={{ lineHeight: '1.6' }}>
+              • Heart through compassion and service
+            </Text>
+            <Text size="2" style={{ lineHeight: '1.6' }}>
+              • Soul through presence and gratitude
+            </Text>
+          </Flex>
         </Box>
 
         <Box>
-          <Text size="2" weight="bold" mb="2">
-            The Price of Success:
+          <Text size="2" weight="bold" mb="3">
+            The Path of Refinement
           </Text>
-          <Text size="2" style={{ lineHeight: '1.5' }}>
-            I must fully commit to this lifestyle - No parties, no junk food, no wasting money or time on the weekends, no trips. It's just going to be 24/7 work for the next 4 years, but you will reach escape velocity.
+          <Text size="2" style={{ lineHeight: '1.8' }}>
+            Every moment is an opportunity for purification. Each breath, each action, each thought can be more refined than the last.
+          </Text>
+          <Text size="2" style={{ lineHeight: '1.8', mt: "2" }}>
+            Trust in the process - as you purify, everything you seek naturally manifests.
           </Text>
         </Box>
       </Flex>

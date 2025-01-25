@@ -22,7 +22,8 @@ export default function EnergyTracker() {
     { name: "Flow", color: "blue" },
     { name: "Peak", color: "green" },
     { name: "Gratitude", color: "gold" },
-    { name: "Excitement", color: "orange" }
+    { name: "Excitement", color: "orange" },
+    { name: "Bloom", color: "green" }
   ];
 
   const [selectedState, setSelectedState] = useState<string | null>(null);

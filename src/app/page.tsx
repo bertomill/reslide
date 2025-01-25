@@ -16,9 +16,9 @@ export default function Home() {
         backgroundColor: 'var(--gray-1)', 
         borderBottom: '1px solid var(--gray-5)',
         zIndex: 10,
-        padding: '1rem'
+        padding: '0.5rem'
       }}>
-        <Flex align="center" justify="center" gap="3">
+        <Flex align="center" justify="center" gap="2">
           <div style={{ 
             width: '32px', 
             height: '32px', 
@@ -36,8 +36,8 @@ export default function Home() {
         </Flex>
       </Box>
 
-      <Container size="2" p="6">
-        <Flex direction="column" gap="6">
+      <Container size="2" p="3">
+        <Flex direction="column" gap="4">
           <EnergyTracker />
           <Separator size="4" />
           

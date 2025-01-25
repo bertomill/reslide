@@ -42,18 +42,20 @@ export default function WarriorKingPrinciples() {
     { description: "I use 2 big inhale, one slow excale breathing to increase seretonin", category: "health" },
     { description: "I fast til 1-4 pm", category: "health" },
     { description: "I play on the edge of hunger", category: "health" },
+    { description: "I have 1 or less coffees per day - crucial for my sleep health", category: "health" },
+    { description: "I'm a perfectionist with my nutrition", category: "health" },
     { description: "I do long straw exhales when stressed", category: "mindset" },
     { description: "I get 30 mins of sunlight no matter what", category: "mindset" },
     { description: "I dance and clean when down", category: "mindset" },
+    { description: "I watch fitness videos during dinner (if alone)", category: "mindset" },
     { description: "I don't eat dairy", category: "discipline" },
     { description: "I don't eat gluten", category: "discipline" },
     { description: "I don't eat added sugar", category: "discipline" },
     { description: "I never wear headphones around people", category: "social" },
     { description: "I wear clothes that match my aura", category: "social" },
     { description: "I'm never late for people", category: "discipline" },
-    { description: "I give people 10x no matter what", category: "social" },
     { description: "I never waste money - cash is freedom", category: "discipline" },
-    { description: "I read every night before bed", category: "discipline" },
+    { description: "I read a book every morning and every evening for 30 mins", category: "discipline" },
     { description: "I listen to audiobooks during active recovery", category: "mindset" },
     { description: "I always say yes to possibility", category: "social" },
     { description: "I never drink alcohol", category: "discipline" },
@@ -63,7 +65,12 @@ export default function WarriorKingPrinciples() {
     { description: "I clean compulsively", category: "discipline" },
     { description: "I find boring work and attack it because boring work leads to exceptional results", category: "craft" },
     { description: "I go for at least one quiet walk every day", category: "mindset" },
-    { description: "I work in timed sprints - no matter how I'm feeling", category: "craft" }
+    { description: "I never listen to anything during walks - pure presence", category: "mindset" },
+    { description: "I work in timed sprints - no matter how I'm feeling", category: "craft" },
+    { description: "I workout till I cannot walk", category: "discipline" },
+    { description: "I open my heart until I'm utterly embarrassed", category: "social" },
+    { description: "I work my craft until my brain is exhausted", category: "craft" },
+    { description: "I do 5 hours AI industry analysis and 5 hours AI application development every day", category: "craft" }
   ];
 
   const principles: Principle[] = [

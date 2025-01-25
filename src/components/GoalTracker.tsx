@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, Text, Heading, Flex, Box, Badge } from '@radix-ui/themes';
+import { Card, Text, Heading, Flex, Box } from '@radix-ui/themes';
 import Image from 'next/image';
 
 type Goal = {
@@ -9,7 +9,6 @@ type Goal = {
   why: string[];
   benefits: string[];
   requirements?: string[];
-  timeline?: string;
   imageUrl: string;
 };
 
@@ -17,13 +16,12 @@ export default function GoalTracker() {
   const goals: Goal[] = [
     {
       id: "hyrox",
-      title: "Be in the Hyrox World Championships",
-      timeline: "2025",
+      title: "Pure Body - Hyrox World Championship",
       imageUrl: "/hyrox world champs.webp",
       why: [
-        "Hangout around people who share your passion",
-        "Get super shredded",
-        "Make content that thousands of people love"
+        "Express the highest form of physical potential",
+        "Inspire others through pure dedication",
+        "Create content that showcases true athleticism"
       ],
       benefits: [
         "Improved physical fitness",
@@ -39,35 +37,33 @@ export default function GoalTracker() {
     },
     {
       id: "tech-pm",
-      title: "Build the Berto Mill brand",
-      timeline: "2025",
-      imageUrl: "/Jack Dorsey.avif",
+      title: "Pure Mind - Founder of AI Company",
+      imageUrl: "/Ivan.png",
       why: [
-        "Financial Freedom",
-        "Be around your people who share my passion",
-        "Serve thousands of people who love what I do",
+        "Create AI that genuinely elevates humanity",
+        "Push the boundaries of what's possible",
+        "Build with absolute technical excellence"
       ],
       benefits: [
-        "Tech Leadership",
-        "AI Innovation",
-        "Career Growth",
-        "Entrepreneurial Path"
+        "Technological Breakthrough",
+        "Societal Impact",
+        "Engineering Mastery",
+        "Vision Manifestation"
       ],
       requirements: [
-        "Coding 8 hours a day",
-        "Share something on social media every day",
-        "Get super ripped"
+        "Deep mastery of AI/ML systems",
+        "Build and ship something meaningful every day",
+        "Relentless focus on technical excellence"
       ]
     },
     {
       id: "meditation",
-      title: "Be a genuinely peaceful happy person",
-      timeline: "2025",
+      title: "Pure Heart - Known as a 'Jolly Good Fellow'",
       imageUrl: "/Chad.png",
       why: [
-        "Attract other happy people",
-        "Never having panic attacks",
-        "Great sense of charecter"
+        "Embody genuine tranquility",
+        "Maintain unwavering presence",
+        "Radiate authentic joy"
       ],
       benefits: [
         "Mental Mastery",
@@ -79,6 +75,27 @@ export default function GoalTracker() {
         "Waking up at 4-5am every day",
         "Meditating 30 mins to 2 hours every day"
       ]
+    },
+    {
+      id: "soul",
+      title: "Pure Soul - Author of Spiritual Wisdom",
+      imageUrl: "/robin.png",
+      why: [
+        "Share timeless wisdom that transforms lives",
+        "Bridge ancient truth with modern living",
+        "Guide others to their highest potential"
+      ],
+      benefits: [
+        "Spiritual Legacy",
+        "Wisdom Transmission",
+        "Global Impact",
+        "Soul Evolution"
+      ],
+      requirements: [
+        "Daily deep contemplation and writing",
+        "Living the principles you teach",
+        "Constant refinement of wisdom"
+      ]
     }
   ];
 
@@ -86,9 +103,9 @@ export default function GoalTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto', padding: '8px' }}>
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
-          <Heading size="6" align="center" mb="1">Goals coming up</Heading>
+          <Heading size="6" align="center" mb="1">The Purest Products of My Being</Heading>
           <Text size="2" color="gray" align="center" style={{ fontStyle: 'italic' }}>
-            Time is flying right by
+            When all else is removed, you are left with the following
           </Text>
         </Box>
 
@@ -104,11 +121,6 @@ export default function GoalTracker() {
           >
             <Flex direction="column" gap="1">
               <Box>
-                <Flex justify="between" align="center">
-                  <Badge size="2" color="blue">
-                    {goal.timeline}
-                  </Badge>
-                </Flex>
                 <Text size="4" weight="bold" style={{ marginTop: '4px', marginBottom: '8px' }}>
                   {goal.title}
                 </Text>

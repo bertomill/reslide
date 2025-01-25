@@ -8,22 +8,26 @@ const PROMPTS = {
   gratitude: "What am I grateful for?",
   scared_yesterday: "What did I do that scared me yesterday?",
   beyond_yesterday: "What did I do that went above and beyond for others yesterday?",
-  scared_today: "What am I going to do today that scares me?",
+  areas_to_improve: "What's an area that didn't go very well for me yesterday?",
+  off_purpose: "Were there any moments yesterday where I was off-purpose?",
+  scared_today: "How can I push past my comfort zone in all facets today?",
   beyond_today: "What will I do today to go above and beyond for others?",
   fitness: "How am I going to work my fitness today?",
-  craft: "How am I going to work my craft today?",
-  plan: "What's my plan today?"
+  nutrition: "How am I going to eat optimally today?",
+  craft: "How am I going to work my craft today?"
 };
 
 type JournalEntry = {
   gratitude: string;
   scared_yesterday: string;
   beyond_yesterday: string;
+  areas_to_improve: string;
+  off_purpose: string;
   scared_today: string;
   beyond_today: string;
   fitness: string;
+  nutrition: string;
   craft: string;
-  plan: string;
   created_at?: string;
   user_id?: string;
 };
@@ -33,11 +37,13 @@ export default function Journal() {
     gratitude: '',
     scared_yesterday: '',
     beyond_yesterday: '',
+    areas_to_improve: '',
+    off_purpose: '',
     scared_today: '',
     beyond_today: '',
     fitness: '',
-    craft: '',
-    plan: ''
+    nutrition: '',
+    craft: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -54,11 +60,13 @@ export default function Journal() {
       gratitude: '',
       scared_yesterday: '',
       beyond_yesterday: '',
+      areas_to_improve: '',
+      off_purpose: '',
       scared_today: '',
       beyond_today: '',
       fitness: '',
-      craft: '',
-      plan: ''
+      nutrition: '',
+      craft: ''
     });
     setError('');
     setSuccessMessage('');
@@ -86,11 +94,13 @@ export default function Journal() {
           gratitude: entries.gratitude,
           scared_yesterday: entries.scared_yesterday,
           beyond_yesterday: entries.beyond_yesterday,
+          areas_to_improve: entries.areas_to_improve,
+          off_purpose: entries.off_purpose,
           scared_today: entries.scared_today,
           beyond_today: entries.beyond_today,
           fitness: entries.fitness,
-          craft: entries.craft,
-          plan: entries.plan
+          nutrition: entries.nutrition,
+          craft: entries.craft
         }]);
 
       if (supabaseError) throw supabaseError;
@@ -101,11 +111,13 @@ export default function Journal() {
         gratitude: '',
         scared_yesterday: '',
         beyond_yesterday: '',
+        areas_to_improve: '',
+        off_purpose: '',
         scared_today: '',
         beyond_today: '',
         fitness: '',
-        craft: '',
-        plan: ''
+        nutrition: '',
+        craft: ''
       });
     } catch (err) {
       console.error('Error saving journal entry:', err);
