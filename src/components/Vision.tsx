@@ -27,7 +27,7 @@ export default function Vision() {
             Just keep purifying your product - body, mind, heart, and soul
           </Heading>
           <Text size="3" mb="4" style={{ lineHeight: '1.5' }}>
-            It's done through relentless refinement of your process
+            This is the only chance you will ever get to pursue your dream. You will regret not going all-in.
           </Text>
         </Box>
 
