@@ -76,7 +76,7 @@ export default function WarriorKingPrinciples() {
         "I fast & play on the edge of hunger",
         "I have 1 or less coffees per day",
         "I don't waste money",
-        "I'm constantly seeking areas of most curiosity and exploring",
+        "I let my excited curiosity be my engine and my rudder",
         "I work in timed sprints",
         "I work until I'm exausted"
       ]
