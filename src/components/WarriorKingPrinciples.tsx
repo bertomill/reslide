@@ -131,6 +131,12 @@ export default function WarriorKingPrinciples() {
         "I read for 30 minutes",
         "I stretch for two minutes"
       ]
+    },
+    {
+      title: "When times are tough",
+      habits: [
+        "I stop saying why and I start saying wow",
+      ]
     }
   ];
 
