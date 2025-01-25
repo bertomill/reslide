@@ -51,7 +51,8 @@ export default function WarriorKingPrinciples() {
         "I have a big glass of water",
         "I get my 30 minutes of sunlight",
         "I read for 30 minutes",
-        "I force myself to get 8 hours of sleep on weekends"
+        "I never don't go workout in the morning",
+        "I never get less than 8 hours in bed on the weekends"
       ]
     },
     {
