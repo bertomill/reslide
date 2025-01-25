@@ -75,8 +75,20 @@ export default function WarriorKingPrinciples() {
         "I use slow exhales when i need seretonin",
         "I fast & play on the edge of hunger",
         "I have 1 or less coffees per day",
+        "I become freakishly good at what I do",
         "I don't waste money",
+        "I'm building or researchign AI 12 hours a day, so i'm never feeling rushed",
         "I let my excited curiosity be my engine and my rudder",
+        "I relentlessly push to be on the froniter of knowlegde",
+        "I aim to make something that will be good in 100 years",
+        "Great work happens by focusing consistently on something i'm genuinely interested in",
+        "People who do great things don't get a lot done every day. They get something done, rather than nothing.",
+        "The more you learn about something, the easier it is to learn more. Growing an audience is another: the more fans you have, the more new fans they'll bring you",
+        "I avoid the kind of distraction that pushes my work out of the top spot, or I'll waste this valuable type of thinking on the distraction instead. (Exception: Don't avoid love.)",
+        "Colleagues don't just affect your work, though; they also affect you. So work with people you want to become like, because you will.",
+        "I notice gaps",
+        "I boldly chase outlier ideas",
+        "I make what I would want",
         "I work in timed sprints",
         "I work until I'm exausted"
       ]
@@ -94,6 +106,7 @@ export default function WarriorKingPrinciples() {
         "I open up to others, even if it's uncomfortable",
         "I never wear headphones around people",
         "I always say yes to possibility",
+        "I try to go for absolute wifeys, because i'll never be left with someone clinging to me",
         "I don't leave myself an option to not make friends"
       ]
     },
