@@ -56,7 +56,7 @@ export default function EnergyTracker() {
         </Flex>
         
         <Text size="2" color="gray" align="center" mb="4">
-          Your time to pursue the highest energy state it right now, there is no other time, and it's fleeting
+          This is the only time you will ever get to pursue your dreams. You're going to regret not going all-in for it.
         </Text>
         
         <Flex wrap="wrap" gap="2" justify="center">

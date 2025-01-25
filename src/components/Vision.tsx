@@ -82,18 +82,6 @@ export default function Vision() {
             </Text>
           </Flex>
         </Box>
-
-        <Box>
-          <Text size="2" weight="bold" mb="3">
-            The Path of Refinement
-          </Text>
-          <Text size="2" style={{ lineHeight: '1.8' }}>
-            Every moment is an opportunity for purification. Each breath, each action, each thought can be more refined than the last.
-          </Text>
-          <Text size="2" style={{ lineHeight: '1.8', mt: "2" }}>
-            Trust in the process - as you purify, everything you seek naturally manifests.
-          </Text>
-        </Box>
       </Flex>
     </Card>
   );
