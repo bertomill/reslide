@@ -65,11 +65,7 @@ const ExponentialChart = () => {
   return (
     <Card style={{ width: '100%', marginTop: '24px' }}>
       <Flex direction="column" gap="4" p="4" align="center">
-        <Heading size="4" mb="2">Focus Is The Way</Heading>
-        <Text size="2" color="gray" mb="4" style={{ fontStyle: 'italic' }}>
-          Focusing 100% of your energy into your dream is the only way to achieve it. Anything less yields mediocrity.
-        </Text>
-        
+        <Heading size="4" mb="2">All great outcomes come from compounding</Heading>
         <div style={{ 
           width: '100%', 
           height: '300px',
@@ -122,7 +118,6 @@ const ExponentialChart = () => {
                 type="monotone"
                 dataKey="y"
                 stroke="var(--blue-9)"
-                name="Exponential Growth"
                 dot={({ cx, cy, payload }: { cx: number; cy: number; payload: any }) => (
                   <svg 
                     x={cx - 4} 
@@ -145,11 +140,6 @@ const ExponentialChart = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-
-        <Text size="2" align="center" style={{ fontStyle: 'italic' }}>
-          Going from 90% (very good) to 100% (the best) effort gives you 10x the return.
-          Therefore, never settle for anything less than 100%.
-        </Text>
       </Flex>
     </Card>
   );

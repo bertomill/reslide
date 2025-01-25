@@ -233,9 +233,6 @@ export default function WarriorKingPrinciples() {
       <Flex direction="column" gap="5" p="4" style={{ width: '100%' }}>
         <Box>
           <Heading size="6" mb="4">Guiding Principles</Heading>
-          <Text size="2" color="gray" mb="4">
-            What it takes to live a successful life
-          </Text>
         </Box>
 
         <Separator size="4" />

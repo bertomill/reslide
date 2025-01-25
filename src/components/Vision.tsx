@@ -24,11 +24,8 @@ export default function Vision() {
       <Flex direction="column" gap="2" p="2">
         <Box>
           <Heading size="6" mb="2">
-            Just keep purifying your product - body, mind, heart, and soul
+            All good things come from purifying your product
           </Heading>
-          <Text size="3" mb="4" style={{ lineHeight: '1.5' }}>
-            This is the only chance you will ever get to pursue your dream. You will regret not going all-in.
-          </Text>
         </Box>
 
         <Grid columns="2" gap="1" width="100%" mb="4">
@@ -62,26 +59,6 @@ export default function Vision() {
         <Text size="2" color="gray" style={{ fontStyle: 'italic' }} mb="4">
           It's simple. Just chip away everything that is not Berto.
         </Text>
-
-        <Box mb="4">
-          <Text size="2" weight="bold" mb="3">
-            The Four Pillars of Purification
-          </Text>
-          <Flex direction="column" gap="2">
-            <Text size="2" style={{ lineHeight: '1.6' }}>
-              • Body through movement and nutrition
-            </Text>
-            <Text size="2" style={{ lineHeight: '1.6' }}>
-              • Mind through meditation and learning
-            </Text>
-            <Text size="2" style={{ lineHeight: '1.6' }}>
-              • Heart through compassion and service
-            </Text>
-            <Text size="2" style={{ lineHeight: '1.6' }}>
-              • Soul through presence and gratitude
-            </Text>
-          </Flex>
-        </Box>
       </Flex>
     </Card>
   );
