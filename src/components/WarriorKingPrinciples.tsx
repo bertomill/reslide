@@ -110,7 +110,8 @@ export default function WarriorKingPrinciples() {
         "I never wear headphones around people",
         "I always say yes to possibility",
         "I try to go for absolute wifeys, because i'll never be left with someone clinging to me",
-        "I don't leave myself an option to not make friends"
+        "I don't leave myself an option to not make friends",
+        "I text back quickly, and 100% authentically"
       ]
     },
     {
