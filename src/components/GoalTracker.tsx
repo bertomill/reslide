@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, CSSProperties } from 'react';
 import { Card, Text, Heading, Flex, Box } from '@radix-ui/themes';
 import Image from 'next/image';
 import { createBrowserClient } from '@supabase/ssr';
@@ -197,7 +197,7 @@ export default function GoalTracker() {
     return <div>Loading...</div>;
   }
 
-  const formStyle = {
+  const formStyle: CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     gap: '6px',
@@ -208,14 +208,14 @@ export default function GoalTracker() {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
   };
 
-  const inputStyle = {
+  const inputStyle: CSSProperties = {
     padding: '6px',
     borderRadius: '3px',
     border: '1px solid var(--gray-4)',
     fontSize: '12px'
   };
 
-  const buttonStyle = {
+  const buttonStyle: CSSProperties = {
     padding: '8px',
     borderRadius: '3px',
     backgroundColor: 'var(--blue-9)',
