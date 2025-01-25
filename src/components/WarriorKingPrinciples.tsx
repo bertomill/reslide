@@ -59,6 +59,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "If I'm doing active recovery, I will listen to an audiobook",
         "If its a heavy lift, I workout till I can't walk",
+        "My mentality is no one's making it out - the pain is extreme",
         "I find the spot of most pain, and focus my energy there"
       ]
     },
@@ -73,6 +74,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "I use whim hoff breathing when I need energy",
         "I use slow exhales when i need seretonin",
+        "When i'm coding i'm in the studio - cooking up some crack",
         "I fast & play on the edge of hunger",
         "I have 1 or less coffees per day",
         "I become freakishly good at what I do",
