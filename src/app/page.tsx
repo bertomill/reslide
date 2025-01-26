@@ -45,11 +45,27 @@ export default function Home() {
             padding: '1rem',
             borderLeft: '4px solid var(--blue-9)'
           }}>
-            <Text size="3" style={{ lineHeight: '1.6' }}>
-              Beart, to be one of the great athletes, great AI entrepreneurs,
-              one of the great lovers, and one of the great spiritual leaders —
-              you have to commit to the game. You have to respect the game. It's going to be painful and lonely, but you must respect the process. Expect faliue, expect damage, because it's part of the game.
-            </Text>
+            <Flex direction="column" gap="3">
+              <Text size="3" style={{ lineHeight: '1.6' }}>
+                Beart, life is all about bringing your unique gifts to the community and in turn receiving all of the love, energy and inspiration that comes with it.
+              </Text>
+              
+              <Text size="3" style={{ lineHeight: '1.6' }}>
+                No one is passionate about physical training as you are. No one has the dedication and obsession with building AI applications as you do. No one is as passionate about being the loving, caring man that you are.
+              </Text>
+
+              <Text size="3" style={{ lineHeight: '1.6' }}>
+                The job to be done for people is to bring them inspiration, to bring them the tools and knowledge to help them achieve success, and to bring a smile to their faces.
+              </Text>
+
+              <Text size="3" style={{ lineHeight: '1.6' }}>
+                The best part of life is the love and energy that you receive from the community you contribute to.
+              </Text>
+
+              <Text size="3" style={{ lineHeight: '1.6', color: 'var(--blue-11)' }}>
+                You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction.
+              </Text>
+            </Flex>
           </Card>
 
           <GoalTracker />

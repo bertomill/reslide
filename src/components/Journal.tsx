@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Text, Button, TextArea, Flex } from '@radix-ui/themes';
+import { Card, Text, Button, TextArea, Flex, TextField } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
 
 const PROMPTS = {
@@ -18,6 +18,9 @@ const PROMPTS = {
 };
 
 type JournalEntry = {
+  recovery_score: number;
+  hrv: number;
+  sleep_score: number;
   gratitude: string;
   scared_yesterday: string;
   beyond_yesterday: string;
@@ -34,6 +37,9 @@ type JournalEntry = {
 
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
+    recovery_score: 0,
+    hrv: 100,
+    sleep_score: 0,
     gratitude: '',
     scared_yesterday: '',
     beyond_yesterday: '',
@@ -57,6 +63,9 @@ export default function Journal() {
   // Reset form on mount
   useEffect(() => {
     setEntries({
+      recovery_score: 0,
+      hrv: 100,
+      sleep_score: 0,
       gratitude: '',
       scared_yesterday: '',
       beyond_yesterday: '',
@@ -91,6 +100,9 @@ export default function Journal() {
         .insert([{
           created_at: new Date().toISOString(),
           user_id: session.user.id,
+          recovery_score: entries.recovery_score,
+          hrv: entries.hrv,
+          sleep_score: entries.sleep_score,
           gratitude: entries.gratitude,
           scared_yesterday: entries.scared_yesterday,
           beyond_yesterday: entries.beyond_yesterday,
@@ -108,6 +120,9 @@ export default function Journal() {
       setSuccessMessage('Journal entry saved successfully!');
       // Clear form after successful submission
       setEntries({
+        recovery_score: 0,
+        hrv: 100,
+        sleep_score: 0,
         gratitude: '',
         scared_yesterday: '',
         beyond_yesterday: '',
@@ -137,6 +152,49 @@ export default function Journal() {
               A warrior king has fully mastered his mind, body, heart and soul
             </Text>
           </Flex>
+
+          <Flex gap="4" style={{ marginBottom: '1rem' }}>
+            <Flex direction="column" gap="2" style={{ flex: 1 }}>
+              <Text size="2" weight="bold">Recovery Score (%)</Text>
+              <TextField.Root>
+                <TextField.Input
+                  type="number"
+                  value={entries.recovery_score.toString()}
+                  onChange={(e) => setEntries(prev => ({
+                    ...prev,
+                    recovery_score: Number(e.target.value)
+                  }))}
+                />
+              </TextField.Root>
+            </Flex>
+            <Flex direction="column" gap="2" style={{ flex: 1 }}>
+              <Text size="2" weight="bold">Heart Rate Variability</Text>
+              <TextField.Root>
+                <TextField.Input
+                  type="number"
+                  value={entries.hrv.toString()}
+                  onChange={(e) => setEntries(prev => ({
+                    ...prev,
+                    hrv: Number(e.target.value)
+                  }))}
+                />
+              </TextField.Root>
+            </Flex>
+            <Flex direction="column" gap="2" style={{ flex: 1 }}>
+              <Text size="2" weight="bold">Sleep Score (%)</Text>
+              <TextField.Root>
+                <TextField.Input
+                  type="number"
+                  value={entries.sleep_score.toString()}
+                  onChange={(e) => setEntries(prev => ({
+                    ...prev,
+                    sleep_score: Number(e.target.value)
+                  }))}
+                />
+              </TextField.Root>
+            </Flex>
+          </Flex>
+
           {Object.entries(PROMPTS).map(([key, prompt]) => (
             <Flex key={key} direction="column" gap="2">
               <Text size="2" weight="bold">{prompt}</Text>
