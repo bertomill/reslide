@@ -46,9 +46,9 @@ export default function Home() {
             borderLeft: '4px solid var(--blue-9)'
           }}>
             <Text size="3" style={{ lineHeight: '1.6' }}>
-              Beart, to be one of the great athletes in the world, one of the great AI entrepreneurs in the world,
-              one of the great lovers in the world, and one of the great spiritual teachers in the world —
-              you have to commit to the game. You have to respect the game.
+              Beart, to be one of the great athletes, great AI entrepreneurs,
+              one of the great lovers, and one of the great spiritual leaders —
+              you have to commit to the game. You have to respect the game. It's going to be painful, but you msut respect the process.
             </Text>
           </Card>
 
