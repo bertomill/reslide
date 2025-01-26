@@ -62,6 +62,10 @@ export default function Home() {
                 The best part of life is the love and energy that you receive from the community you contribute to.
               </Text>
 
+              <Text size="3" style={{ lineHeight: '1.6' }}>
+                You're life can be amazing - long hair, beard, tatts on my body, gold chain, Richard Mille, designer clothes, playing soccer on the beach with the locals, salsa dancing, cooking on an open fire, sleeping with models, meditating on a mountain, building the worlds best AI applications, leading extremely intense workout groups, close friends with the head chef at your favourite restaurant. But you have to bring a passin to your work that's so far beyond the status quo it edges on obsession.
+              </Text>
+
               <Text size="3" style={{ lineHeight: '1.6', color: 'var(--blue-11)' }}>
                 You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction.
               </Text>
