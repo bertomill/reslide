@@ -137,7 +137,8 @@ export default function WarriorKingPrinciples() {
       title: "Before bed",
       habits: [
         "I read for 30 minutes",
-        "I stretch for two minutes"
+        "I stretch for two minutes",
+        "I remember I can't work the next day if I don't get a good sleep",
       ]
     },
     {
