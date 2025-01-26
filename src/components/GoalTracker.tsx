@@ -167,6 +167,9 @@ export default function GoalTracker() {
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
+          <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
+            No one has the passion you do for the training, the AI development, the dates, the sleep, and the meditation.
+          </Text>
         </Box>
 
         <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
