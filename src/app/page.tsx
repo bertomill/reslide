@@ -48,7 +48,7 @@ export default function Home() {
             <Text size="3" style={{ lineHeight: '1.6' }}>
               Beart, to be one of the great athletes, great AI entrepreneurs,
               one of the great lovers, and one of the great spiritual leaders —
-              you have to commit to the game. You have to respect the game. It's going to be painful, but you msut respect the process.
+              you have to commit to the game. You have to respect the game. It's going to be painful and lonely, but you must respect the process. Expect faliue, expect damage, because it's part of the game.
             </Text>
           </Card>
 
