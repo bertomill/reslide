@@ -38,31 +38,31 @@ export default function GoalTracker() {
   const staticGoals: Goal[] = [
     {
       id: "hyrox",
-      title: "Hyrox Sub 70",
+      title: "Work my body through Hyrox Sub 70",
       imageUrl: "/hyrox world champs.webp",
       progress: []
     },
     {
       id: "tech-pm",
-      title: "100 Subscribers",
+      title: "Work my craft through 100 Subscribers",
       imageUrl: "/Ivan.png",
       progress: []
     },
     {
       id: "meditation",
-      title: "50 Dates",
+      title: "Open my heart through 50 Dates",
       imageUrl: "/jlegend.png",
       progress: []
     },
     {
       id: "soul",
-      title: "1000 Hours Meditated",
+      title: "Work my mind through1000 Hours Meditated",
       imageUrl: "/robin.png",
       progress: []
     },
     {
       id: "sleep",
-      title: "80% Sleep Score",
+      title: "Work my recovery through80% Sleep Score",
       imageUrl: "/Phelps_Sleep.png",
       progress: []
     }
