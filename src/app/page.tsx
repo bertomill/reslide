@@ -1,11 +1,10 @@
 import EnergyTracker from '../components/EnergyTracker';
 import GoalTracker from '../components/GoalTracker';
-import Vision from '../components/Vision';
 import WarriorKingPrinciples from '../components/WarriorKingPrinciples';
 import Journal from '../components/Journal';
 import DailyInspiration from '../components/DailyInspiration';
 import ThingsILove from '../components/ThingsILove';
-import { Container, Heading, Flex, Separator, Box } from '@radix-ui/themes';
+import { Container, Heading, Flex, Separator, Box, Card, Text } from '@radix-ui/themes';
 
 export default function Home() {
   return (
@@ -41,7 +40,18 @@ export default function Home() {
           <EnergyTracker />
           <Separator size="4" />
           
-          <Vision />
+          <Card style={{ 
+            backgroundColor: 'var(--gray-2)', 
+            padding: '1rem',
+            borderLeft: '4px solid var(--blue-9)'
+          }}>
+            <Text size="3" style={{ lineHeight: '1.6' }}>
+              Beart, to be one of the great athletes in the world, one of the great AI entrepreneurs in the world,
+              one of the great lovers in the world, and one of the great spiritual teachers in the world —
+              you have to commit to the game. You have to respect the game.
+            </Text>
+          </Card>
+
           <GoalTracker />
           <WarriorKingPrinciples />
           <Journal />
