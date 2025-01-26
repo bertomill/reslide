@@ -75,16 +75,14 @@ export default function WarriorKingPrinciples() {
     {
       title: "At work",
       habits: [
-        "I use whim hoff breathing when I need energy",
         "If i'm not coding every day, i'm going to lose the groove it takes",
         "The objective is flow",
-        "I have to work 10 hours a day on AI or else I will hurt myself",
+        "I treat my AI development as if I'm a music producer in the studio",
         "I'm intensely curious about AI applications",
         "I use slow exhales when i need seretonin",
         "When i'm coding i'm in the studio - cooking up some crack",
         "I fast & play on the edge of hunger",
-        "I have 1 or less coffees per day",
-        "I become freakishly good at what I do",
+        "I have 1 or less coffees or it will ruin my sleep",
         "I don't waste money",
         "I'm building or researching AI 12 hours a day, so i'm never feeling rushed",
         "I let my excited curiosity be my engine and my rudder",
@@ -113,6 +111,7 @@ export default function WarriorKingPrinciples() {
       title: "With others",
       habits: [
         "I open up to others, even if it's uncomfortable",
+        "I'm so authentic it can get annoying",
         "I never wear headphones around people",
         "I always say yes to possibility",
         "I try to go for absolute wifeys, because i'll never be left with someone clinging to me",
@@ -125,6 +124,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "I'm a perfectinist with my nutrition",
         "I'll watch a fitness video with dinner if i'm alone",
+        "I optimize protein, fibre, and vitamins",
         "I don't eat dairy",
         "I don't eat gluten",
         "I don't eat added sugar",
