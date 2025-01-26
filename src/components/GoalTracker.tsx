@@ -211,27 +211,27 @@ export default function GoalTracker() {
               </Text>
               {goal.id === 'hyrox' && (
                 <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want an absolute animal in the gym - it inspires them
+                  People want an absolute animal in the gym - it inspires them. I was born in the pit, it allowed me to go to that depth of pain very few can go
                 </Text>
               )}
               {goal.id === 'tech-pm' && (
                 <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want to see gorgeous products - it inspires them
+                  People want to see gorgeous products - it inspires them. My obsessive personality lets me create that crack product.
                 </Text>
               )}
               {goal.id === 'meditation' && (
                 <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  Girls want an absolute real one - it makes them feel comfortable
+                  Girls want an absolute real one - it makes them feel comfortable. I've been through it so I know how to do it.
                 </Text>
               )}
               {goal.id === 'soul' && (
                 <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want to be around someone who feels good because it makes them feel good
+                  People want to be around someone who feels good because it makes them feel good. I meditate everyday because I need it, it was my only outlet at one point.
                 </Text>
               )}
               {goal.id === 'sleep' && (
                 <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  Sleeping well makes you a more attractive person in every sense
+                  Sleeping well makes you a more attractive person in every sense. I need it or I will fall into addiction which is common in my family.
                 </Text>
               )}
               <Flex direction="column" gap="2" mb="2">
