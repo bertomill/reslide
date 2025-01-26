@@ -61,7 +61,9 @@ export default function WarriorKingPrinciples() {
         "If I'm doing active recovery, I will listen to an audiobook",
         "If its a heavy lift, I workout till I can't walk",
         "My mentality is no one's making it out - the pain is extreme",
-        "I find the spot of most pain, and focus my energy there"
+        "I find the spot of most pain, and focus my energy there",
+        "I do cardio every evening because I can't sleep otherwise",
+        "There's a twinge of sadness in my workouts, because I need them to keep myself form hurting myself otherwise",
       ]
     },
     {
@@ -75,6 +77,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "I use whim hoff breathing when I need energy",
         "The objective is flow",
+        "I have to work 10 hours a day on AI or else I will hurt myself",
         "I'm intensely curious about AI applications",
         "I use slow exhales when i need seretonin",
         "When i'm coding i'm in the studio - cooking up some crack",
