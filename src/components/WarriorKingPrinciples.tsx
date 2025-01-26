@@ -59,6 +59,7 @@ export default function WarriorKingPrinciples() {
       title: "At the gym",
       habits: [
         "If I'm doing active recovery, I will listen to an audiobook",
+        "I capture one piece of content with every workout",
         "If its a heavy lift, I workout till I can't walk",
         "My mentality is no one's making it out - the pain is extreme",
         "I find the spot of most pain, and focus my energy there",
