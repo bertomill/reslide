@@ -112,6 +112,7 @@ export default function WarriorKingPrinciples() {
       title: "With others",
       habits: [
         "I open up to others, even if it's uncomfortable",
+        "Every time a customer or a girl passes on me, it's good for both of us because it gives them optionality, and my product will be even better next time we meet",
         "I'm so authentic it can get annoying",
         "I never wear headphones around people",
         "I always say yes to possibility",
