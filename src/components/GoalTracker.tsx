@@ -206,10 +206,34 @@ export default function GoalTracker() {
             }}
           >
             <Flex direction="column" gap="1">
-              <Text size="4" weight="bold" style={{ marginBottom: '8px' }}>
+              <Text size="4" weight="bold" style={{ marginBottom: '2px' }}>
                 {goal.title}
               </Text>
-
+              {goal.id === 'hyrox' && (
+                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
+                  People want an absolute animal in the gym - it inspires them
+                </Text>
+              )}
+              {goal.id === 'tech-pm' && (
+                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
+                  People want to see gorgeous products - it inspires them
+                </Text>
+              )}
+              {goal.id === 'meditation' && (
+                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
+                  Girls want an absolute real one - it makes them feel comfortable
+                </Text>
+              )}
+              {goal.id === 'soul' && (
+                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
+                  People want to be around someone who feels good because it makes them feel good
+                </Text>
+              )}
+              {goal.id === 'sleep' && (
+                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
+                  Sleeping well makes you a more attractive person in every sense
+                </Text>
+              )}
               <Flex direction="column" gap="2" mb="2">
                 {goal.progress.map((update, idx) => (
                   <Text key={idx} size="2" style={{ color: 'var(--gray-11)' }}>
