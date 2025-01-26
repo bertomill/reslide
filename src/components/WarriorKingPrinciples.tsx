@@ -144,6 +144,7 @@ export default function WarriorKingPrinciples() {
       title: "When times are tough",
       habits: [
         "I stop saying why and I start saying wow",
+        "Apathy is death, love is the birth of hope."
       ]
     }
   ];
