@@ -76,6 +76,7 @@ export default function WarriorKingPrinciples() {
       title: "At work",
       habits: [
         "I use whim hoff breathing when I need energy",
+        "If i'm not coding every day, i'm going to lose the groove it takes",
         "The objective is flow",
         "I have to work 10 hours a day on AI or else I will hurt myself",
         "I'm intensely curious about AI applications",
