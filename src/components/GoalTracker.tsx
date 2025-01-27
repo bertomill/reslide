@@ -212,10 +212,10 @@ export default function GoalTracker() {
               {goal.id === 'tech-pm' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People want to work with someone who brings energy and passion - it lifts the whole team up. My obsessive personality lets me go all in.
+                    Bert, you are in the best city in the world for AI, at the best moment in history for AI, with the best background (innovation). The race is on. There is someone your age doing the excct same thing right now, buidling AI apps.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Dominate the AI quarterly research bot, get an opportunity to with Rahul and Waqar, get an opportunity to work with Ozge's team, get an opportunity to work at Microsoft.
+                    <strong>How:</strong> Build AI apps 16 hours a day.
                   </Text>
                 </>
               )}
