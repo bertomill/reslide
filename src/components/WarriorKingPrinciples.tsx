@@ -85,6 +85,7 @@ export default function WarriorKingPrinciples() {
         "I fast & play on the edge of hunger",
         "I have 1 or less coffees or it will ruin my sleep",
         "I don't waste money",
+        "Naps save my life",
         "I'm building or researching AI 12 hours a day, so i'm never feeling rushed",
         "I let my excited curiosity be my engine and my rudder",
         "I relentlessly push to be on the froniter of knowlegde",
