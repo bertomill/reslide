@@ -51,11 +51,11 @@ export default function Home() {
               </Text>
               
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                You can play in fear or you can play in abundance. Always choose abundance. Never choose fear.
+                You can play in fear or you can play in abundance. Always choose abundance. Never choose fear. You can do more, you , can be more, you can see more.
               </Text>
 
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                Be militant in your work. You're not close to your peak yet. Get things done with militant percision.
+                Be militant in your work. You ain't reached your best yet. Get things done with militant percision.
               </Text>
 
               <Text size="3" style={{ lineHeight: '1.6' }}>
