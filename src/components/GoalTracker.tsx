@@ -44,7 +44,7 @@ export default function GoalTracker() {
     },
     {
       id: "tech-pm",
-      title: "I will build an AI application wiht 100 subscribers in 2025",
+      title: "I want to join a high passion, high energy team in the tech industry (sales seems to fit me best)",
       imageUrl: "/Ivan.png",
       progress: []
     },
@@ -168,7 +168,7 @@ export default function GoalTracker() {
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
           <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
-            No one has the passion you do for the training, the AI development, the dates, the sleep, and the meditation.
+            No one has the passion you do for the training, bringing energy to tech sales, the dates, the sleep, and the meditation.
           </Text>
         </Box>
 
@@ -179,7 +179,7 @@ export default function GoalTracker() {
           </Flex>
           <Flex align="center" gap="1">
             <PersonIcon width={20} height={20} />
-            <Text size="3" weight="bold">100S</Text>
+            <Text size="3" weight="bold">JPT</Text>
           </Flex>
           <Flex align="center" gap="1">
             <HeartIcon width={20} height={20} />
@@ -216,7 +216,7 @@ export default function GoalTracker() {
               )}
               {goal.id === 'tech-pm' && (
                 <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want to see gorgeous products - it inspires them. My obsessive personality lets me create that crack product.
+                  People want to work with someone who brings energy and passion - it lifts the whole team up. My obsessive personality lets me go all in.
                 </Text>
               )}
               {goal.id === 'meditation' && (

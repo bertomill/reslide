@@ -47,23 +47,23 @@ export default function Home() {
           }}>
             <Flex direction="column" gap="3">
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                Beart, life is all about bringing your unique gifts to the community and in turn receiving all of the love, energy and inspiration that comes with it.
+                Beart, the people you spend your time with and serve are going to make the quality of your life. Find people who inspire you and give them your all. Nic, Michael, Kree, Monique. David. Mom. Dad. Tomi.
               </Text>
               
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                No one is passionate about physical training as you are. No one has the dedication and obsession with building AI applications as you do. No one is as passionate about being the loving, caring man that you are.
+                You can play in fear or you can play in abundance. Always choose abundance. Never choose fear.
               </Text>
 
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                The job to be done for people is to bring them inspiration, to bring them the tools and knowledge to help them achieve success, and to bring a smile to their faces.
+                Be militant in your work. You're not close to your peak yet. Get things done with militant percision.
               </Text>
 
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                The best part of life is the love and energy that you receive from the community you contribute to.
+                Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing hte game right.
               </Text>
 
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                You're life can be amazing - long hair, beard, tatts on my body, gold chain, Richard Mille, designer clothes, playing soccer on the beach with the locals, salsa dancing, cooking on an open fire, sleeping with models, meditating on a mountain, building the worlds best AI applications, leading extremely intense workout groups, close friends with the head chef at your favourite restaurant. But you have to bring a passin to your work that's so far beyond the status quo it edges on obsession.
+                Amazing things come from dedication to the game - long hair, beard, tatts on my body, gold chain, Richard Mille, designer clothes, playing soccer on the beach with the locals, salsa dancing, cooking on an open fire, sleeping with models, meditating on a mountain, building the worlds best AI applications, leading extremely intense workout groups, close friends with the head chef at your favourite restaurant. But you have to bring a passin to your work that's so far beyond the status quo it edges on obsession.
               </Text>
 
               <Text size="3" style={{ lineHeight: '1.6', color: 'var(--blue-11)' }}>
