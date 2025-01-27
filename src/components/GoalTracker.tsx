@@ -210,29 +210,54 @@ export default function GoalTracker() {
                 {goal.title}
               </Text>
               {goal.id === 'hyrox' && (
-                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want an absolute animal in the gym - it inspires them. I was born in the pit, it allowed me to go to that depth of pain very few can go
-                </Text>
+                <>
+                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                    People want an absolute animal in the gym - it inspires them. I was born in the pit, it allowed me to go to that depth of pain very few can go
+                  </Text>
+                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                    <strong>How:</strong> Have the best training routine
+                  </Text>
+                </>
               )}
               {goal.id === 'tech-pm' && (
-                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want to work with someone who brings energy and passion - it lifts the whole team up. My obsessive personality lets me go all in.
-                </Text>
+                <>
+                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                    People want to work with someone who brings energy and passion - it lifts the whole team up. My obsessive personality lets me go all in.
+                  </Text>
+                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                    <strong>How:</strong> Have the best learning routine in AI
+                  </Text>
+                </>
               )}
               {goal.id === 'meditation' && (
-                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  Girls want an absolute real one - it makes them feel comfortable. I've been through it so I know how to do it.
-                </Text>
+                <>
+                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                    Girls want an absolute real one - it makes them feel comfortable. I've been through it so I know how to do it.
+                  </Text>
+                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                    <strong>How:</strong> Get reps, choose possibility
+                  </Text>
+                </>
               )}
               {goal.id === 'soul' && (
-                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  People want to be around someone who feels good because it makes them feel good. I meditate everyday because I need it, it was my only outlet at one point.
-                </Text>
+                <>
+                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                    People want to be around someone who feels good because it makes them feel good. I meditate everyday because I need it, it was my only outlet at one point.
+                  </Text>
+                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                    <strong>How:</strong> Meditate every morning minimum 30 mins
+                  </Text>
+                </>
               )}
               {goal.id === 'sleep' && (
-                <Text size="2" color="gray" style={{ marginBottom: '8px', fontStyle: 'italic' }}>
-                  Sleeping well makes you a more attractive person in every sense. I need it or I will fall into addiction which is common in my family.
-                </Text>
+                <>
+                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                    Sleeping well makes you a more attractive person in every sense. I need it or I will fall into addiction which is common in my family.
+                  </Text>
+                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                    <strong>How:</strong> Get relentless about your evening routine
+                  </Text>
+                </>
               )}
               <Flex direction="column" gap="2" mb="2">
                 {goal.progress.map((update, idx) => (
