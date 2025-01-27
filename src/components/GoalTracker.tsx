@@ -235,7 +235,7 @@ export default function GoalTracker() {
                     Sleeping well makes you a more attractive person in every sense. I need it or I will fall into addiction which is common in my family.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Get relentless about your evening routine
+                    <strong>How:</strong> Get relentless about your evening routine. 
                   </Text>
                 </>
               )}
