@@ -225,7 +225,7 @@ export default function GoalTracker() {
                     People want to be around someone who feels good because it makes them feel good. I meditate everyday because I need it, it was my only outlet at one point.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Meditate every morning minimum 30 mins
+                    <strong>How:</strong> Meditate every morning minimum 30 mins or more.
                   </Text>
                 </>
               )}
