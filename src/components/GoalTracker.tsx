@@ -225,7 +225,7 @@ export default function GoalTracker() {
                     People want to work with someone who brings energy and passion - it lifts the whole team up. My obsessive personality lets me go all in.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Have the best learning routine in AI
+                    <strong>How:</strong> Dominate the AI quarterly research bot, get an opportunity to with Rahul and Waqar, get an opportunity to work with Ozge's team, get an opportunity to work at Microsoft.
                   </Text>
                 </>
               )}
