@@ -47,7 +47,7 @@ export default function Home() {
           }}>
             <Flex direction="column" gap="3">
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                Beart, the people you spend your time with and serve are going to make the quality of your life. Find people who inspire you and give them your all. Nic, Michael, Kree, Monique. David. Mom. Dad. Tomi.
+                Beart, the people you spend your time with make you. Attract them through inspirational pursuits Hyrox & AI. Find people who inspire you and give them your all. Nic, Michael, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.
               </Text>
               
               <Text size="3" style={{ lineHeight: '1.6' }}>
