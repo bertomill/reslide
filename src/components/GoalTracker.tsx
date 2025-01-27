@@ -44,14 +44,8 @@ export default function GoalTracker() {
     },
     {
       id: "tech-pm",
-      title: "I want to join a high passion, high energy team in the tech industry (sales seems to fit me best)",
+      title: "I want to join a high passion, fast growing tech company",
       imageUrl: "/Ivan.png",
-      progress: []
-    },
-    {
-      id: "meditation",
-      title: "I will go on 50 Dates in 2025",
-      imageUrl: "/jlegend.png",
       progress: []
     },
     {
@@ -168,7 +162,7 @@ export default function GoalTracker() {
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
           <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
-            No one has the passion you do for the training, bringing energy to tech sales, the dates, the sleep, and the meditation.
+            No one has the passion you do for the training, application development, the sleep, and the meditation.
           </Text>
         </Box>
 
@@ -180,10 +174,6 @@ export default function GoalTracker() {
           <Flex align="center" gap="1">
             <PersonIcon width={20} height={20} />
             <Text size="3" weight="bold">JPT</Text>
-          </Flex>
-          <Flex align="center" gap="1">
-            <HeartIcon width={20} height={20} />
-            <Text size="3" weight="bold">50D</Text>
           </Flex>
           <Flex align="center" gap="1">
             <EyeOpenIcon width={20} height={20} />
@@ -226,16 +216,6 @@ export default function GoalTracker() {
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
                     <strong>How:</strong> Dominate the AI quarterly research bot, get an opportunity to with Rahul and Waqar, get an opportunity to work with Ozge's team, get an opportunity to work at Microsoft.
-                  </Text>
-                </>
-              )}
-              {goal.id === 'meditation' && (
-                <>
-                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Girls want an absolute real one - it makes them feel comfortable. I've been through it so I know how to do it.
-                  </Text>
-                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Get reps, choose possibility
                   </Text>
                 </>
               )}
