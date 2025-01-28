@@ -209,7 +209,7 @@ export default function GoalTracker() {
               {goal.id === 'ai-founder' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People need innovation - Your in the best AI city in the world, in the best time-window in history for AI application development, at the right place (CIBC AI), with the best available data (Evident)with the best education (innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
+                    People need innovation - Your in the best AI city in the world, in the best time-window in history for AI application development, at the right place (CIBC AI), with extremely specific and valuable domain expertise (Evident), with the best education (innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
                     <strong>How:</strong> Deep focus on AI 12 hours a day. Build a moat with Evident knowlege leveraged with your technical understanding.
