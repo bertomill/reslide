@@ -163,7 +163,7 @@ export default function GoalTracker() {
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
           <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
-           Hyrox world champion. AI founder. Long hair, beard, tatted, gold chain, Richard Mille. Porsche, playing soccer with the locals on the beach, salsa dancing evenings after open BBQ and music dinner, centerfold GF. Cooking up the worlds leading AI applications in my studio on the beach with my small team of devotees.
+           Hyrox world champion. AI founder. Long hair, beard, tatted, gold chain, Richard Mille. Porsche, playing soccer with the locals on the beach, salsa dancing evenings after open BBQ and music dinner, complete confidence around centerfold GFs. Cooking up the worlds leading AI applications in my studio on the beach with my small team of devotees.
           </Text>
         </Box>
 
