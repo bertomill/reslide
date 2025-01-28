@@ -9,7 +9,8 @@ import {
   EyeOpenIcon, 
   HeartIcon, 
   MoonIcon, 
-  PersonIcon 
+  PersonIcon,
+  TriangleUpIcon 
 } from '@radix-ui/react-icons';
 
 type ProgressUpdate = {
@@ -43,8 +44,8 @@ export default function GoalTracker() {
       progress: []
     },
     {
-      id: "tech-pm",
-      title: "I want to join a high passion, fast growing tech company",
+      id: "ai-founder",
+      title: "I will earn 100 paying subscribers in 2025",
       imageUrl: "/Ivan.png",
       progress: []
     },
@@ -168,20 +169,12 @@ export default function GoalTracker() {
 
         <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
           <Flex align="center" gap="1">
-            <StarIcon width={20} height={20} />
-            <Text size="3" weight="bold">70H</Text>
+            <TriangleUpIcon width={20} height={20} />
+            <Text size="3" weight="bold">HYROX</Text>
           </Flex>
           <Flex align="center" gap="1">
-            <PersonIcon width={20} height={20} />
-            <Text size="3" weight="bold">JPT</Text>
-          </Flex>
-          <Flex align="center" gap="1">
-            <EyeOpenIcon width={20} height={20} />
-            <Text size="3" weight="bold">1000M</Text>
-          </Flex>
-          <Flex align="center" gap="1">
-            <MoonIcon width={20} height={20} />
-            <Text size="3" weight="bold">80%S</Text>
+            <TriangleUpIcon width={20} height={20} />
+            <Text size="3" weight="bold">AI FOUNDER</Text>
           </Flex>
         </Flex>
 
@@ -196,9 +189,13 @@ export default function GoalTracker() {
             }}
           >
             <Flex direction="column" gap="1">
-              <Text size="4" weight="bold" style={{ marginBottom: '2px' }}>
-                {goal.title}
-              </Text>
+              <Flex align="center" gap="2">
+                <Box>
+                  {goal.id === 'hyrox' && <TriangleUpIcon width="20" height="20" />}
+                  {goal.id === 'ai-founder' && <TriangleUpIcon width="20" height="20" />}
+                </Box>
+                <Heading size="4">{goal.title}</Heading>
+              </Flex>
               {goal.id === 'hyrox' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
@@ -209,7 +206,7 @@ export default function GoalTracker() {
                   </Text>
                 </>
               )}
-              {goal.id === 'tech-pm' && (
+              {goal.id === 'ai-founder' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
                     Bert, you are in the best city in the world for AI, at the best moment in history for AI, with the best background (innovation). The race is on. There is someone your age doing the excct same thing right now, buidling AI apps.
@@ -308,7 +305,7 @@ export default function GoalTracker() {
                   fill
                   style={{ 
                     objectFit: 'cover',
-                    objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 'center center'
+                    objectPosition: goal.id === 'ai-founder' ? 'center 30%' : 'center center'
                   }}
                   sizes="(max-width: 500px) 100vw, 500px"
                 />
