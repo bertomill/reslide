@@ -10,7 +10,7 @@ const PROMPTS = {
   beyond_yesterday: "What did I do that went above and beyond for others yesterday?",
   areas_to_improve: "What's an area that didn't go very well for me yesterday?",
   off_purpose: "Were there any moments yesterday where I was off-purpose?",
-  scared_today: "How can I push past my comfort zone in all facets today?",
+  scared_today: "How am I going to push myself out of my confort zone today? Because all growth comes from discomfort.",
   beyond_today: "What will I do today to go above and beyond for others?",
   fitness: "How am I going to work my fitness today?",
   nutrition: "How am I going to eat optimally today?",
