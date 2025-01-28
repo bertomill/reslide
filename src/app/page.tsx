@@ -47,7 +47,7 @@ export default function Home() {
           }}>
             <Flex direction="column" gap="3">
               <Text size="3" style={{ lineHeight: '1.6' }}>
-                Beart, the people you spend your time with make you. Attract them through inspirational pursuits Hyrox & AI. Find people who inspire you and give them your all. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.
+                Your destiny is to be one of the great athlete-entrepreneurs. That Bert guy, he's the most earnest, kind kid, but he has a demon in him that makes him work 24/7. Pursue your destiny in the service of others. People make you happy, not your accomplishments.Find people who inspire you and give them your all. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.
               </Text>
               
               <Text size="3" style={{ lineHeight: '1.6' }}>
