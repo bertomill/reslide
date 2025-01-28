@@ -163,7 +163,7 @@ export default function GoalTracker() {
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
           <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
-           Hyrox world champion. AI founder. Long hair, beard, tatted, gold chain, Richard Mille. Porsche, playing soccer with the locals on the beach, centerfold GF.
+           Hyrox world champion. AI founder. Long hair, beard, tatted, gold chain, Richard Mille. Porsche, playing soccer with the locals on the beach, salsa dancing evenings after open BBQ and music dinner, centerfold GF.
           </Text>
         </Box>
 
@@ -199,40 +199,40 @@ export default function GoalTracker() {
               {goal.id === 'hyrox' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People want an absolute animal in the gym - it inspires them. I was born in the pit, it allowed me to go to that depth of pain very few can go
+                    People need to be inspired - my respect for the game gets that job done for them. I was born in the pit, it allowed me to go to that depth of pain very few can go.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Have the best training routine
+                    <strong>How:</strong> Be obsessive about every little detail of the game.
                   </Text>
                 </>
               )}
               {goal.id === 'ai-founder' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Bert, you are in the best city in the world for AI, at the best moment in history for AI, with the best background (innovation). The race is on. There is someone your age doing the excct same thing right now, buidling AI apps.
+                    People need innovation - Your in the best AI city in the world, in the best time-window in history for AI application development, at the right place (CIBC AI), with the best available data (Evident)with the best education (innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Build AI apps 16 hours a day.
+                    <strong>How:</strong> Deep focus on AI 12 hours a day. Build a moat with Evident knowlege leveraged with your technical understanding.
                   </Text>
                 </>
               )}
               {goal.id === 'soul' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People want to be around someone who feels good because it makes them feel good. I meditate everyday because I need it, it was my only outlet at one point.
+                    Meditation is the secret to all your success. The obsessive attention to every detail in the gym and in the studio, and your seamingly limtless energy and pervasive smile all come from meditation - no one else is doing it.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Meditate every morning minimum 30 mins or more.
+                    <strong>How:</strong> Meditate every morning minimum 30+ mins. Obsessive over every detail of your practice.
                   </Text>
                 </>
               )}
               {goal.id === 'sleep' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Sleeping well makes you a more attractive person in every sense. I need it or I will fall into addiction which is common in my family.
+                    Sleeping well brings it all together. Win at sleep and you compound all your success by 20%.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Get relentless about your evening routine. 
+                    <strong>How:</strong> Obsess over every little detail of your pre-sleep routine.
                   </Text>
                 </>
               )}
