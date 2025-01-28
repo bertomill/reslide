@@ -82,7 +82,7 @@ export default function WarriorKingPrinciples() {
         "I'm intensely curious about AI applications",
         "I use slow exhales when i need seretonin",
         "When i'm coding i'm in the studio - cooking up some crack",
-        "I fast & play on the edge of hunger",
+        "I fast til noon",
         "I have 1 or less coffees or it will ruin my sleep",
         "I don't waste money",
         "Naps save my life",
