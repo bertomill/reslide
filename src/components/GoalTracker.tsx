@@ -162,7 +162,7 @@ export default function GoalTracker() {
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
           <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
-            You uniquely can be the best in the world at this new and upcoming Hyrox event, because you're in the perfect position to do it. The amount of friends and brand building you will earn will be phenominal. Secondly, you are in the perfect position to build an AI company. You're in the best city in the world for it, at the best time for it, in the best job for it, with the best education for it. It's just a matter of dedicating the next four years to these two mountain tops.  
+           Hyrox world champion. AI founder. Long hair, beard, tatted, gold chain, Richard Mille. Porsche, playing soccer with the locals on the beach.
           </Text>
         </Box>
 
