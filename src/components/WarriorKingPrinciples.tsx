@@ -58,96 +58,88 @@ export default function WarriorKingPrinciples() {
     {
       title: "At the gym",
       habits: [
-        "If I'm doing active recovery, I will listen to an audiobook",
-        "I capture one piece of content with every workout",
-        "If its a heavy lift, I workout till I can't walk",
-        "My mentality is no one's making it out - the pain is extreme",
-        "I find the spot of most pain, and focus my energy there",
-        "I do cardio every evening because I can't sleep otherwise",
-        "There's a twinge of sadness in my workouts, because I need them to keep myself form hurting myself otherwise",
+        "AUDIOBOOKS - If I'm doing active recovery, I will listen to an audiobook",
+        "CONTENT -I capture one piece of content with every workout",
+        "CAN'T WALK - If its a heavy lift, I workout till I can't walk",
+        "PAIN DEPTH - My mentality is no one's making it out - the pain is extreme",
+        "DEMON - Sometimes I let the demon out, and the demon wants to damage my body",
+        "FIND PAIN - I find the spot of most pain, and focus my energy there",
+        "CADIO DAILY -I do cardio every evening because I can't sleep otherwise",
+        "SADNESS - There's a twinge of sadness in my workouts, because I need them to keep myself form hurting myself otherwise",
       ]
     },
     {
       title: "When walking",
       habits: [
-        "I don't listen to anything - giving my mind some time to clear"
+        "CLEAR MIND - I don't listen to anything - giving my mind some time to clear, and significantly reducing my anxiety."
       ]
     },
     {
       title: "At work",
       habits: [
-        "If i'm not coding every day, i'm going to lose the groove it takes",
-        "The objective is flow",
-        "I treat my AI development as if I'm a music producer in the studio",
-        "I'm intensely curious about AI applications",
-        "I use slow exhales when i need seretonin",
-        "When i'm coding i'm in the studio - cooking up some crack",
-        "I fast til noon",
-        "I have 1 or less coffees or it will ruin my sleep",
-        "I don't waste money",
-        "Naps save my life",
-        "I'm building or researching AI 12 hours a day, so i'm never feeling rushed",
-        "I let my excited curiosity be my engine and my rudder",
-        "I relentlessly push to be on the froniter of knowlegde",
-        "I aim to make something that will be good in 100 years",
-        "Great work happens by focusing consistently on something i'm genuinely interested in",
-        "People who do great things don't get a lot done every day. They get something done, rather than nothing.",
-        "The more you learn about something, the easier it is to learn more. Growing an audience is another: the more fans you have, the more new fans they'll bring you",
-        "I avoid the kind of distraction that pushes my work out of the top spot, or I'll waste this valuable type of thinking on the distraction instead. (Exception: Don't avoid love.)",
-        "Colleagues don't just affect your work, though; they also affect you. So work with people you want to become like, because you will.",
-        "I notice gaps",
-        "I boldly chase outlier ideas",
-        "I make what I would want",
-        "I work in timed sprints",
-        "I work until I'm exausted"
+        "CODE EVERYDAY - If i'm not coding every day, i'm going to lose the groove it takes",
+        "FLOW  - The objective is flow",
+        "STUDIO -I treat my AI development as if I'm a music producer in the studio",
+        "CURIOSITY - I let curiosity be my engine and rudder.",
+        "FAST TIL NOON - I fast til noon. It does miracles for my focus and my skin.",
+        "1 COFFEE - I have 1 or less coffees or it will ruin my sleep",
+        "SAVE - I don't waste money",
+        "NAP - Naps save my life",
+        "FRONTIER - I relentlessly push to be on the froniter of knowlegde",
+        "COMPOUND - The more hours you learn about something, the easier it is to learn more. Growing an audience is another: the more fans you have, the more new fans they'll bring you",
+        "DISTRACTION - I avoid the kind of distraction that pushes my work out of the top spot, or I'll waste this valuable type of thinking on the distraction instead. (Exception: Don't avoid love.)",
+        "COLLEAGUES - Colleagues don't just affect your work, though; they also affect you. So work with people you want to become like, because you will.",
+        "OUTLIER - I boldly chase outlier ideas",
+        "ME - I make what I would want",
       ]
     },
     {
       title: "At home",
       habits: [
-        "I do jazz 1x per month",
-        "I clean whenever I can"
+        "JAZZ - I do jazz 1x per month",
+        "CLEANING - I'm constantly cleaning"
       ]
     },
     {
       title: "With others",
       habits: [
-        "I open up to others, even if it's uncomfortable",
-        "Every time a customer or a girl passes on me, it's good for both of us because it gives them optionality, and my product will be even better next time we meet",
-        "I'm so authentic it can get annoying",
-        "I never wear headphones around people",
-        "I always say yes to possibility",
-        "I try to go for absolute wifeys, because i'll never be left with someone clinging to me",
-        "I don't leave myself an option to not make friends",
-        "I text back quickly, and 100% authentically"
+        "OPEN HEART - I open up to others, even if it's uncomfortable",
+        "MOTIVATION - Every time a customer or a girl passes on me, it's good for both of us because it gives them optionality, and it lights my fire for next time",
+        "ANNOYING - I think the best way to make friends is to be so in their business it's a little annoying.",
+        "NEVER HEADPHONES - I never wear headphones around people",
+        "SAY YES - I always say yes to possibility",
+        "DIMES - I try to go for absolute wifeys, because if I get them i's huge energy and if i'm rejected its huge motivation",
+        "NO OPTION - I don't leave myself an option to not make friends",
+        "AUTHENTIC - I text back quickly, and 100% authentically",
+        "GET REPS -  I see dates with girls as reps of opening my heart. The more the better."
       ]
     },
     {
       title: "In the kitchen",
       habits: [
-        "I'm a perfectinist with my nutrition",
-        "I'll watch a fitness video with dinner if i'm alone",
-        "I optimize protein, fibre, and vitamins",
-        "I don't eat dairy",
-        "I don't eat gluten",
-        "I don't eat added sugar",
-        "I don't drink alcohol"
+        "PERFECTION - I'm a perfectinist with my nutrition",
+        "INSPIRATION - I'll watch a fitness video with dinner if i'm alone",
+        "OPTIMIZE - I optimize protein, fibre, and vitamins",
+        "DAIRY - I don't eat dairy, it creates the microbiome that craves more",
+        "GLUTEN - I don't eat gluten, it creates the microbiome that craves more",
+        "SUGAR - I don't eat added sugar, it creates the microbiome that craves more",
+        "ALCOHOL - I don't drink alcohol, it creates the microbiome that craves more"
       ]
     },
     {
       title: "Before bed",
       habits: [
-        "I read for 30 minutes",
-        "I stretch for two minutes",
-        "I remember I can't work the next day if I don't get a good sleep",
-        "I remember sleep makes life feel okay."
+        "READ - I read for 30 minutes",
+        "STRETCH - I stretch for two minutes",
+        "GOOD SLEEP - I remember I can't work the next day if I don't get a good sleep",
+        "BUFFER - remember sleep makes life feel okay."
       ]
     },
     {
       title: "When times are tough",
       habits: [
-        "I stop saying why and I start saying wow",
-        "Apathy is death, love is the birth of hope."
+        "PERSPECTIVE - I stop saying why and I start saying wow",
+        "APATHY - Apathy is death, love is the birth of hope."
       ]
     }
   ];
