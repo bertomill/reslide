@@ -4,6 +4,7 @@ import WarriorKingPrinciples from '../components/WarriorKingPrinciples';
 import Journal from '../components/Journal';
 import DailyInspiration from '../components/DailyInspiration';
 import ThingsILove from '../components/ThingsILove';
+import ThingsLightMeUp from '../components/ThingsLightMeUp';
 import { Container, Heading, Flex, Separator, Box, Card } from '@radix-ui/themes';
 import { EngravedText } from '@/components/EngravedText';
 
@@ -71,12 +72,13 @@ export default function Home() {
                 "Be militant in your work. You ain't reached your best yet. Get things done with militant precision.",
                 "Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
                 "Amazing things come from dedication to the game - long hair, beard, tatts on my body, gold chain, Richard Mille, designer clothes, playing soccer on the beach with the locals, salsa dancing, cooking on an open fire, sleeping with models, meditating on a mountain, building the worlds best AI applications, leading extremely intense workout groups, close friends with the head chef at your favourite restaurant. But you have to bring a passion to your work that's so far beyond the status quo it edges on obsession.",
-                "You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction."
+                "You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction.",
+                "Never do what doesn't light you up. It's a slippery slope to apathy. Protect your inner fire at all costs."
               ].map((text, index) => (
                 <EngravedText 
                   key={index} 
                   size="large"
-                  highlight={text.includes("abundance") || text.includes("militant")}
+                  highlight={text.includes("abundance") || text.includes("militant") || text.includes("Never do what doesn't light you up")}
                 >
                   {text}
                 </EngravedText>
@@ -84,6 +86,7 @@ export default function Home() {
             </Flex>
           </Card>
 
+          <ThingsLightMeUp />
           <GoalTracker />
           <WarriorKingPrinciples />
           <Journal />
