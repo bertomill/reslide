@@ -10,7 +10,8 @@ import {
   HeartIcon, 
   MoonIcon, 
   PersonIcon,
-  TriangleUpIcon 
+  TriangleUpIcon,
+  HeartFilledIcon 
 } from '@radix-ui/react-icons';
 
 type ProgressUpdate = {
@@ -47,6 +48,12 @@ export default function GoalTracker() {
       id: "ai-founder",
       title: "I will earn 100 paying subscribers in 2025",
       imageUrl: "/Ivan.png",
+      progress: []
+    },
+    {
+      id: "dates",
+      title: "I will go on 20 dates in 2025",
+      imageUrl: "/dates.png",
       progress: []
     },
     {
@@ -102,11 +109,16 @@ export default function GoalTracker() {
 
   const addProgressUpdate = async (goalId: string) => {
     try {
+      // For dates goal, automatically increment the counter
+      const value = goalId === 'dates' 
+        ? `Date #${(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}`
+        : progressForms[goalId].value;
+
       const { error } = await supabase
         .from('progress_updates')
         .insert([{
           goal_id: goalId,
-          value: progressForms[goalId].value,
+          value,
           timestamp: new Date(progressForms[goalId].timestamp).toISOString(),
           note: progressForms[goalId].note
         }]);
@@ -191,6 +203,7 @@ export default function GoalTracker() {
             <Flex direction="column" gap="1">
               <Flex align="center" gap="2">
                 <Box>
+                  {goal.id === 'dates' && <HeartFilledIcon width="20" height="20" />}
                   {goal.id === 'hyrox' && <TriangleUpIcon width="20" height="20" />}
                   {goal.id === 'ai-founder' && <TriangleUpIcon width="20" height="20" />}
                 </Box>
@@ -213,6 +226,16 @@ export default function GoalTracker() {
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
                     <strong>How:</strong> Deep focus on AI 12 hours a day. Build a moat with Evident knowlege leveraged with your technical understanding.
+                  </Text>
+                </>
+              )}
+              {goal.id === 'dates' && (
+                <>
+                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                    Dating is a skill that needs to be practiced. Each date is an opportunity to learn, grow, and potentially find someone special.
+                  </Text>
+                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                    <strong>How:</strong> Put yourself out there, be genuine, and focus on having fun and learning from each experience.
                   </Text>
                 </>
               )}
@@ -252,18 +275,24 @@ export default function GoalTracker() {
                 }} 
                 style={formStyle}
               >
-                <input
-                  type="text"
-                  name="value"
-                  placeholder="Value"
-                  value={progressForms[goal.id]?.value || ''}
-                  onChange={(e) => setProgressForms(prev => ({
-                    ...prev,
-                    [goal.id]: { ...prev[goal.id], value: e.target.value }
-                  }))}
-                  required
-                  style={inputStyle}
-                />
+                {goal.id !== 'dates' ? (
+                  <input
+                    type="text"
+                    name="value"
+                    placeholder="Value"
+                    value={progressForms[goal.id]?.value || ''}
+                    onChange={(e) => setProgressForms(prev => ({
+                      ...prev,
+                      [goal.id]: { ...prev[goal.id], value: e.target.value }
+                    }))}
+                    required
+                    style={inputStyle}
+                  />
+                ) : (
+                  <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)' }}>
+                    Date #{(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}
+                  </div>
+                )}
                 <input
                   type="date"
                   name="timestamp"
@@ -289,27 +318,30 @@ export default function GoalTracker() {
                 <button type="submit" style={buttonStyle}>Add Progress</button>
               </form>
 
-              <Box
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '150px',
-                  borderRadius: 'var(--radius-2)',
-                  overflow: 'hidden',
-                  marginTop: '4px'
-                }}
-              >
-                <Image
-                  src={goal.imageUrl}
-                  alt={goal.title}
-                  fill
-                  style={{ 
-                    objectFit: 'cover',
-                    objectPosition: goal.id === 'ai-founder' ? 'center 30%' : 'center center'
+              {/* Only show image box if goal has an image URL */}
+              {goal.imageUrl && (
+                <Box
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '150px',
+                    borderRadius: 'var(--radius-2)',
+                    overflow: 'hidden',
+                    marginTop: '4px'
                   }}
-                  sizes="(max-width: 500px) 100vw, 500px"
-                />
-              </Box>
+                >
+                  <Image
+                    src={goal.imageUrl}
+                    alt={goal.title}
+                    fill
+                    style={{ 
+                      objectFit: 'cover',
+                      objectPosition: goal.id === 'ai-founder' ? 'center 30%' : 'center center'
+                    }}
+                    sizes="(max-width: 500px) 100vw, 500px"
+                  />
+                </Box>
+              )}
             </Flex>
           </Box>
         ))}
