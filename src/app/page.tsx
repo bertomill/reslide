@@ -72,7 +72,7 @@ export default function Home() {
                 "Be militant in your work. You ain't reached your best yet. Get things done with militant precision.",
                 "Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
                 "You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction.",
-                "Never do what doesn't light you up. It's a slippery slope to apathy. Protect your inner fire at all costs."
+                "Never do what doesn't light you up. It's a slippery slope to apathy. Protect your inner fire at all costs. I'm upset that I wasted 5 years not pursuing my passion and beign on fire, but i'll never let that happen again."
               ].map((text, index) => (
                 <EngravedText 
                   key={index} 
