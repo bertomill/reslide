@@ -4,7 +4,8 @@ import WarriorKingPrinciples from '../components/WarriorKingPrinciples';
 import Journal from '../components/Journal';
 import DailyInspiration from '../components/DailyInspiration';
 import ThingsILove from '../components/ThingsILove';
-import { Container, Heading, Flex, Separator, Box, Card, Text } from '@radix-ui/themes';
+import { Container, Heading, Flex, Separator, Box, Card } from '@radix-ui/themes';
+import { EngravedText } from '@/components/EngravedText';
 
 export default function Home() {
   return (
@@ -65,45 +66,20 @@ export default function Home() {
             }} />
             <Flex direction="column" gap="5">
               {[
-                "Your destiny is to be one of the great athlete-entrepreneurs. That Bert guy, he's the most earnest, kind kid, but he has a demon in him that makes him work 24/7. Pursue your destiny in the service of others. People make you happy, not your accomplishments. Find people who inspire you and give them your all. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
+                "Your destiny is to be one of the worlds great athlete-entrepreneurs. Long hair, extremly cut, beard, tattoos, chain, fire fashion, absolute dime GFs, $100M equity at age 35, dancing on the beach, cooking up the worlds best AI apps in the studio, competing in fitness competitions, playing soccer with the locals, meditating on mountain tops, cooking world-class meals with family by the open fire, salsa dancing every night. To do it in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others. People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
                 "You can play in fear or you can play in abundance. Always choose abundance. Never choose fear. You can do more, you can be more, you can see more.",
                 "Be militant in your work. You ain't reached your best yet. Get things done with militant precision.",
                 "Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
                 "Amazing things come from dedication to the game - long hair, beard, tatts on my body, gold chain, Richard Mille, designer clothes, playing soccer on the beach with the locals, salsa dancing, cooking on an open fire, sleeping with models, meditating on a mountain, building the worlds best AI applications, leading extremely intense workout groups, close friends with the head chef at your favourite restaurant. But you have to bring a passion to your work that's so far beyond the status quo it edges on obsession.",
                 "You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction."
-              ].map((text, index, array) => (
-                <Text key={index} size="3" style={{ 
-                  lineHeight: '1.8',
-                  fontFamily: 'Inter, system-ui, sans-serif',
-                  letterSpacing: '0.02em',
-                  color: index === array.length - 1 ? 'var(--blue-9)' : '#fff',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  padding: '0.5rem',
-                  background: index === array.length - 1 ? 'rgba(0,0,0,0.2)' : 'transparent',
-                  borderRadius: index === array.length - 1 ? '8px' : '0',
-                  fontSize: index === 0 ? '1.2rem' : '1rem',
-                  fontWeight: index === 0 ? '500' : '400',
-                  transform: 'translateZ(0)',
-                  WebkitFontSmoothing: 'antialiased',
-                }}>
-                  {text.split('.').map((sentence, i) => (
-                    <span key={i} style={{
-                      display: 'inline',
-                      color: sentence.includes('dedication to the game') || 
-                             sentence.includes('militant') ||
-                             sentence.includes('14 hours') ||
-                             sentence.includes('abundance') ? 
-                             'var(--blue-9)' : 'inherit',
-                      fontWeight: sentence.includes('dedication to the game') || 
-                                 sentence.includes('militant') ||
-                                 sentence.includes('14 hours') ||
-                                 sentence.includes('abundance') ? 
-                                 '600' : 'inherit',
-                    }}>
-                      {sentence}{i < text.split('.').length - 1 ? '.' : ''}
-                    </span>
-                  ))}
-                </Text>
+              ].map((text, index) => (
+                <EngravedText 
+                  key={index} 
+                  size="large"
+                  highlight={text.includes("abundance") || text.includes("militant")}
+                >
+                  {text}
+                </EngravedText>
               ))}
             </Flex>
           </Card>
