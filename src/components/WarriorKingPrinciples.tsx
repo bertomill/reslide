@@ -120,6 +120,7 @@ export default function WarriorKingPrinciples() {
       title: "In the kitchen",
       habits: [
         "PERFECTION - I'm a perfectinist with my nutrition",
+        "FASTING - I enjoy food through fasting, not through added flavoring",
         "INSPIRATION - I'll watch a fitness video with dinner if i'm alone",
         "OPTIMIZE - I optimize protein, fibre, and vitamins",
         "DAIRY - I don't eat dairy, it creates the microbiome that craves more",
