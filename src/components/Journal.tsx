@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Text, Button, TextArea, Flex, TextField } from '@radix-ui/themes';
+import { Card, Text, Button, TextArea, Flex, TextField, Grid } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
 
 const PROMPTS = {
@@ -17,10 +17,17 @@ const PROMPTS = {
   craft: "How am I going to work my craft today?"
 };
 
+const GOALS = {
+  recovery_score: 80,
+  hrv: 200,
+  hours_coded: 10
+};
+
 type JournalEntry = {
   recovery_score: number;
   hrv: number;
   sleep_score: number;
+  hours_coded: number;
   gratitude: string;
   scared_yesterday: string;
   beyond_yesterday: string;
@@ -38,8 +45,9 @@ type JournalEntry = {
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
     recovery_score: 0,
-    hrv: 100,
+    hrv: 0,
     sleep_score: 0,
+    hours_coded: 0,
     gratitude: '',
     scared_yesterday: '',
     beyond_yesterday: '',
@@ -64,8 +72,9 @@ export default function Journal() {
   useEffect(() => {
     setEntries({
       recovery_score: 0,
-      hrv: 100,
+      hrv: 0,
       sleep_score: 0,
+      hours_coded: 0,
       gratitude: '',
       scared_yesterday: '',
       beyond_yesterday: '',
@@ -103,6 +112,7 @@ export default function Journal() {
           recovery_score: entries.recovery_score,
           hrv: entries.hrv,
           sleep_score: entries.sleep_score,
+          hours_coded: entries.hours_coded,
           gratitude: entries.gratitude,
           scared_yesterday: entries.scared_yesterday,
           beyond_yesterday: entries.beyond_yesterday,
@@ -121,8 +131,9 @@ export default function Journal() {
       // Clear form after successful submission
       setEntries({
         recovery_score: 0,
-        hrv: 100,
+        hrv: 0,
         sleep_score: 0,
+        hours_coded: 0,
         gratitude: '',
         scared_yesterday: '',
         beyond_yesterday: '',
@@ -153,47 +164,105 @@ export default function Journal() {
             </Text>
           </Flex>
 
-          <Flex gap="4" style={{ marginBottom: '1rem' }}>
-            <Flex direction="column" gap="2" style={{ flex: 1 }}>
-              <Text size="2" weight="bold">Recovery Score (%)</Text>
+          <Grid columns={{ initial: '1', sm: '4' }} gap="4" style={{ marginBottom: '1rem' }}>
+            <Flex direction="column" gap="2">
+              <Text size="2" weight="bold" style={{ minHeight: '40px' }}>
+                Recovery Score (%) 
+                <Text size="1" color="gray">Goal: {GOALS.recovery_score}%</Text>
+              </Text>
               <TextField.Root>
                 <TextField.Input
                   type="number"
-                  value={entries.recovery_score.toString()}
+                  value={entries.recovery_score || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
                     recovery_score: Number(e.target.value)
                   }))}
+                  placeholder="Enter score"
                 />
               </TextField.Root>
+              <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--gray-4)', borderRadius: '4px', overflow: 'hidden' }}>
+                <div 
+                  style={{ 
+                    width: `${Math.min((entries.recovery_score / GOALS.recovery_score) * 100, 100)}%`,
+                    height: '100%',
+                    backgroundColor: 'var(--accent-9)',
+                    transition: 'width 0.3s ease-in-out'
+                  }} 
+                />
+              </div>
             </Flex>
-            <Flex direction="column" gap="2" style={{ flex: 1 }}>
-              <Text size="2" weight="bold">Heart Rate Variability</Text>
+            <Flex direction="column" gap="2">
+              <Text size="2" weight="bold" style={{ minHeight: '40px' }}>
+                Heart Rate Variability
+                <Text size="1" color="gray">Goal: {GOALS.hrv}</Text>
+              </Text>
               <TextField.Root>
                 <TextField.Input
                   type="number"
-                  value={entries.hrv.toString()}
+                  value={entries.hrv || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
                     hrv: Number(e.target.value)
                   }))}
+                  placeholder="Enter HRV"
                 />
               </TextField.Root>
+              <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--gray-4)', borderRadius: '4px', overflow: 'hidden' }}>
+                <div 
+                  style={{ 
+                    width: `${Math.min((entries.hrv / GOALS.hrv) * 100, 100)}%`,
+                    height: '100%',
+                    backgroundColor: 'var(--accent-9)',
+                    transition: 'width 0.3s ease-in-out'
+                  }} 
+                />
+              </div>
             </Flex>
-            <Flex direction="column" gap="2" style={{ flex: 1 }}>
-              <Text size="2" weight="bold">Sleep Score (%)</Text>
+            <Flex direction="column" gap="2">
+              <Text size="2" weight="bold" style={{ minHeight: '40px' }}>
+                Sleep Score (%)
+              </Text>
               <TextField.Root>
                 <TextField.Input
                   type="number"
-                  value={entries.sleep_score.toString()}
+                  value={entries.sleep_score || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
                     sleep_score: Number(e.target.value)
                   }))}
+                  placeholder="Enter score"
                 />
               </TextField.Root>
             </Flex>
-          </Flex>
+            <Flex direction="column" gap="2">
+              <Text size="2" weight="bold" style={{ minHeight: '40px' }}>
+                Hours Coded
+                <Text size="1" color="gray">Goal: {GOALS.hours_coded}hrs</Text>
+              </Text>
+              <TextField.Root>
+                <TextField.Input
+                  type="number"
+                  value={entries.hours_coded || ''}
+                  onChange={(e) => setEntries(prev => ({
+                    ...prev,
+                    hours_coded: Number(e.target.value)
+                  }))}
+                  placeholder="Enter hours"
+                />
+              </TextField.Root>
+              <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--gray-4)', borderRadius: '4px', overflow: 'hidden' }}>
+                <div 
+                  style={{ 
+                    width: `${Math.min((entries.hours_coded / GOALS.hours_coded) * 100, 100)}%`,
+                    height: '100%',
+                    backgroundColor: 'var(--accent-9)',
+                    transition: 'width 0.3s ease-in-out'
+                  }} 
+                />
+              </div>
+            </Flex>
+          </Grid>
 
           {Object.entries(PROMPTS).map(([key, prompt]) => (
             <Flex key={key} direction="column" gap="2">
