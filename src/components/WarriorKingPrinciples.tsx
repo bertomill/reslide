@@ -45,14 +45,14 @@ export default function WarriorKingPrinciples() {
     {
       title: "In the morning",
       habits: [
-        "I stretch for two minutes",
-        "I meditate 30 minutes or more",
-        "I have creatine",
-        "I have a big glass of water",
-        "I get my 30 minutes of sunlight",
-        "I read for 30 minutes",
-        "I never don't go workout in the morning",
-        "I never get less than 8 hours in bed on the weekends"
+        "YOGA - I stretch for 2 minutes",
+        "MEDITATE - I meditate 30 minutes or more",
+        "CRATINE - I have creatine",
+        "BIG WATER -I have a big glass of water",
+        "SUNLIGHT - I get my 30 minutes of sunlight",
+        "READ - I read for 30 minutes",
+        "WORKOUT - I never don't go workout in the morning",
+        "SLEEP -I never get less than 8 hours in bed on the weekends"
       ]
     },
     {
@@ -105,7 +105,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "OPEN HEART - I open up to others, even if it's uncomfortable",
         "MOTIVATION - Every time a customer or a girl passes on me, it's good for both of us because it gives them optionality, and it lights my fire for next time",
-        "ANNOYING - I think the best way to make friends is to be so in their business it's a little annoying.",
+        "ANNOYING - Best way to make friends. How to not make friends is being timid, so be the opposite.",
         "NEVER HEADPHONES - I never wear headphones around people",
         "SAY YES - I always say yes to possibility",
         "DIMES - I try to go for absolute wifeys, because if I get them i's huge energy and if i'm rejected its huge motivation",
