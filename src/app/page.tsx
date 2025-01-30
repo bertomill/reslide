@@ -71,6 +71,7 @@ export default function Home() {
                 "LOVE -You can play in fear or you can play in love and abundance. Always choose love over fear. You can do more, you can be more, you can see more.",
                 "ENVIRONMENT - You become the places and people you frequent. Choose carefully.",
                 "RECIPE - It's simple but not easy. I just figured out the recipe.",
+                "ACCUMULATE - Success of any kind comes from accumulation. Being a model comes from accomulation of good reps and meals Friendships from good deeds. Girls from dates. Money from hours at the craft.",
                 "MILITANT - Be militant in your work. Get things done with militant precision. Every minute of the day. That's where the alpha lies.",
                 "ADDICTION- You just can't make anything special unless you're addicted to it. It's a double edged sword but you can protect the downside.",
                 "FIRE - Never let your fire die. Stay away from people places and activities that are going to put your fire out.",

@@ -52,6 +52,7 @@ export default function WarriorKingPrinciples() {
         "SUNLIGHT - I get my 30 minutes of sunlight",
         "WORKOUT - I never skip the morning workout or my day is ruined",
         "FOUNDER - I get inspired by reading blogs from founders while stretching",
+        "HYPERFOCUS - A shot of espresso followed immediately by a cold shower while fasted is the cocktail for extremely good mental performance.",
       ]
     },
     {
