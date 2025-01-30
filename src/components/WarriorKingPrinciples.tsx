@@ -77,6 +77,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "CODE EVERYDAY - If i'm not coding every day, I lose all the momemntum I built",
         "TIME ON TASK  - All it takes to realize your career vision is 10 hour days, every day for five years.",
+        "FIND DOPAMINE - When you hit the wall in work don't panic, scroll social media for a few mins and you're back.",
         "STUDIO - I'm in the studio - cooking uwp insanely great AI products.",
         "CURIOSITY - I let curiosity be my engine and rudder.",
         "FAST TIL NOON - I fast til noon. It does miracles for my focus and my skin.",
