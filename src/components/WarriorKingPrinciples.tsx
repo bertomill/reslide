@@ -127,10 +127,10 @@ export default function WarriorKingPrinciples() {
     {
       title: "Before bed",
       habits: [
+        "DIGESTED - I need to give my body at lease a few hours to digest before I sleep ",
         "READ - I read for 30 minutes",
         "STRETCH - I stretch for two minutes",
-        "GOOD SLEEP - I remember I can't work the next day if I don't get a good sleep",
-        "BUFFER - remember sleep makes life feel okay."
+        "PRAYER - I take the time to pray before bed, becasue it works"
       ]
     },
     {
