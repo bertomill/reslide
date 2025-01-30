@@ -220,20 +220,14 @@ export default function GoalTracker() {
               {goal.id === 'tech-pm' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Your in the best AI city in the world, in the best time-window for AI application development, at the right places (tech meetups), with more free time than anyone, with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
-                  </Text>
-                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Your full commitment to AI, that means 12 hour days, 7 days a week. You have to do it more than anyone. All of your success hinges on the products you put out. But the reward is in the tens of millions.
+                    There is no one in the world in an AI hub (Toronto), in the best time-window for AI application development (2025-30), with the best AI connections (tech meetups) , with the best finance connections (CIBC), with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). AND you code and study equity markets 13 hours a day, 7 days a week. You are bound to build a billion dollar company.
                   </Text>
                 </>
               )}
               {goal.id === 'dates' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Dating is a skill that needs to be practiced. Each date is an opportunity to learn, grow, and potentially find someone special.
-                  </Text>
-                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Aim for a date a week. Get as cut as you can, as kind as you can, and as confident as you can.
+                    There is no one in the world who is as ripped as you (fitness), as kind as you (meditation), and as richas you (startup).
                   </Text>
                 </>
               )}
@@ -242,18 +236,12 @@ export default function GoalTracker() {
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
                     Meditation is the secret to all your success. The obsessive attention to every detail in the gym and in the studio, and your seamingly limtless energy and pervasive smile all come from meditation - no one else is doing it.
                   </Text>
-                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Meditate every morning minimum 30+ mins. Obsessive over every detail of your practice.
-                  </Text>
                 </>
               )}
               {goal.id === 'sleep' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
                     Sleeping well brings it all together. Win at sleep and you compound all your success by 20%.
-                  </Text>
-                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Obsess over every little detail of your pre-sleep routine.
                   </Text>
                 </>
               )}
