@@ -70,6 +70,7 @@ export default function Home() {
                 "Your destiny is to be one of the worlds great athlete-entrepreneurs. Long hair, extremly cut, beard, tattoos, chain, fire fashion, absolute dime GFs, $100M equity at age 35, dancing on the beach, cooking up the worlds best AI apps in the studio, competing in fitness competitions, playing soccer with the locals, meditating on mountain tops, cooking world-class meals with family by the open fire, salsa dancing every night. To do it in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others. People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
                 "You can play in fear or you can play in love and abundance. Always choose abundance. Never choose fear. You can do more, you can be more, you can see more.",
                 "You become the places and people you frequent. Choose carefully.",
+                "It's simple but not easy. I just figured it out.",
                 "Be militant in your work. You ain't reached your best yet. Get things done with militant precision. Every minute of the day.",
                 "You just can't make anything special unless you're addicted to it. In the gym, in the studio, in service. Its a double edged sword, but its the only way to do it.",
                 "I'm upset that I wasted my time in places, with people, doing things that didn't light me up. But i'm never going to make that mistake again.",
