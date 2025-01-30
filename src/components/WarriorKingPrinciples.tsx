@@ -114,7 +114,7 @@ export default function WarriorKingPrinciples() {
     {
       title: "In the kitchen",
       habits: [
-        "PERFECTION - I'm a perfectinist with my nutrition",
+        "MILITANT - I like i'm in the military",
         "FASTING - I enjoy food through fasting, not through added flavoring",
         "INSPIRATION - I'll watch a fitness video with dinner if i'm alone",
         "PALEO - It's easier to go all the way boring meals than to play in the middle. Be extreme.",
