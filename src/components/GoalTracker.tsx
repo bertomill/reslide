@@ -40,25 +40,25 @@ export default function GoalTracker() {
   const staticGoals: Goal[] = [
     {
       id: "tech-pm",
-      title: "$ earned through AI apps",
+      title: "I'm going to build the best AI application for equity research in the world",
       imageUrl: "/Ivan.png",
       progress: []
     },
     {
       id: "dates",
-      title: "# Dates with dimes",
+      title: "I'm going to go on 50 dates with dimes",
       imageUrl: "/bradandjen.webp",
       progress: []
     },
     {
       id: "soul",
-      title: "Hours meditated",
+      title: "I'm going to meditate 500 hours",
       imageUrl: "/robin.png",
       progress: []
     },
     {
       id: "sleep",
-      title: "Sleep score",
+      title: "I'm going to sleep 80% on average for the year",
       imageUrl: "/Phelps_Sleep.png",
       progress: []
     }
