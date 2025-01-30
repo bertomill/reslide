@@ -67,13 +67,13 @@ export default function Home() {
             }} />
             <Flex direction="column" gap="5">
               {[
-                "DESTINY - Your destiny is to become the ultimate hollistic version of yourself and share your message to fire up your generation and the next. Long hair, extremly cut, beard, tattoos, chain, fire fashion, absolute dime GFs, $100M equity at age 35, dancing on the beach, cooking up the worlds best AI apps in the studio, competing in fitness competitions, playing soccer with locals, meditating on mountains, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others. People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
+                "DESTINY - Your destiny is to become the ultimate hollistic version of yourself and share your message to fire up your generation and the next. Long hair, extremly cut, beard, tattoos, chain, fire fashion, absolute dime GFs, $100M equity at age 33, dancing on the beach, cooking up the worlds best AI apps in the studio, competing in fitness competitions, playing soccer with locals, meditating on mountains, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others. People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
+                "MILITANT - It's going to take a millitant approach. No minutes wasteed. Get things done with militant precision. It's about being relentless with EVERYTHING.",
                 "LOVE -You can play in fear or you can play in love and abundance. Always choose love over fear. You can do more, you can be more, you can see more.",
                 "ENVIRONMENT - You become the places and people you frequent. Choose carefully.",
                 "RECIPE - It's simple but not easy. I just figured out the recipe.",
                 "ACCUMULATE - Success of any kind comes from accumulation. Being a model comes from accomulation of good reps and meals Friendships from good deeds. Girls from dates. Money from hours at the craft.",
-                "MILITANT - Be militant in your work. Get things done with militant precision. Every minute of the day. That's where the alpha lies.",
-                "ADDICTION- You just can't make anything special unless you're addicted to it. It's a double edged sword but you can protect the downside.",
+                "ADDICTION - You just can't make anything special unless you're addicted to it. It's a double edged sword but you can protect the downside.",
                 "FIRE - Never let your fire die. Stay away from people places and activities that are going to put your fire out.",
                 "AMPLIFY - Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
                 "RESPECT - You must respect the game. The process is painful. It's scary. It's lonely, but devotion to the game is what brings the ultimate satisfaction."
