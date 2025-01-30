@@ -76,6 +76,7 @@ export default function WarriorKingPrinciples() {
       title: "At work",
       habits: [
         "CODE EVERYDAY - If i'm not coding every day, I lose all the momemntum I built",
+        "GRANULAR - I start to get into my best work when i'm slowly, methodically going through on line of code, one scentence, one detail at a time. The extreme granularity creates a deep sense of flow.",
         "TIME ON TASK  - All it takes to realize your career vision is 10 hour days, every day for five years.",
         "FIND DOPAMINE - When you hit the wall in work don't panic, scroll social media for a few mins and you're back.",
         "STUDIO - I'm in the studio - cooking uwp insanely great AI products.",
