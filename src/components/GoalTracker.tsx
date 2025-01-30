@@ -40,25 +40,25 @@ export default function GoalTracker() {
   const staticGoals: Goal[] = [
     {
       id: "tech-pm",
-      title: "I will earn 100 paying subscribers in 2025",
+      title: "$ earned through AI apps",
       imageUrl: "/Ivan.png",
       progress: []
     },
     {
       id: "dates",
-      title: "I will go on 20 dates in 2025",
+      title: "# Dates with dimes",
       imageUrl: "/bradandjen.webp",
       progress: []
     },
     {
       id: "soul",
-      title: "I will meditate 500 hours in 2025",
+      title: "Hours meditated",
       imageUrl: "/robin.png",
       progress: []
     },
     {
       id: "sleep",
-      title: "I will increase my avg sleep score to 80% in 2025",
+      title: "Sleep score",
       imageUrl: "/Phelps_Sleep.png",
       progress: []
     }
@@ -185,17 +185,17 @@ export default function GoalTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
-          <Heading size="6" align="center" mb="1">All-in for</Heading>
+          <Heading size="6" align="center" mb="1">Measuring your product</Heading>
         </Box>
 
         <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
           <Flex align="center" gap="1">
             <TriangleUpIcon width={20} height={20} />
-            <Text size="3" weight="bold">AI FOUNDER</Text>
+            <Text size="3" weight="bold">AI BUILDER</Text>
           </Flex>
           <Flex align="center" gap="1">
             <HeartIcon width={20} height={20} />
-            <Text size="3" weight="bold">STANDUP GUY</Text>
+            <Text size="3" weight="bold">HANDSOME</Text>
           </Flex>
         </Flex>
 
@@ -220,10 +220,10 @@ export default function GoalTracker() {
               {goal.id === 'tech-pm' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    You can do this - Your in the best AI city in the world, in the best time-window for AI application development, at the right places (tech meetups), with more free time than anyone, with extremely specific and valuable domain expertise (Evident), with the best education (innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
+                    Your in the best AI city in the world, in the best time-window for AI application development, at the right places (tech meetups), with more free time than anyone, with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Deep focus on AI 12 hours a day. Build a moat with Evident knowlege leveraged with your technical understanding.
+                    <strong>How:</strong> Your full commitment to AI. You have to do it more than anyone. All of your success hinges on the products you put out.
                   </Text>
                 </>
               )}
