@@ -45,7 +45,7 @@ export default function GoalTracker() {
       progress: []
     },
     {
-      id: "ai-founder",
+      id: "tech-pm",
       title: "I will earn 100 paying subscribers in 2025",
       imageUrl: "/Ivan.png",
       progress: []
@@ -53,7 +53,7 @@ export default function GoalTracker() {
     {
       id: "dates",
       title: "I will go on 20 dates in 2025",
-      imageUrl: "/dates.png",
+      imageUrl: "/bradandjen.webp",
       progress: []
     },
     {
@@ -109,10 +109,23 @@ export default function GoalTracker() {
 
   const addProgressUpdate = async (goalId: string) => {
     try {
-      // For dates goal, automatically increment the counter
-      const value = goalId === 'dates' 
-        ? `Date #${(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}`
-        : progressForms[goalId].value;
+      let value = progressForms[goalId]?.value;
+      
+      if (goalId === 'dates') {
+        value = `Date #${(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}`;
+      }
+
+      if (!value && goalId !== 'dates') {
+        console.error('No value provided for progress update');
+        return;
+      }
+
+      console.log('Attempting to add progress update:', {
+        goal_id: goalId,
+        value,
+        timestamp: new Date(progressForms[goalId].timestamp).toISOString(),
+        note: progressForms[goalId].note
+      });
 
       const { error } = await supabase
         .from('progress_updates')
@@ -123,7 +136,12 @@ export default function GoalTracker() {
           note: progressForms[goalId].note
         }]);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
+      console.log('Progress update added successfully');
 
       // Reset only this goal's form
       setProgressForms(prev => ({
@@ -174,9 +192,6 @@ export default function GoalTracker() {
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
           <Heading size="6" align="center" mb="1">All-in for</Heading>
-          <Text size="2" align="center" color="gray" mb="2" style={{ maxWidth: '400px', margin: '0 auto', lineHeight: '1.5' }}>
-           Hyrox world champion. AI founder. Long hair, beard, tatted, gold chain, Richard Mille. Porsche, playing soccer with the locals on the beach, salsa dancing evenings after open BBQ and music dinner, complete confidence around centerfold GFs. Cooking up the worlds leading AI applications in my studio on the beach with my small team of devotees.
-          </Text>
         </Box>
 
         <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
@@ -205,24 +220,24 @@ export default function GoalTracker() {
                 <Box>
                   {goal.id === 'dates' && <HeartFilledIcon width="20" height="20" />}
                   {goal.id === 'hyrox' && <TriangleUpIcon width="20" height="20" />}
-                  {goal.id === 'ai-founder' && <TriangleUpIcon width="20" height="20" />}
+                  {goal.id === 'tech-pm' && <TriangleUpIcon width="20" height="20" />}
                 </Box>
                 <Heading size="4">{goal.title}</Heading>
               </Flex>
               {goal.id === 'hyrox' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People need to be inspired - my respect for the game gets that job done for them. I was born in the pit, it allowed me to go to that depth of pain very few can go.
+                    People need inspiration - cook that up for them through your world-class workouts.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
                     <strong>How:</strong> Be obsessive about every little detail of the game.
                   </Text>
                 </>
               )}
-              {goal.id === 'ai-founder' && (
+              {goal.id === 'tech-pm' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People need innovation - Your in the best AI city in the world, in the best time-window in history for AI application development, at the right place (CIBC AI), with extremely specific and valuable domain expertise (Evident), with the best education (innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
+                    You can do this - Your in the best AI city in the world, in the best time-window for AI application development, at the right places (tech meetups), with more free time than anyone, with extremely specific and valuable domain expertise (Evident), with the best education (innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
                     <strong>How:</strong> Deep focus on AI 12 hours a day. Build a moat with Evident knowlege leveraged with your technical understanding.
@@ -279,7 +294,7 @@ export default function GoalTracker() {
                   <input
                     type="text"
                     name="value"
-                    placeholder="Value"
+                    placeholder={goal.id === 'tech-pm' ? "Enter number of subscribers" : "Value"}
                     value={progressForms[goal.id]?.value || ''}
                     onChange={(e) => setProgressForms(prev => ({
                       ...prev,
@@ -336,7 +351,9 @@ export default function GoalTracker() {
                     fill
                     style={{ 
                       objectFit: 'cover',
-                      objectPosition: goal.id === 'ai-founder' ? 'center 30%' : 'center center'
+                      objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 
+                                     goal.id === 'dates' ? 'center 15%' : 
+                                     'center center'
                     }}
                     sizes="(max-width: 500px) 100vw, 500px"
                   />

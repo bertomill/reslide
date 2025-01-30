@@ -67,16 +67,15 @@ export default function Home() {
             }} />
             <Flex direction="column" gap="5">
               {[
-                "Your destiny is to be one of the worlds great athlete-entrepreneurs. Long hair, extremly cut, beard, tattoos, chain, fire fashion, absolute dime GFs, $100M equity at age 35, dancing on the beach, cooking up the worlds best AI apps in the studio, competing in fitness competitions, playing soccer with the locals, meditating on mountain tops, cooking world-class meals with family by the open fire, salsa dancing every night. To do it in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others. People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
-                "You can play in fear or you can play in love and abundance. Always choose abundance. Never choose fear. You can do more, you can be more, you can see more.",
-                "You become the places and people you frequent. Choose carefully.",
-                "It's simple but not easy. I just figured it out.",
-                "Be militant in your work. You ain't reached your best yet. Get things done with militant precision. Every minute of the day.",
-                "You just can't make anything special unless you're addicted to it. In the gym, in the studio, in service. Its a double edged sword, but its the only way to do it.",
-                "I'm upset that I wasted my time in places, with people, doing things that didn't light me up. But i'm never going to make that mistake again.",
-                "Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
-                "You must respect the game. The process is painful. It's scary. It's lonely, but the devotion to the game is what brings the ultimate satisfaction.",
-                "Never do what doesn't light you up. It's a slippery slope to apathy. Protect your inner fire at all costs. I'm upset that I wasted 5 years not pursuing my passion and beign on fire, but i'll never let that happen again."
+                "DESTINY - Your destiny is to be a beacon of hollistic success for the world. Long hair, extremly cut, beard, tattoos, chain, fire fashion, absolute dime GFs, $100M equity at age 35, dancing on the beach, cooking up the worlds best AI apps in the studio, competing in fitness competitions, playing soccer with locals, meditating on mountains, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others. People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
+                "LOVE -You can play in fear or you can play in love and abundance. Always choose love over fear. You can do more, you can be more, you can see more.",
+                "ENVIRONMENT - You become the places and people you frequent. Choose carefully.",
+                "RECIPE - It's simple but not easy. I just figured out the recipe.",
+                "MILITANT - Be militant in your work. Get things done with militant precision. Every minute of the day. That's where the alpha lies.",
+                "ADDICTION- You just can't make anything special unless you're addicted to it. It's a double edged sword but you can protect the downside.",
+                "FIRE - Never let your fire die. Stay away from people places and activities that are going to put your fire out.",
+                "AMPLIFY - Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
+                "RESPECT - You must respect the game. The process is painful. It's scary. It's lonely, but devotion to the game is what brings the ultimate satisfaction."
               ].map((text, index) => (
                 <EngravedText 
                   key={index} 

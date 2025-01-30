@@ -32,7 +32,7 @@ export default function EnergyTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="5" p="4">
         <Heading as="h2" size="5" align="center" mb="4">
-          This is the only time you will ever get to pursue your dreams
+          This is the only time you will ever get to make your dreams a reality
         </Heading>
         
         <Flex wrap="wrap" gap="2" justify="center">

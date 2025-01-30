@@ -117,7 +117,7 @@ export default function WarriorKingPrinciples() {
         "PERFECTION - I'm a perfectinist with my nutrition",
         "FASTING - I enjoy food through fasting, not through added flavoring",
         "INSPIRATION - I'll watch a fitness video with dinner if i'm alone",
-        "OPTIMIZE - I optimize protein, fibre, and vitamins",
+        "PALEO - It's easier to go all the way boring meals than to play in the middle. Be extreme.",
         "DAIRY - I don't eat dairy, it creates the microbiome that craves more",
         "GLUTEN - I don't eat gluten, it creates the microbiome that craves more",
         "SUGAR - I don't eat added sugar, it creates the microbiome that craves more",
