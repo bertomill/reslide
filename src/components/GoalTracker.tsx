@@ -227,7 +227,7 @@ export default function GoalTracker() {
               {goal.id === 'dates' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    There is no one in the world who is as ripped as you (fitness), as kind as you (meditation), and as richas you (startup).
+                    There is no one in the world who is as ripped as you (fitness), as kind as you (meditation), and as rich as you (startup), and as popular as you (social media brand).
                   </Text>
                 </>
               )}
