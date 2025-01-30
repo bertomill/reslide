@@ -102,15 +102,12 @@ export default function WarriorKingPrinciples() {
     {
       title: "With others",
       habits: [
-        "OPEN HEART - I open up to others, even if it's uncomfortable",
-        "MOTIVATION - Every time a customer or a girl passes on me, it's good for both of us because it gives them optionality, and it lights my fire for next time",
-        "ANNOYING - Best way to make friends. How to not make friends is being timid, so be the opposite.",
+        "IMPRESSION - The very first impression you leave on someone is often the most important one you'll get.",
+        "LOVE - Just be an addict for making friendships. Let all the other actions fall into place naturally. The best friendships you've ever made are the ones where you can just turn off your thinking and be 100% authentic.",
         "NEVER HEADPHONES - I never wear headphones around people",
         "SAY YES - I always say yes to possibility",
-        "DIMES - I try to go for absolute wifeys, because if I get them i's huge energy and if i'm rejected its huge motivation",
-        "NO OPTION - I don't leave myself an option to not make friends",
-        "AUTHENTIC - I text back quickly, and 100% authentically",
-        "GET REPS -  I see dates with girls as reps of opening my heart. The more the better."
+        "DIMES - Approach dimes, it's a win-win, huge confidence, or huge motivation",
+        "GET REPS -  Let the dates accumulate, and watch them get easier and more enjoyable."
       ]
     },
     {
