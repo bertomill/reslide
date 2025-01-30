@@ -39,12 +39,6 @@ export default function GoalTracker() {
 
   const staticGoals: Goal[] = [
     {
-      id: "hyrox",
-      title: "I will complete Hyrox sub 70 in 2025",
-      imageUrl: "/hyrox world champs.webp",
-      progress: []
-    },
-    {
       id: "tech-pm",
       title: "I will earn 100 paying subscribers in 2025",
       imageUrl: "/Ivan.png",
@@ -197,11 +191,11 @@ export default function GoalTracker() {
         <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
           <Flex align="center" gap="1">
             <TriangleUpIcon width={20} height={20} />
-            <Text size="3" weight="bold">HYROX</Text>
+            <Text size="3" weight="bold">AI FOUNDER</Text>
           </Flex>
           <Flex align="center" gap="1">
-            <TriangleUpIcon width={20} height={20} />
-            <Text size="3" weight="bold">AI FOUNDER</Text>
+            <HeartIcon width={20} height={20} />
+            <Text size="3" weight="bold">STANDUP GUY</Text>
           </Flex>
         </Flex>
 
@@ -219,21 +213,10 @@ export default function GoalTracker() {
               <Flex align="center" gap="2">
                 <Box>
                   {goal.id === 'dates' && <HeartFilledIcon width="20" height="20" />}
-                  {goal.id === 'hyrox' && <TriangleUpIcon width="20" height="20" />}
                   {goal.id === 'tech-pm' && <TriangleUpIcon width="20" height="20" />}
                 </Box>
                 <Heading size="4">{goal.title}</Heading>
               </Flex>
-              {goal.id === 'hyrox' && (
-                <>
-                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    People need inspiration - cook that up for them through your world-class workouts.
-                  </Text>
-                  <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Be obsessive about every little detail of the game.
-                  </Text>
-                </>
-              )}
               {goal.id === 'tech-pm' && (
                 <>
                   <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
