@@ -45,26 +45,22 @@ export default function WarriorKingPrinciples() {
     {
       title: "In the morning",
       habits: [
-        "YOGA - I stretch for 2 minutes",
-        "MEDITATE - I meditate 30 minutes or more",
-        "CRATINE - I have creatine",
+        "YOGA - I stretch 2 minutes",
+        "MEDITATE - I meditate 30 mins+",
+        "CREATINE - I have creatine",
         "BIG WATER -I have a big glass of water",
         "SUNLIGHT - I get my 30 minutes of sunlight",
-        "READ - I read for 30 minutes",
-        "WORKOUT - I never don't go workout in the morning",
-        "SLEEP -I never get less than 8 hours in bed on the weekends"
+        "WORKOUT - I never skip the morning workout or my day is ruined",
       ]
     },
     {
       title: "At the gym",
       habits: [
-        "AUDIOBOOKS - If I'm doing active recovery, I will listen to an audiobook",
-        "CONTENT -I capture one piece of content with every workout",
-        "CAN'T WALK - If its a heavy lift, I workout till I can't walk",
-        "PAIN DEPTH - My mentality is no one's making it out - the pain is extreme",
+        "AUDIOBOOK - During active recovery, I listen to audiobooks",
+        "CONTENT -I capture one piece of content every workout",
         "DEMON - Sometimes I let the demon out, and the demon wants to damage my body",
         "FIND PAIN - I find the spot of most pain, and focus my energy there",
-        "CADIO DAILY -I do cardio every evening because I can't sleep otherwise",
+        "CADIO DAILY -I do cardio every evening otherwise I can't sleep",
         "SADNESS - There's a twinge of sadness in my workouts, because I need them to keep myself form hurting myself otherwise",
       ]
     },
@@ -77,10 +73,9 @@ export default function WarriorKingPrinciples() {
     {
       title: "At work",
       habits: [
-        "CODE EVERYDAY - If i'm not coding every day, i'm going to lose the groove it takes",
-        "FLOW  - The objective is flow",
-        "TIME ON TASK  - The competition between you, Dave G, and Chrip P, is going to come down to who is spending more time on task.",
-        "STUDIO -I'm in the studio - cooking uwp insanely great AI products.",
+        "CODE EVERYDAY - If i'm not coding every day, I lose all the momemntum I built",
+        "TIME ON TASK  - All it takes to realize your career vision is 10 hour days, every day for five years.",
+        "STUDIO - I'm in the studio - cooking uwp insanely great AI products.",
         "CURIOSITY - I let curiosity be my engine and rudder.",
         "FAST TIL NOON - I fast til noon. It does miracles for my focus and my skin.",
         "1 COFFEE - I have 1 or less coffees or it will ruin my sleep",
