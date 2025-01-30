@@ -51,6 +51,7 @@ export default function WarriorKingPrinciples() {
         "BIG WATER -I have a big glass of water",
         "SUNLIGHT - I get my 30 minutes of sunlight",
         "WORKOUT - I never skip the morning workout or my day is ruined",
+        "FOUNDER - I get inspired by reading blogs from founders while stretching",
       ]
     },
     {
