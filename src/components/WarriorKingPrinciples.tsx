@@ -85,6 +85,7 @@ export default function WarriorKingPrinciples() {
         "1 COFFEE - I have 1 or less coffees or it will ruin my sleep",
         "SAVE - I never waste money, debt is a chain",
         "NAP - Naps save my life",
+        "DNCE&CLEAN - You wil get anxious when things are not going well. The best break and i've done this a thousand times is to dance and clean, when your body has cortisol, you need to move/shake to dispense it.",
         "LOCAL GOLD - I don't need to be the best in the world at the job to be done, yet. I need to be the best in my local environment, and as an AI expert - the competition is Dave G and Chris P.",
         "FRONTIER - I relentlessly push to be on the froniter of knowlegde",
         "COMPOUND - The more hours you learn about something, the easier it is to learn more. Growing an audience is another: the more fans you have, the more new fans they'll bring you",

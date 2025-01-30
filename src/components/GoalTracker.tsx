@@ -223,7 +223,7 @@ export default function GoalTracker() {
                     Your in the best AI city in the world, in the best time-window for AI application development, at the right places (tech meetups), with more free time than anyone, with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). Just get 12 hours a day of deep focus on AI, and you will 10X Chris Patterson (250K salary), and Dave G (300K salary).
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Your full commitment to AI. You have to do it more than anyone. All of your success hinges on the products you put out.
+                    <strong>How:</strong> Your full commitment to AI, that means 12 hour days, 7 days a week. You have to do it more than anyone. All of your success hinges on the products you put out. But the reward is in the tens of millions.
                   </Text>
                 </>
               )}
@@ -233,7 +233,7 @@ export default function GoalTracker() {
                     Dating is a skill that needs to be practiced. Each date is an opportunity to learn, grow, and potentially find someone special.
                   </Text>
                   <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                    <strong>How:</strong> Put yourself out there, be genuine, and focus on having fun and learning from each experience.
+                    <strong>How:</strong> Aim for a date a week. Get as cut as you can, as kind as you can, and as confident as you can.
                   </Text>
                 </>
               )}
