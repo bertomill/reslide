@@ -38,27 +38,35 @@ export default function GoalTracker() {
   );
 
   const staticGoals: Goal[] = [
+    // Main Goals
     {
       id: "tech-pm",
-      title: "I'm going to build the best AI application for equity research in the world",
+      title: "1. I will get 100 MAU on Levery in 2025",  // Updated primary goal
       imageUrl: "/Ivan.png",
       progress: []
     },
     {
       id: "dates",
-      title: "I'm going to go on 50 dates with dimes",
-      imageUrl: "/bradandjen.webp",
+      title: "2. I will go on 50 dates with dimes in 2025", // Updated second main goal
+      imageUrl: "/dates.png",
+      progress: []
+    },
+    // Supporting Goals
+    {
+      id: "hyrox",
+      title: "Support: Complete Hyrox sub 70 in 2025",
+      imageUrl: "/hyrox world champs.webp",
       progress: []
     },
     {
       id: "soul",
-      title: "I'm going to meditate 500 hours",
+      title: "Support: Meditate 500 hours in 2025",
       imageUrl: "/robin.png",
       progress: []
     },
     {
       id: "sleep",
-      title: "I'm going to sleep 80% on average for the year",
+      title: "Support: Achieve 80% average sleep score in 2025",
       imageUrl: "/Phelps_Sleep.png",
       progress: []
     }
@@ -185,152 +193,167 @@ export default function GoalTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
-          <Heading size="6" align="center" mb="1">Measuring your product</Heading>
+          <Heading size="6" align="center" mb="1">Your goal 2025</Heading>
         </Box>
 
-        <Flex gap="3" justify="center" mb="4" style={{ flexWrap: 'wrap' }}>
-          <Flex align="center" gap="1">
-            <TriangleUpIcon width={20} height={20} />
-            <Text size="3" weight="bold">AI BUILDER</Text>
-          </Flex>
-          <Flex align="center" gap="1">
-            <HeartIcon width={20} height={20} />
-            <Text size="3" weight="bold">HANDSOME</Text>
-          </Flex>
-        </Flex>
+        <Text size="2" color="gray" align="center" mb="4" style={{ fontStyle: 'italic' }}>
+          Your goal is to become the best AI developer and attractive guy in the world. These two goals are the ultimate realization of your mind body heart and soul.
+        </Text>
 
-        {goals.map((goal) => (
-          <Box 
-            key={goal.id} 
-            style={{
-              padding: '8px',
-              borderRadius: 'var(--radius-2)',
-              border: '1px solid var(--gray-5)',
-              backgroundColor: 'var(--gray-2)'
-            }}
-          >
-            <Flex direction="column" gap="1">
-              <Flex align="center" gap="2">
-                <Box>
-                  {goal.id === 'dates' && <HeartFilledIcon width="20" height="20" />}
-                  {goal.id === 'tech-pm' && <TriangleUpIcon width="20" height="20" />}
-                </Box>
-                <Heading size="4">{goal.title}</Heading>
-              </Flex>
-              {goal.id === 'tech-pm' && (
-                <>
-                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    There is no one in the world in an AI hub (Toronto), in the best time-window for AI application development (2025-30), with the best AI connections (tech meetups) , with the best finance connections (CIBC), with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). AND you code and study equity markets 13 hours a day, 7 days a week. You are bound to build a billion dollar company.
-                  </Text>
-                </>
-              )}
-              {goal.id === 'dates' && (
-                <>
-                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    There is no one in the world who is as ripped as you (fitness), as kind as you (meditation), and as rich as you (startup), and as popular as you (social media brand).
-                  </Text>
-                </>
-              )}
-              {goal.id === 'soul' && (
-                <>
-                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Meditation is the secret to all your success. The obsessive attention to every detail in the gym and in the studio, and your seamingly limtless energy and pervasive smile all come from meditation - no one else is doing it.
-                  </Text>
-                </>
-              )}
-              {goal.id === 'sleep' && (
-                <>
-                  <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                    Sleeping well brings it all together. Win at sleep and you compound all your success by 20%.
-                  </Text>
-                </>
-              )}
-              <Flex direction="column" gap="2" mb="2">
-                {goal.progress.map((update, idx) => (
-                  <Text key={idx} size="2" style={{ color: 'var(--gray-11)' }}>
-                    {update.value} - {new Date(update.timestamp).toLocaleDateString()} 
-                    {update.note && ` (${update.note})`}
-                  </Text>
-                ))}
-              </Flex>
+        {goals.map((goal, index) => (
+          <Box key={goal.id}>
+            {index === 0 && (
+              <Text size="3" weight="bold" style={{ marginTop: '16px', marginBottom: '8px' }}>
+                Main Goals
+              </Text>
+            )}
+            {index === 2 && (
+              <Text size="3" weight="bold" style={{ marginTop: '24px', marginBottom: '8px' }}>
+                Supporting Goals
+              </Text>
+            )}
+            <Box 
+              style={{
+                padding: '8px',
+                borderRadius: 'var(--radius-2)',
+                border: '1px solid var(--gray-5)',
+                backgroundColor: 'var(--gray-2)',
+                marginBottom: '8px'
+              }}
+            >
+              <Flex direction="column" gap="1">
+                <Flex align="center" gap="2">
+                  <Box>
+                    {goal.id === 'dates' && <HeartFilledIcon width="20" height="20" />}
+                    {goal.id === 'tech-pm' && <TriangleUpIcon width="20" height="20" />}
+                  </Box>
+                  <Heading size="4">{goal.title}</Heading>
+                </Flex>
+                {goal.id === 'hyrox' && (
+                  <>
+                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                      Achieving your peak fitness is key towards making your product as an AI builder and attractive guy.
+                    </Text>
+                    <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
+                      <strong>How:</strong> Train with obsessive attention to detail, recovery, and progression.
+                    </Text>
+                  </>
+                )}
+                {goal.id === 'tech-pm' && (
+                  <>
+                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                      You are in the heart of AI (Toronto), in the best time-window for AI app dev (2025-30), with the best AI connections (tech meetups) , with the best finance connections (CIBC), with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). AND you code and study equity markets 13 hours a day, 7 days a week. There is no one who can come close to you in this niche. You are bound to create a billion dollars in economic value.
+                    </Text>
+                  </>
+                )}
+                {goal.id === 'dates' && (
+                  <>
+                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                      There is no one as ripped as you (fitness) plus the kindness (meditation), and as rich as you (startup), and as popular as you (social media brand). You are bound to be the most attractive guy in the world.
+                    </Text>
+                  </>
+                )}
+                {goal.id === 'soul' && (
+                  <>
+                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                      Meditation is the secret to all your success. The obsessive attention to every detail in the gym and in the studio, and your seamingly limtless energy and pervasive smile all come from meditation - no one else is doing it.
+                    </Text>
+                  </>
+                )}
+                {goal.id === 'sleep' && (
+                  <>
+                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
+                      Sleeping well brings it all together. Win at sleep and you compound all your success by 20%.
+                    </Text>
+                  </>
+                )}
+                <Flex direction="column" gap="2" mb="2">
+                  {goal.progress.map((update, idx) => (
+                    <Text key={idx} size="2" style={{ color: 'var(--gray-11)' }}>
+                      {update.value} - {new Date(update.timestamp).toLocaleDateString()} 
+                      {update.note && ` (${update.note})`}
+                    </Text>
+                  ))}
+                </Flex>
 
-              <form 
-                onSubmit={(e) => { 
-                  e.preventDefault(); 
-                  addProgressUpdate(goal.id); 
-                }} 
-                style={formStyle}
-              >
-                {goal.id !== 'dates' ? (
+                <form 
+                  onSubmit={(e) => { 
+                    e.preventDefault(); 
+                    addProgressUpdate(goal.id); 
+                  }} 
+                  style={formStyle}
+                >
+                  {goal.id !== 'dates' ? (
+                    <input
+                      type="text"
+                      name="value"
+                      placeholder={goal.id === 'tech-pm' ? "Enter number of subscribers" : "Value"}
+                      value={progressForms[goal.id]?.value || ''}
+                      onChange={(e) => setProgressForms(prev => ({
+                        ...prev,
+                        [goal.id]: { ...prev[goal.id], value: e.target.value }
+                      }))}
+                      required
+                      style={inputStyle}
+                    />
+                  ) : (
+                    <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)' }}>
+                      Date #{(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}
+                    </div>
+                  )}
                   <input
-                    type="text"
-                    name="value"
-                    placeholder={goal.id === 'tech-pm' ? "Enter number of subscribers" : "Value"}
-                    value={progressForms[goal.id]?.value || ''}
+                    type="date"
+                    name="timestamp"
+                    value={progressForms[goal.id]?.timestamp || new Date().toISOString().split('T')[0]}
                     onChange={(e) => setProgressForms(prev => ({
                       ...prev,
-                      [goal.id]: { ...prev[goal.id], value: e.target.value }
+                      [goal.id]: { ...prev[goal.id], timestamp: e.target.value }
                     }))}
                     required
                     style={inputStyle}
                   />
-                ) : (
-                  <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)' }}>
-                    Date #{(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}
-                  </div>
-                )}
-                <input
-                  type="date"
-                  name="timestamp"
-                  value={progressForms[goal.id]?.timestamp || new Date().toISOString().split('T')[0]}
-                  onChange={(e) => setProgressForms(prev => ({
-                    ...prev,
-                    [goal.id]: { ...prev[goal.id], timestamp: e.target.value }
-                  }))}
-                  required
-                  style={inputStyle}
-                />
-                <input
-                  type="text"
-                  name="note"
-                  placeholder="Note"
-                  value={progressForms[goal.id]?.note || ''}
-                  onChange={(e) => setProgressForms(prev => ({
-                    ...prev,
-                    [goal.id]: { ...prev[goal.id], note: e.target.value }
-                  }))}
-                  style={inputStyle}
-                />
-                <button type="submit" style={buttonStyle}>Add Progress</button>
-              </form>
-
-              {/* Only show image box if goal has an image URL */}
-              {goal.imageUrl && (
-                <Box
-                  style={{
-                    position: 'relative',
-                    width: '100%',
-                    height: '150px',
-                    borderRadius: 'var(--radius-2)',
-                    overflow: 'hidden',
-                    marginTop: '4px'
-                  }}
-                >
-                  <Image
-                    src={goal.imageUrl}
-                    alt={goal.title}
-                    fill
-                    style={{ 
-                      objectFit: 'cover',
-                      objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 
-                                     goal.id === 'dates' ? 'center 15%' : 
-                                     'center center'
-                    }}
-                    sizes="(max-width: 500px) 100vw, 500px"
+                  <input
+                    type="text"
+                    name="note"
+                    placeholder="Note"
+                    value={progressForms[goal.id]?.note || ''}
+                    onChange={(e) => setProgressForms(prev => ({
+                      ...prev,
+                      [goal.id]: { ...prev[goal.id], note: e.target.value }
+                    }))}
+                    style={inputStyle}
                   />
-                </Box>
-              )}
-            </Flex>
+                  <button type="submit" style={buttonStyle}>Add Progress</button>
+                </form>
+
+                {/* Only show image box if goal has an image URL */}
+                {goal.imageUrl && (
+                  <Box
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      height: '150px',
+                      borderRadius: 'var(--radius-2)',
+                      overflow: 'hidden',
+                      marginTop: '4px'
+                    }}
+                  >
+                    <Image
+                      src={goal.imageUrl}
+                      alt={goal.title}
+                      fill
+                      style={{ 
+                        objectFit: 'cover',
+                        objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 
+                                       goal.id === 'dates' ? 'center 15%' : 
+                                       'center center'
+                      }}
+                      sizes="(max-width: 500px) 100vw, 500px"
+                    />
+                  </Box>
+                )}
+              </Flex>
+            </Box>
           </Box>
         ))}
       </Flex>
