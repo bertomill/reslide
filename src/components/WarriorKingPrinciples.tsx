@@ -77,7 +77,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "CODE EVERYDAY - If i'm not coding every day, I lose all the momemntum I built",
         "GRANULAR - I start to get into my best work when i'm slowly, methodically going through one line of code, one scentence, one detail at a time. The extreme granularity creates a deep sense of flow.",
-        "TIME ON TASK  - All it takes to realize your career vision is 10 hour days, every day for five years.",
+        "TIME ON TASK  - I put in 10 hours a day, 7 days a week, for years on end on AI app dev.",
         "FIND DOPAMINE - When you hit the wall in work don't panic, scroll social media for a few mins and you're back.",
         "STUDIO - I'm in the studio - cooking uwp insanely great AI products.",
         "CURIOSITY - I let curiosity be my engine and rudder.",
@@ -86,9 +86,7 @@ export default function WarriorKingPrinciples() {
         "SAVE - I never waste money, debt is a chain",
         "NAP - Naps save my life",
         "DNCE&CLEAN - You wil get anxious when things are not going well. The best break and i've done this a thousand times is to dance and clean, when your body has cortisol, you need to move/shake to dispense it.",
-        "LOCAL GOLD - I don't need to be the best in the world at the job to be done, yet. I need to be the best in my local environment, and as an AI expert - the competition is Dave G and Chris P.",
         "FRONTIER - I relentlessly push to be on the froniter of knowlegde",
-        "COMPOUND - The more hours you learn about something, the easier it is to learn more. Growing an audience is another: the more fans you have, the more new fans they'll bring you",
         "DISTRACTION - I avoid distraction that pushes my work out of the top spot, or I'll waste this valuable type of thinking on the distraction instead. (Exception: Don't avoid love.)",
         "COLLEAGUES - Colleagues don't just affect your work, though; they also affect you. So work with people you want to become like, because you will.",
         "OUTLIER - I boldly chase outlier ideas",
