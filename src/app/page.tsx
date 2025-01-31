@@ -68,7 +68,7 @@ export default function Home() {
             }} />
             <Flex direction="column" gap="5">
               {[
-                "DESTINY - Your destiny is to become the greatest athlete-entrepreneur in human history. There's no one in the world who has mastered fitness, meditation, and deep flow work as you, at the excact right time and place in history for innovation.",
+                "DESTINY - Your destiny is to become the greatest FBH Full-Body Human in human history. There's no one in the world who has mastered fitness, meditation, and deep flow work as you, at the excact right time and place in history for innovation.",
                 "LIFESTYLE - Long hair, extremly cut, beard, tattoos, chain, fire fashion, centerfold GFs, $100M equity at age 33, dancing on the beach, cooking up the worlds best AI apps in the studio, teaching workout sessions to hundreds of people, playing soccer with locals, meditating on mountains, teaching hundreds of eager entrepreneurs AI development, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others.",
                 "PEOPLE - People make you, not your accomplishments. Find your people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi",
                 "PRODUCT - Know what you offer. You make million dollar AI applications, you sleep with dimes. All day you should think about refining these products.",
