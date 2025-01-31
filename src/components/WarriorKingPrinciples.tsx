@@ -109,6 +109,7 @@ export default function WarriorKingPrinciples() {
         "LOVE - Just be an addict for making friendships. Let all the other actions fall into place naturally. The best friendships you've ever made are the ones where you can just turn off your thinking and be 100% authentic.",
         "NEVER HEADPHONES - I never wear headphones around people",
         "SAY YES - I always say yes to possibility",
+        "REALEST - The hottest girls want te be with me because I'm the realest person they've ever met.",
         "DIMES - Approach dimes, it's a win-win, huge confidence, or huge motivation",
         "GET REPS -  Let the dates accumulate, and watch them get easier and more enjoyable."
       ]
