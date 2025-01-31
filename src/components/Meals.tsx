@@ -157,7 +157,7 @@ export default function Meals() {
                 <Button onClick={handleAddFood}>Add</Button>
               </Flex>
 
-              {newMeal.foods?.length > 0 && (
+              {newMeal.foods && newMeal.foods.length > 0 && (
                 <Flex direction="column" gap="1">
                   {newMeal.foods.map((food, index) => (
                     <Text key={index} size="2">• {food}</Text>
