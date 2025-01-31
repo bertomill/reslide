@@ -49,6 +49,9 @@ const together = new Together({
   apiKey: '650442c69fb97cb64cf9eb9c2ff81593ea52be60ab3cb641ed50ac5921838f85'
 });
 
+// Add this type at the top with other type definitions
+type PromptKey = keyof typeof PROMPTS;
+
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
     recovery_score: 0,
@@ -163,7 +166,7 @@ export default function Journal() {
     }
   };
 
-  const getSuggestion = async (promptKey: string) => {
+  const getSuggestion = async (promptKey: PromptKey) => {
     setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: true }));
     setIsStreaming(true);
     let fullSuggestion = '';
@@ -176,7 +179,7 @@ export default function Journal() {
       I operate with militant discipline, putting in 14-hour days with complete focus and devotion. 
       I choose love over fear, protect my inner fire, and respect the process.`;
 
-      const promptTemplates: {[key: string]: string} = {
+      const promptTemplates: Record<PromptKey, string> = {
         gratitude: "As me, reflecting deeply on gratitude, write about: ",
         scared_yesterday: "As me, analyzing a moment of growth, write about this challenge: ",
         beyond_yesterday: "As me, pursuing excellence, describe how I went beyond by: ",
@@ -354,8 +357,8 @@ export default function Journal() {
                 <IconButton 
                   size="1" 
                   variant="soft" 
-                  onClick={() => getSuggestion(key)}
-                  disabled={isLoadingSuggestion[key]}
+                  onClick={() => getSuggestion(key as PromptKey)}
+                  disabled={isLoadingSuggestion[key as PromptKey]}
                 >
                   <LightningBoltIcon />
                 </IconButton>
@@ -370,7 +373,7 @@ export default function Journal() {
                 style={{ 
                   minHeight: '100px', 
                   lineHeight: '1.5',
-                  opacity: isLoadingSuggestion[key] ? 0.7 : 1 
+                  opacity: isLoadingSuggestion[key as PromptKey] ? 0.7 : 1 
                 }}
               />
             </Flex>
