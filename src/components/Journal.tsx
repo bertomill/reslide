@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Text, Button, TextArea, Flex, TextField, Grid } from '@radix-ui/themes';
+import { Card, Text, Button, TextArea, Flex, TextField, Grid, IconButton } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
+import { LightningBoltIcon } from '@radix-ui/react-icons';
+import Together from "together-ai";
 
 const PROMPTS = {
   gratitude: "What am I grateful for?",
@@ -42,6 +44,11 @@ type JournalEntry = {
   user_id?: string;
 };
 
+// Initialize Together client outside the component
+const together = new Together({ 
+  apiKey: '650442c69fb97cb64cf9eb9c2ff81593ea52be60ab3cb641ed50ac5921838f85'
+});
+
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
     recovery_score: 0,
@@ -62,6 +69,9 @@ export default function Journal() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [suggestions, setSuggestions] = useState<{[key: string]: string}>({});
+  const [isLoadingSuggestion, setIsLoadingSuggestion] = useState<{[key: string]: boolean}>({});
+  const [isStreaming, setIsStreaming] = useState(false);
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -150,6 +160,79 @@ export default function Journal() {
       setError('Failed to save journal entry. Please try again.');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const getSuggestion = async (promptKey: string) => {
+    setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: true }));
+    setIsStreaming(true);
+    let fullSuggestion = '';
+    
+    try {
+      const systemPrompt = `I am an ambitious athlete-entrepreneur destined to be the greatest in history. 
+      I combine peak fitness, deep meditation practice, and innovative AI development. 
+      My vision includes: building million-dollar AI applications, maintaining an elite physique, 
+      living with style (long hair, beard, tattoos, fire fashion), and creating massive value for others. 
+      I operate with militant discipline, putting in 14-hour days with complete focus and devotion. 
+      I choose love over fear, protect my inner fire, and respect the process.`;
+
+      const promptTemplates: {[key: string]: string} = {
+        gratitude: "As me, reflecting deeply on gratitude, write about: ",
+        scared_yesterday: "As me, analyzing a moment of growth, write about this challenge: ",
+        beyond_yesterday: "As me, pursuing excellence, describe how I went beyond by: ",
+        areas_to_improve: "As me, with my relentless drive for improvement, write about: ",
+        off_purpose: "As me, staying true to my warrior-king path, reflect on: ",
+        scared_today: "As me, embracing the painful growth process, write about: ",
+        beyond_today: "As me, pursuing my destiny of greatness, plan how to: ",
+        fitness: "As me, building my elite physique, detail this workout: ",
+        nutrition: "As me, fueling peak performance, plan this nutrition: ",
+        craft: "As me, building revolutionary AI applications, approach this work: "
+      };
+
+      const basePrompt = promptTemplates[promptKey] || "As me, pursuing greatness, write about: ";
+      
+      const response = await together.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: systemPrompt
+          },
+          {
+            role: "user",
+            content: `${basePrompt} ${PROMPTS[promptKey]}`
+          }
+        ],
+        model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        max_tokens: 150,
+        temperature: 0.8,
+        top_p: 0.9,
+        top_k: 50,
+        repetition_penalty: 1,
+        stream: true
+      });
+
+      // Handle streaming response
+      for await (const token of response) {
+        const newContent = token.choices[0]?.delta?.content || '';
+        fullSuggestion += newContent;
+        
+        // Update the actual text area instead of showing a separate suggestion
+        setEntries(prev => ({
+          ...prev,
+          [promptKey]: fullSuggestion
+        }));
+      }
+
+    } catch (error) {
+      console.error('Error getting AI suggestion:', error);
+      // Show error in the text area
+      setEntries(prev => ({
+        ...prev,
+        [promptKey]: "Sorry, I couldn't generate a suggestion right now. Please try again."
+      }));
+    } finally {
+      setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: false }));
+      setIsStreaming(false);
     }
   };
 
@@ -266,7 +349,17 @@ export default function Journal() {
 
           {Object.entries(PROMPTS).map(([key, prompt]) => (
             <Flex key={key} direction="column" gap="2">
-              <Text size="2" weight="bold">{prompt}</Text>
+              <Flex justify="between" align="center">
+                <Text size="2" weight="bold">{prompt}</Text>
+                <IconButton 
+                  size="1" 
+                  variant="soft" 
+                  onClick={() => getSuggestion(key)}
+                  disabled={isLoadingSuggestion[key]}
+                >
+                  <LightningBoltIcon />
+                </IconButton>
+              </Flex>
               <TextArea
                 value={entries[key as keyof JournalEntry]}
                 onChange={(e) => setEntries(prev => ({
@@ -274,7 +367,11 @@ export default function Journal() {
                   [key]: e.target.value
                 }))}
                 placeholder="Write your thoughts here..."
-                style={{ minHeight: '100px', lineHeight: '1.5' }}
+                style={{ 
+                  minHeight: '100px', 
+                  lineHeight: '1.5',
+                  opacity: isLoadingSuggestion[key] ? 0.7 : 1 
+                }}
               />
             </Flex>
           ))}
