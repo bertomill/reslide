@@ -10,8 +10,7 @@ const PROMPTS = {
   gratitude: "What am I grateful for?",
   scared_yesterday: "What did I do that scared me yesterday?",
   beyond_yesterday: "What did I do that went above and beyond for others yesterday?",
-  areas_to_improve: "What's an area that didn't go very well for me yesterday?",
-  off_purpose: "Were there any moments yesterday where I was off-purpose?",
+  areas_to_improve: "What's a detail I can refine today?",
   scared_today: "How am I going to push myself out of my confort zone today? Because all growth comes from discomfort.",
   beyond_today: "What will I do today to go above and beyond for others?",
   fitness: "How am I going to work my fitness today?",
@@ -34,7 +33,6 @@ type JournalEntry = {
   scared_yesterday: string;
   beyond_yesterday: string;
   areas_to_improve: string;
-  off_purpose: string;
   scared_today: string;
   beyond_today: string;
   fitness: string;
@@ -62,7 +60,6 @@ export default function Journal() {
     scared_yesterday: '',
     beyond_yesterday: '',
     areas_to_improve: '',
-    off_purpose: '',
     scared_today: '',
     beyond_today: '',
     fitness: '',
@@ -92,7 +89,6 @@ export default function Journal() {
       scared_yesterday: '',
       beyond_yesterday: '',
       areas_to_improve: '',
-      off_purpose: '',
       scared_today: '',
       beyond_today: '',
       fitness: '',
@@ -130,7 +126,6 @@ export default function Journal() {
           scared_yesterday: entries.scared_yesterday,
           beyond_yesterday: entries.beyond_yesterday,
           areas_to_improve: entries.areas_to_improve,
-          off_purpose: entries.off_purpose,
           scared_today: entries.scared_today,
           beyond_today: entries.beyond_today,
           fitness: entries.fitness,
@@ -151,7 +146,6 @@ export default function Journal() {
         scared_yesterday: '',
         beyond_yesterday: '',
         areas_to_improve: '',
-        off_purpose: '',
         scared_today: '',
         beyond_today: '',
         fitness: '',
@@ -183,8 +177,7 @@ export default function Journal() {
         gratitude: "As me, reflecting deeply on gratitude, write about: ",
         scared_yesterday: "As me, analyzing a moment of growth, write about this challenge: ",
         beyond_yesterday: "As me, pursuing excellence, describe how I went beyond by: ",
-        areas_to_improve: "As me, with my relentless drive for improvement, write about: ",
-        off_purpose: "As me, staying true to my warrior-king path, reflect on: ",
+        areas_to_improve: "As me, obsessed with perfecting every detail, write about what I can refine: ",
         scared_today: "As me, embracing the painful growth process, write about: ",
         beyond_today: "As me, pursuing my destiny of greatness, plan how to: ",
         fitness: "As me, building my elite physique, detail this workout: ",

@@ -5,6 +5,7 @@ import Journal from '../components/Journal';
 import DailyInspiration from '../components/DailyInspiration';
 import ThingsILove from '../components/ThingsILove';
 import ThingsLightMeUp from '../components/ThingsLightMeUp';
+import Meals from '@/components/Meals';
 import { Container, Heading, Flex, Separator, Box, Card } from '@radix-ui/themes';
 import { EngravedText } from '@/components/EngravedText';
 
@@ -96,6 +97,7 @@ export default function Home() {
           <GoalTracker />
           <WarriorKingPrinciples />
           <Journal />
+          <Meals />
           <ThingsILove />
           <DailyInspiration />
         </Flex>
