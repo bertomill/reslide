@@ -76,9 +76,10 @@ export default function Home() {
                 "3. MILITANT - It's going to take a millitant approach. No minutes wasted. Get things done with militant precision. It's about being relentless improving your products.",
                 "4. ABUNDANCE - It's going to take playing in abundance. Always choose love over fear. Love expands you, fear shrinks you. You can do more, you can be more, you can see more.",
                 "5. ENVIRONMENT - It's going to take carefully chosing your envronments. There is real energy in the places you frequent that energize you or suck from you.",
-                "8. ADDICTION - It's going to take an irrational addiction to the game. Building your apps and your aura needs to become an addiction.",
-                "9. PASSION - It's going to take a fire deep within you. Draw from your most painful experiences, and let them fuel your fire.",
-                "11. PATIENCE - It's going to take a respect for the game that you never ask why. The process is painful. It's scary. It's lonely, but it's devotion to the details that bring the ultimate satisfaction."
+                "6. ADDICTION - It's going to take an irrational addiction to the game. Building your apps and your aura needs to become an addiction.",
+                "7. PASSION - It's going to take a fire deep within you. Draw from your most painful experiences, and let them fuel your fire.",
+                "8. PATIENCE - It's going to take a respect for the game that you never ask why. The process is painful. It's scary. It's lonely, but it's devotion to the details that bring the ultimate satisfaction.",
+                "9. DO THIS - It's going to take you doing it so often every day it's the reflex, 14 hour workdays and 3 horus of painful training is a regular day in the life."
               ].map((text, index) => (
                 <EngravedText 
                   key={index} 
