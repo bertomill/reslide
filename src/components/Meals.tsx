@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, Text, Flex, Grid, Button, TextField, Select } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
 import { PlusIcon } from '@radix-ui/react-icons';
@@ -43,6 +43,7 @@ type Meal = {
 
 export default function Meals() {
   const [isAddingMeal, setIsAddingMeal] = useState(false);
+  const [meals, setMeals] = useState<Meal[]>([]);
   const [newMeal, setNewMeal] = useState<Partial<Meal>>({
     meal_type: 'breakfast',
     foods: [],
@@ -56,6 +57,28 @@ export default function Meals() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
+
+  const fetchMeals = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+
+      const { data, error } = await supabase
+        .from('meals')
+        .select('*')
+        .eq('user_id', session.user.id)
+        .order('eaten_at', { ascending: false });
+
+      if (error) throw error;
+      setMeals(data || []);
+    } catch (err) {
+      console.error('Error fetching meals:', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchMeals();
+  }, []);
 
   const handleAddFood = () => {
     if (currentFood.trim()) {
@@ -77,7 +100,6 @@ export default function Meals() {
     setError('');
 
     try {
-      // Get the current user's session
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
@@ -104,6 +126,8 @@ export default function Meals() {
         foods: [],
         eaten_at: new Date().toISOString()
       });
+      
+      await fetchMeals();
     } catch (err) {
       console.error('Error saving meal:', err);
       setError('Failed to save meal. Please try again.');
@@ -200,6 +224,48 @@ export default function Meals() {
             </Flex>
           </Card>
         )}
+
+        <Flex direction="column" gap="4">
+          {meals.map((meal) => (
+            <Card key={meal.id} variant="surface">
+              <Flex direction="column" gap="2">
+                <Flex justify="between" align="center">
+                  <Text size="3" weight="bold" style={{ textTransform: 'capitalize' }}>
+                    {meal.meal_type}
+                  </Text>
+                  <Text size="2" color="gray">
+                    {new Date(meal.eaten_at).toLocaleDateString()}
+                  </Text>
+                </Flex>
+                
+                {meal.foods.map((food, index) => (
+                  <Text key={index} size="2">• {food}</Text>
+                ))}
+                
+                {(meal.calories || meal.protein) && (
+                  <Flex gap="3">
+                    {meal.calories && (
+                      <Text size="2" color="gray">
+                        {meal.calories} calories
+                      </Text>
+                    )}
+                    {meal.protein && (
+                      <Text size="2" color="gray">
+                        {meal.protein}g protein
+                      </Text>
+                    )}
+                  </Flex>
+                )}
+                
+                {meal.notes && (
+                  <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
+                    {meal.notes}
+                  </Text>
+                )}
+              </Flex>
+            </Card>
+          ))}
+        </Flex>
 
         <Grid columns={{ initial: '1', sm: '2' }} gap="4">
           {Object.entries(MEAL_TEMPLATES).map(([mealType, foods]) => (

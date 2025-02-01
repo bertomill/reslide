@@ -160,32 +160,69 @@ export default function Journal() {
     }
   };
 
+  const getRecentEntries = async () => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return [];
+
+      const { data: entries, error } = await supabase
+        .from('journal_entries')
+        .select('*')
+        .eq('user_id', session.user.id)
+        .order('created_at', { ascending: false })
+        .limit(6);  // Get last 6 entries
+
+      if (error) throw error;
+      return entries;
+    } catch (error) {
+      console.error('Error fetching recent entries:', error);
+      return [];
+    }
+  };
+
   const getSuggestion = async (promptKey: PromptKey) => {
     setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: true }));
     setIsStreaming(true);
     let fullSuggestion = '';
     
     try {
-      const systemPrompt = `I am an ambitious athlete-entrepreneur destined to be the greatest in history. 
-      I combine peak fitness, deep meditation practice, and innovative AI development. 
-      My vision includes: building million-dollar AI applications, maintaining an elite physique, 
-      living with style (long hair, beard, tattoos, fire fashion), and creating massive value for others. 
-      I operate with militant discipline, putting in 14-hour days with complete focus and devotion. 
-      I choose love over fear, protect my inner fire, and respect the process.`;
+      const recentEntries = await getRecentEntries();
+      
+      // Format recent entries with dates for better context
+      const relevantHistory = recentEntries
+        .map(entry => {
+          const date = new Date(entry.created_at || '').toLocaleDateString();
+          return `${date} - ${PROMPTS[promptKey]}: ${entry[promptKey]}
+          Recovery: ${entry.recovery_score}%, HRV: ${entry.hrv}, Sleep: ${entry.sleep_score}%, Hours Coded: ${entry.hours_coded}hrs`;
+        })
+        .join('\n\n');
+
+      const systemPrompt = `I am an ambitious athlete-entrepreneur combining elite fitness with innovative AI development.
+      My key traits:
+      - I code AI apps 10+ hours daily with militant focus
+      - I maintain peak physical condition through intense workouts
+      - I meditate deeply and practice mindfulness
+      - I'm building revolutionary AI products while cultivating an inspiring presence
+      - I value authenticity, discipline, and continuous improvement
+      
+      Here are my recent journal entries for context:
+      
+      ${relevantHistory}`;
 
       const promptTemplates: Record<PromptKey, string> = {
-        gratitude: "As me, reflecting deeply on gratitude, write about: ",
-        scared_yesterday: "As me, analyzing a moment of growth, write about this challenge: ",
-        beyond_yesterday: "As me, pursuing excellence, describe how I went beyond by: ",
-        areas_to_improve: "As me, obsessed with perfecting every detail, write about what I can refine: ",
-        scared_today: "As me, embracing the painful growth process, write about: ",
-        beyond_today: "As me, pursuing my destiny of greatness, plan how to: ",
-        fitness: "As me, building my elite physique, detail this workout: ",
-        nutrition: "As me, fueling peak performance, plan this nutrition: ",
-        craft: "As me, building revolutionary AI applications, approach this work: "
+        gratitude: "Based on my journey and recent entries, write a specific 40-word gratitude reflection focused on my progress in tech and fitness: ",
+        scared_yesterday: "Analyzing my growth pattern and recent challenges in building AI products and maintaining peak fitness, write a focused 40-word reflection about: ",
+        beyond_yesterday: "Given my dedication to both tech and fitness excellence, write a specific 40-word response about how I went beyond by: ",
+        areas_to_improve: "Considering my dual focus on AI development and physical optimization, write a precise 40-word response about what I can refine: ",
+        scared_today: "Understanding my ambitious goals in tech and fitness, write a specific 40-word response about embracing necessary discomfort: ",
+        beyond_today: "With my vision of becoming a legendary tech-fitness hybrid, write a focused 40-word plan about: ",
+        fitness: "As someone pursuing both mental and physical excellence, write a specific 40-word workout plan considering: ",
+        nutrition: "Given my need for peak mental and physical performance, write a specific 40-word nutrition plan that: ",
+        craft: "As an AI developer with a unique fitness-meditation background, write a focused 40-word plan about: "
       };
 
-      const basePrompt = promptTemplates[promptKey] || "As me, pursuing greatness, write about: ";
+      const basePrompt = promptTemplates[promptKey] || 
+        "Based on my unique journey combining tech and fitness, write a specific 40-word response about: ";
       
       const response = await together.chat.completions.create({
         messages: [
@@ -195,11 +232,11 @@ export default function Journal() {
           },
           {
             role: "user",
-            content: `${basePrompt} ${PROMPTS[promptKey]}`
+            content: `${basePrompt} ${PROMPTS[promptKey]}. Keep response under 40 words and make it highly specific to my journey.`
           }
         ],
         model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-        max_tokens: 150,
+        max_tokens: 60,
         temperature: 0.8,
         top_p: 0.9,
         top_k: 50,
