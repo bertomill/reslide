@@ -20,11 +20,20 @@ type ProgressUpdate = {
   note?: string;
 };
 
+type Metric = {
+  title: string;
+  target: string;
+  description: string;
+  progress: ProgressUpdate[];
+};
+
 type Goal = {
   id: string;
   title: string;
   imageUrl: string;
   progress: ProgressUpdate[];
+  description?: string;
+  metrics?: Metric[];
 };
 
 export default function GoalTracker() {
@@ -40,35 +49,46 @@ export default function GoalTracker() {
   const staticGoals: Goal[] = [
     // Main Goals
     {
-      id: "tech-pm",
-      title: "1. I will get 100 MAU on Levery in 2025",  // Updated primary goal
+      id: "ai-product",
+      title: "1. Get 100 investment researchers subscribed to Levery",
       imageUrl: "/Ivan.png",
-      progress: []
+      progress: [],
+      description: "Leverage Toronto in-person meetups, leverage the latest AI tools, leverage your finance connections within CIBC, leverage your relationship with Evident, leverage your time (all day)",
+      metrics: [
+        {
+          title: "Sleep Score",
+          target: "80%",
+          description: "An indicator your mind is operating at its peak over time",
+          progress: []
+        },
+        {
+          title: "Deep Focus Hours",
+          target: "10 hours/day",
+          description: "A signal you are at the forefront of the AI field",
+          progress: []
+        }
+      ]
     },
     {
-      id: "dates",
-      title: "2. I will go on 50 dates with dimes in 2025", // Updated second main goal
+      id: "aura",
+      title: "2. Go on 50 dates with dimes in 2025",
       imageUrl: "/dates.png",
-      progress: []
-    },
-    // Supporting Goals
-    {
-      id: "hyrox",
-      title: "Support: Complete Hyrox sub 70 in 2025",
-      imageUrl: "/hyrox world champs.webp",
-      progress: []
-    },
-    {
-      id: "soul",
-      title: "Support: Meditate 500 hours in 2025",
-      imageUrl: "/robin.png",
-      progress: []
-    },
-    {
-      id: "sleep",
-      title: "Support: Achieve 80% average sleep score in 2025",
-      imageUrl: "/Phelps_Sleep.png",
-      progress: []
+      progress: [],
+      description: "Leverage unity to become the most cut, leverage meditation to become the most kind, leverage nutrition to glow, leverage social media to create dating opportunity",
+      metrics: [
+        {
+          title: "Hyrox Time",
+          target: "Sub 70 minutes",
+          description: "Indicates your body is in the absolute best shape",
+          progress: []
+        },
+        {
+          title: "Meditation Hours",
+          target: "500 hours",
+          description: "Indicates your mind is at its most empathetic",
+          progress: []
+        }
+      ]
     }
   ];
 
@@ -113,11 +133,11 @@ export default function GoalTracker() {
     try {
       let value = progressForms[goalId]?.value;
       
-      if (goalId === 'dates') {
-        value = `Date #${(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}`;
+      if (goalId === 'aura') {
+        value = `Date #${(goals.find(g => g.id === 'aura')?.progress.length || 0) + 1}`;
       }
 
-      if (!value && goalId !== 'dates') {
+      if (!value && goalId !== 'aura') {
         console.error('No value provided for progress update');
         return;
       }
@@ -193,81 +213,60 @@ export default function GoalTracker() {
     <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
       <Flex direction="column" gap="1" p="2">
         <Box mb="1">
-          <Heading size="6" align="center" mb="1">Your goal 2025</Heading>
+          <Heading size="6" align="center" mb="1">2025 Goals</Heading>
         </Box>
 
         <Text size="2" color="gray" align="center" mb="4" style={{ fontStyle: 'italic' }}>
-          Your goal is to become the best AI developer and attractive guy in the world. These two goals are the ultimate realization of your mind body heart and soul.
+          Become the best AI developer and most attractive guy in the world through relentless focus on product and personal development.
         </Text>
 
-        {goals.map((goal, index) => (
+        {goals.map((goal) => (
           <Box key={goal.id}>
-            {index === 0 && (
-              <Text size="3" weight="bold" style={{ marginTop: '16px', marginBottom: '8px' }}>
-                Main Goals
-              </Text>
-            )}
-            {index === 2 && (
-              <Text size="3" weight="bold" style={{ marginTop: '24px', marginBottom: '8px' }}>
-                Supporting Goals
-              </Text>
-            )}
             <Box 
               style={{
-                padding: '8px',
+                padding: '16px',
                 borderRadius: 'var(--radius-2)',
                 border: '1px solid var(--gray-5)',
                 backgroundColor: 'var(--gray-2)',
-                marginBottom: '8px'
+                marginBottom: '16px'
               }}
             >
-              <Flex direction="column" gap="1">
+              <Flex direction="column" gap="3">
+                {/* Goal Title */}
                 <Flex align="center" gap="2">
                   <Box>
-                    {goal.id === 'dates' && <HeartFilledIcon width="20" height="20" />}
-                    {goal.id === 'tech-pm' && <TriangleUpIcon width="20" height="20" />}
+                    {goal.id === 'aura' && <HeartFilledIcon width="20" height="20" />}
+                    {goal.id === 'ai-product' && <TriangleUpIcon width="20" height="20" />}
                   </Box>
                   <Heading size="4">{goal.title}</Heading>
                 </Flex>
-                {goal.id === 'hyrox' && (
-                  <>
-                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                      Achieving your peak fitness is key towards making your product as an AI builder and attractive guy.
-                    </Text>
-                    <Text size="2" color="gray" style={{ marginBottom: '8px' }}>
-                      <strong>How:</strong> Train with obsessive attention to detail, recovery, and progression.
-                    </Text>
-                  </>
+
+                {/* Goal Description */}
+                {goal.description && (
+                  <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
+                    {goal.description}
+                  </Text>
                 )}
-                {goal.id === 'tech-pm' && (
-                  <>
-                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                      You are in the heart of AI (Toronto), in the best time-window for AI app dev (2025-30), with the best AI connections (tech meetups) , with the best finance connections (CIBC), with extremely specific and valuable domain expertise (Evident), with the best education (Ivey innovation). AND you code and study equity markets 13 hours a day, 7 days a week. There is no one who can come close to you in this niche. You are bound to create a billion dollars in economic value.
-                    </Text>
-                  </>
+
+                {/* Supporting Metrics */}
+                {goal.metrics && goal.metrics.length > 0 && (
+                  <Box style={{ backgroundColor: 'var(--gray-3)', padding: '12px', borderRadius: '6px' }}>
+                    <Text size="2" weight="bold" mb="2">Supporting Metrics:</Text>
+                    {goal.metrics.map((metric, idx) => (
+                      <Flex key={idx} direction="column" gap="1" mb="2">
+                        <Text size="2" weight="bold" style={{ color: 'var(--blue-9)' }}>
+                          {metric.title}: {metric.target}
+                        </Text>
+                        <Text size="1" color="gray">
+                          {metric.description}
+                        </Text>
+                      </Flex>
+                    ))}
+                  </Box>
                 )}
-                {goal.id === 'dates' && (
-                  <>
-                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                      There is no one as ripped as you (fitness) plus the kindness (meditation), and as rich as you (startup), and as popular as you (social media brand). You are bound to be the most attractive guy in the world.
-                    </Text>
-                  </>
-                )}
-                {goal.id === 'soul' && (
-                  <>
-                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                      Meditation is the secret to all your success. The obsessive attention to every detail in the gym and in the studio, and your seamingly limtless energy and pervasive smile all come from meditation - no one else is doing it.
-                    </Text>
-                  </>
-                )}
-                {goal.id === 'sleep' && (
-                  <>
-                    <Text size="2" color="gray" style={{ marginBottom: '4px', fontStyle: 'italic' }}>
-                      Sleeping well brings it all together. Win at sleep and you compound all your success by 20%.
-                    </Text>
-                  </>
-                )}
-                <Flex direction="column" gap="2" mb="2">
+
+                {/* Progress Updates */}
+                <Flex direction="column" gap="2">
                   {goal.progress.map((update, idx) => (
                     <Text key={idx} size="2" style={{ color: 'var(--gray-11)' }}>
                       {update.value} - {new Date(update.timestamp).toLocaleDateString()} 
@@ -276,6 +275,7 @@ export default function GoalTracker() {
                   ))}
                 </Flex>
 
+                {/* Progress Form */}
                 <form 
                   onSubmit={(e) => { 
                     e.preventDefault(); 
@@ -283,11 +283,11 @@ export default function GoalTracker() {
                   }} 
                   style={formStyle}
                 >
-                  {goal.id !== 'dates' ? (
+                  {goal.id !== 'aura' ? (
                     <input
                       type="text"
                       name="value"
-                      placeholder={goal.id === 'tech-pm' ? "Enter number of subscribers" : "Value"}
+                      placeholder={goal.id === 'ai-product' ? "Enter number of subscribers" : "Value"}
                       value={progressForms[goal.id]?.value || ''}
                       onChange={(e) => setProgressForms(prev => ({
                         ...prev,
@@ -298,7 +298,7 @@ export default function GoalTracker() {
                     />
                   ) : (
                     <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)' }}>
-                      Date #{(goals.find(g => g.id === 'dates')?.progress.length || 0) + 1}
+                      Date #{(goals.find(g => g.id === 'aura')?.progress.length || 0) + 1}
                     </div>
                   )}
                   <input
@@ -326,7 +326,7 @@ export default function GoalTracker() {
                   <button type="submit" style={buttonStyle}>Add Progress</button>
                 </form>
 
-                {/* Only show image box if goal has an image URL */}
+                {/* Goal Image */}
                 {goal.imageUrl && (
                   <Box
                     style={{
@@ -344,8 +344,8 @@ export default function GoalTracker() {
                       fill
                       style={{ 
                         objectFit: 'cover',
-                        objectPosition: goal.id === 'tech-pm' ? 'center 30%' : 
-                                       goal.id === 'dates' ? 'center 15%' : 
+                        objectPosition: goal.id === 'ai-product' ? 'center 30%' : 
+                                       goal.id === 'aura' ? 'center 15%' : 
                                        'center center'
                       }}
                       sizes="(max-width: 500px) 100vw, 500px"
