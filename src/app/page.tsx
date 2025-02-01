@@ -68,24 +68,31 @@ export default function Home() {
             }} />
             <Flex direction="column" gap="5">
               {[
-                "DESTINY - Your destiny is to become the greatest FBH Full-Body Human in human history. There's no one in the world who has mastered fitness, meditation, and deep flow work as you, at the excact right time and place in history for innovation.",
+                "DESTINY - Your destiny is to become the greatest FBH Full-Body Human in human history. It will manifest in a billion people inspired by your AI products, and a billion women obsessed with your aura. This will fire up millions of others to be their best, which will create a feedback loop for me.",
                 "LIFESTYLE - Long hair, extremly cut, beard, tattoos, chain, fire fashion, centerfold GFs, $100M equity at age 33, dancing on the beach, cooking up the worlds best AI apps in the studio, teaching workout sessions to hundreds of people, playing soccer with locals, meditating on mountains, teaching hundreds of eager entrepreneurs AI development, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others.",
-                "PEOPLE - People make you, not your accomplishments. Find your people. help them. Only spend time with people who light you up. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi",
-                "PRODUCT - Know what you offer. AI Apps, Attractive Person. All day you should think about refining these products to make them astonishing.",
-                "MILITANT - It's going to take a millitant approach. No minutes wasted. Get things done with militant precision. It's about being relentless improving your products.",
-                "LOVE - It's going to take playing in love and abundance. Always choose love over fear. Love expands you, fear shrinks you. You can do more, you can be more, you can see more. Push authenticity to the point of rejection, just as you push effort to the point of faliure in workouts.",
-                "ENVIRONMENT - You become the places and people you frequent. Choose carefully.",
-                "RECIPE - It's simple but not easy. I just figured out the recipe.",
-                "ACCUMULATE - Success of any kind comes from accumulation. Being a model comes from accomulation of good reps and meals Friendships from good deeds. Girls from dates. Money from hours at the craft.",
-                "ADDICTION - You just can't make anything special unless you're addicted to it. It's a double edged sword but you can protect the downside.",
-                "FIRE - Never let your fire die. Stay away from people places and activities that are going to put your fire out.",
-                "AMPLIFY - Amp it up. If you're not at it 14 hours a day, with full love and full effort, you're not playing the game right.",
-                "RESPECT - You must respect the game. The process is painful. It's scary. It's lonely, but devotion to the game is what brings the ultimate satisfaction."
+                "WHAT'S IT GOING TO TAKE?",
+                "1. PEOPLE - It's going to take being around great people. Find them. help them. Only spend time with them. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
+                "2. PRODUCT - It's going to take the purest product. AI & Aura. People should feel it in their bones when they try your AI products. People should feel your aura deep within their bones when i'm around them or their watching my content. It's one of the most rewarding feeling in the world when people are true fans of your product.",
+                "3. MILITANT - It's going to take a millitant approach. No minutes wasted. Get things done with militant precision. It's about being relentless improving your products.",
+                "4. ABUNDANCE - It's going to take playing in abundance. Always choose love over fear. Love expands you, fear shrinks you. You can do more, you can be more, you can see more.",
+                "5. ENVIRONMENT - It's going to take carefully chosing your envronments. There is real energy in the places you frequent that energize you or suck from you.",
+                "8. ADDICTION - It's going to take an irrational addiction to the game. Building your apps and your aura needs to become an addiction.",
+                "9. PASSION - It's going to take a fire deep within you. Draw from your most painful experiences, and let them fuel your fire.",
+                "11. PATIENCE - It's going to take a respect for the game that you never ask why. The process is painful. It's scary. It's lonely, but it's devotion to the details that bring the ultimate satisfaction."
               ].map((text, index) => (
                 <EngravedText 
                   key={index} 
                   size="large"
                   highlight={text.includes("abundance") || text.includes("militant") || text.includes("Never do what doesn't light you up")}
+                  style={{
+                    ...(text === "WHAT'S IT GOING TO TAKE?" && {
+                      fontSize: '1.5em',
+                      fontWeight: 'bold',
+                      textAlign: 'center',
+                      margin: '1rem 0',
+                      color: 'var(--accent-9)'
+                    })
+                  }}
                 >
                   {text}
                 </EngravedText>
