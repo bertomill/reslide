@@ -59,6 +59,8 @@ export default function WarriorKingPrinciples() {
       title: "At the gym",
       habits: [
         "AUDIOBOOK - During active recovery, I listen to audiobooks",
+        "STRETCH - Im stretching my muscles as deep as possible",
+        "PLIABILITY - I'm massaging my muscles as deep as possible",
         "CONTENT -I capture one piece of content every workout",
         "DEMON - Sometimes I let the demon out, and the demon wants to damage my body",
         "FIND PAIN - I find the spot of most pain, and focus my energy there",
@@ -139,6 +141,17 @@ export default function WarriorKingPrinciples() {
       habits: [
         "PERSPECTIVE - I stop saying why and I start saying wow",
         "APATHY - Apathy is death, love is the birth of hope."
+      ]
+    },
+    {
+      title: "During meditation",
+      habits: [
+        "CHAKRAS - Move upward from base chakra focus, to heart chakra, to intuition chakra",
+        "BREATH - Focus on the breath as an anchor to the present moment",
+        "STILLNESS - Find complete stillness in both body and mind",
+        "OBSERVE - Watch thoughts pass by without attachment",
+        "ENERGY - Feel the energy moving through the body",
+        "GRATITUDE - End with gratitude for this moment of peace"
       ]
     }
   ];
