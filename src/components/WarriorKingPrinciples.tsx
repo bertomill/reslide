@@ -108,6 +108,7 @@ export default function WarriorKingPrinciples() {
         "IMPRESSION - The very first impression you leave on someone is often the most important one you'll get.",
         "LOVE - Just be an addict for making friendships. Let all the other actions fall into place naturally. The best friendships you've ever made are the ones where you can just turn off your thinking and be 100% authentic.",
         "NEVER HEADPHONES - I never wear headphones around people",
+        "TALK - I try to not even talk to people unless they energize me, sorry, my time is too short.",
         "SAY YES - I always say yes to possibility",
         "REALEST - The hottest girls want te be with me because I'm the realest person they've ever met.",
         "DIMES - Approach dimes, it's a win-win, huge confidence, or huge motivation",
