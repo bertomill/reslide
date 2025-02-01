@@ -125,7 +125,8 @@ export default function WarriorKingPrinciples() {
         "DAIRY - I don't eat dairy, it creates the microbiome that craves more",
         "GLUTEN - I don't eat gluten, it creates the microbiome that craves more",
         "SUGAR - I don't eat added sugar, it creates the microbiome that craves more",
-        "ALCOHOL - I don't drink alcohol, it creates the microbiome that craves more"
+        "ALCOHOL - I don't drink alcohol, it creates the microbiome that craves more",
+        "HIGH - I feel the high of eating perfect fibre and protein and proportion 2 hours after the meal consistently."
       ]
     },
     {
