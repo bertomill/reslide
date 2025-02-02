@@ -178,7 +178,10 @@ export default function Meals() {
                   <TextField.Root style={{ flex: 1 }}>
                     <TextField.Input 
                       type="date"
-                      value={new Date(newMeal.eaten_at).toISOString().split('T')[0]}
+                      value={newMeal.eaten_at ? 
+                        new Date(newMeal.eaten_at).toISOString().split('T')[0] : 
+                        new Date().toISOString().split('T')[0]
+                      }
                       onChange={(e) => {
                         const newDate = new Date(e.target.value);
                         setNewMeal(prev => ({
