@@ -64,6 +64,7 @@ export default function WarriorKingPrinciples() {
         "CONTENT -I capture one piece of content every workout",
         "DEMON - Sometimes I let the demon out, and the demon wants to damage my body",
         "FIND PAIN - I find the spot of most pain, and focus my energy there",
+        "HIGH PUMP - I can get high off the pump, to the feeling of cumming.",
         "CADIO DAILY -I do cardio every evening otherwise I can't sleep",
         "SADNESS - There's a twinge of sadness in my workouts, because I need them to keep myself form hurting myself otherwise",
       ]
