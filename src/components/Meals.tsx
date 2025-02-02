@@ -41,6 +41,10 @@ type Meal = {
   eaten_at: string;
 };
 
+const getDayOfWeek = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+};
+
 export default function Meals() {
   const [isAddingMeal, setIsAddingMeal] = useState(false);
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -137,7 +141,7 @@ export default function Meals() {
   };
 
   return (
-    <Card size="3">
+    <Card size="3" id="meals-section">
       <Flex direction="column" gap="4">
         <Flex justify="between" align="center">
           <Text size="5" weight="bold">Elite Performance Meals</Text>
@@ -156,18 +160,39 @@ export default function Meals() {
         {isAddingMeal && (
           <Card variant="surface">
             <Flex direction="column" gap="3">
-              <Select.Root 
-                defaultValue="breakfast"
-                onValueChange={(value) => setNewMeal(prev => ({ ...prev, meal_type: value as Meal['meal_type'] }))}
-              >
-                <Select.Trigger />
-                <Select.Content>
-                  <Select.Item value="breakfast">Breakfast</Select.Item>
-                  <Select.Item value="lunch">Lunch</Select.Item>
-                  <Select.Item value="dinner">Dinner</Select.Item>
-                  <Select.Item value="snacks">Snacks</Select.Item>
-                </Select.Content>
-              </Select.Root>
+              <Grid columns="2" gap="2">
+                <Select.Root 
+                  defaultValue="breakfast"
+                  onValueChange={(value) => setNewMeal(prev => ({ ...prev, meal_type: value as Meal['meal_type'] }))}
+                >
+                  <Select.Trigger />
+                  <Select.Content>
+                    <Select.Item value="breakfast">Breakfast</Select.Item>
+                    <Select.Item value="lunch">Lunch</Select.Item>
+                    <Select.Item value="dinner">Dinner</Select.Item>
+                    <Select.Item value="snacks">Snacks</Select.Item>
+                  </Select.Content>
+                </Select.Root>
+
+                <Flex align="center" gap="2">
+                  <TextField.Root style={{ flex: 1 }}>
+                    <TextField.Input 
+                      type="date"
+                      value={new Date(newMeal.eaten_at).toISOString().split('T')[0]}
+                      onChange={(e) => {
+                        const newDate = new Date(e.target.value);
+                        setNewMeal(prev => ({
+                          ...prev,
+                          eaten_at: newDate.toISOString()
+                        }));
+                      }}
+                    />
+                  </TextField.Root>
+                  <Text size="1" color="gray" style={{ minWidth: 'fit-content' }}>
+                    {getDayOfWeek(new Date(newMeal.eaten_at))}
+                  </Text>
+                </Flex>
+              </Grid>
 
               <Flex gap="2">
                 <TextField.Root style={{ flex: 1 }}>
@@ -225,32 +250,41 @@ export default function Meals() {
           </Card>
         )}
 
-        <Flex direction="column" gap="4">
+        <Flex direction="column" gap="2">
           {meals.map((meal) => (
-            <Card key={meal.id} variant="surface">
-              <Flex direction="column" gap="2">
+            <Card key={meal.id} variant="surface" style={{ padding: '8px' }}>
+              <Flex direction="column" gap="1">
                 <Flex justify="between" align="center">
-                  <Text size="3" weight="bold" style={{ textTransform: 'capitalize' }}>
+                  <Text size="2" weight="bold" style={{ textTransform: 'capitalize' }}>
                     {meal.meal_type}
                   </Text>
-                  <Text size="2" color="gray">
-                    {new Date(meal.eaten_at).toLocaleDateString()}
-                  </Text>
+                  <Flex align="center" gap="2">
+                    <Text size="1" color="gray" style={{ opacity: 0.8 }}>
+                      {getDayOfWeek(new Date(meal.eaten_at))}
+                    </Text>
+                    <Text size="1" color="gray">
+                      {new Date(meal.eaten_at).toLocaleDateString()}
+                    </Text>
+                  </Flex>
                 </Flex>
                 
-                {meal.foods.map((food, index) => (
-                  <Text key={index} size="2">• {food}</Text>
-                ))}
+                <Flex direction="column" gap="1">
+                  {meal.foods.map((food, index) => (
+                    <Text key={index} size="1" style={{ marginLeft: '8px' }}>
+                      • {food}
+                    </Text>
+                  ))}
+                </Flex>
                 
                 {(meal.calories || meal.protein) && (
-                  <Flex gap="3">
+                  <Flex gap="2">
                     {meal.calories && (
-                      <Text size="2" color="gray">
+                      <Text size="1" color="gray">
                         {meal.calories} calories
                       </Text>
                     )}
                     {meal.protein && (
-                      <Text size="2" color="gray">
+                      <Text size="1" color="gray">
                         {meal.protein}g protein
                       </Text>
                     )}
@@ -258,7 +292,7 @@ export default function Meals() {
                 )}
                 
                 {meal.notes && (
-                  <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
+                  <Text size="1" color="gray" style={{ fontStyle: 'italic' }}>
                     {meal.notes}
                   </Text>
                 )}
@@ -267,15 +301,15 @@ export default function Meals() {
           ))}
         </Flex>
 
-        <Grid columns={{ initial: '1', sm: '2' }} gap="4">
+        <Grid columns={{ initial: '2', sm: '4' }} gap="2">
           {Object.entries(MEAL_TEMPLATES).map(([mealType, foods]) => (
-            <Card key={mealType}>
-              <Flex direction="column" gap="2">
-                <Text size="3" weight="bold" style={{ textTransform: 'capitalize' }}>
+            <Card key={mealType} style={{ padding: '8px' }}>
+              <Flex direction="column" gap="1">
+                <Text size="2" weight="bold" style={{ textTransform: 'capitalize' }}>
                   {mealType}
                 </Text>
                 {foods.map((food, index) => (
-                  <Text key={index} size="2" style={{ paddingLeft: '8px' }}>
+                  <Text key={index} size="1" style={{ paddingLeft: '8px' }}>
                     • {food}
                   </Text>
                 ))}

@@ -195,7 +195,9 @@ export default function GoalTracker() {
     padding: '6px',
     borderRadius: '3px',
     border: '1px solid var(--gray-4)',
-    fontSize: '12px'
+    fontSize: '12px',
+    backgroundColor: 'var(--gray-3)',
+    color: 'var(--gray-12)',
   };
 
   const buttonStyle: CSSProperties = {
@@ -321,7 +323,12 @@ export default function GoalTracker() {
                       ...prev,
                       [goal.id]: { ...prev[goal.id], note: e.target.value }
                     }))}
-                    style={inputStyle}
+                    style={{
+                      ...inputStyle,
+                      '::placeholder': {
+                        color: 'var(--gray-8)'
+                      }
+                    }}
                   />
                   <button type="submit" style={buttonStyle}>Add Progress</button>
                 </form>
