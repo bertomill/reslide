@@ -13,6 +13,7 @@ import {
   TriangleUpIcon,
   HeartFilledIcon 
 } from '@radix-ui/react-icons';
+import styles from './GoalTracker.module.css';
 
 type ProgressUpdate = {
   value: string;
@@ -323,12 +324,8 @@ export default function GoalTracker() {
                       ...prev,
                       [goal.id]: { ...prev[goal.id], note: e.target.value }
                     }))}
-                    style={{
-                      ...inputStyle,
-                      '::placeholder': {
-                        color: 'var(--gray-8)'
-                      }
-                    }}
+                    className={styles.input}
+                    style={inputStyle}
                   />
                   <button type="submit" style={buttonStyle}>Add Progress</button>
                 </form>
