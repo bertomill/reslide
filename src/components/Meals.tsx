@@ -192,7 +192,7 @@ export default function Meals() {
                     />
                   </TextField.Root>
                   <Text size="1" color="gray" style={{ minWidth: 'fit-content' }}>
-                    {getDayOfWeek(new Date(newMeal.eaten_at))}
+                    {getDayOfWeek(new Date(newMeal.eaten_at || new Date()))}
                   </Text>
                 </Flex>
               </Grid>
