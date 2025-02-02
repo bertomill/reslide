@@ -85,6 +85,7 @@ export default function WarriorKingPrinciples() {
         "STUDIO - I'm in the studio - cooking uwp insanely great AI products.",
         "CURIOSITY - I let curiosity be my engine and rudder.",
         "FAST TIL NOON - I fast til noon. It does miracles for my focus and my skin.",
+        "HIGH FLOW - I can get high off a flowy work session - to the point of euphoria.",
         "1 COFFEE - I have 1 or less coffees or it will ruin my sleep",
         "SAVE - I never waste money, debt is a chain",
         "NAP - Naps save my life",
