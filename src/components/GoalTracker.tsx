@@ -55,7 +55,7 @@ export default function GoalTracker() {
       title: "1. Get 100 investment researchers subscribed to Levery",
       imageUrl: "/Ivan.png",
       progress: [],
-      description: "Leverage Toronto in-person meetups, leverage the latest AI tools, leverage your finance connections within CIBC, leverage your relationship with Evident, leverage your time (all day)",
+      description: "Leverage Toronto in-person meetups, leverage 12 hour days coding, leverage your finance connections within CIBC, leverage your relationship with Evident, leverage your unmatched enery. Leverage content.",
       metrics: [
         {
           title: "Sleep Score",
@@ -76,7 +76,7 @@ export default function GoalTracker() {
       title: "2. Go on 50 dates with dimes in 2025",
       imageUrl: "/dates.png",
       progress: [],
-      description: "Leverage unity to become the most cut, leverage meditation to become the most kind, leverage nutrition to glow, leverage social media to create dating opportunity",
+      description: "Leverage unity to become the most cut, leverage meditation to become the most kind, leverage nutrition to glow, leverage dance to meet girls, leverage social media to create dating opportunity",
       metrics: [
         {
           title: "Hyrox Time",
