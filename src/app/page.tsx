@@ -66,7 +66,7 @@ export default function Home() {
                 },
                 {
                   title: "3. URGENCY",
-                  description: "Understand that AI is blowing up, and the way to catch this wave it to learn faster than anyone else. Do this by spending 12-16 hours a day coding/reading/and listening to podcasts on AI, attending every in person event you can, and pitch your ideas whenever you can."
+                  description: "AI is eating the economy, to capitalize this value is to learn fastest. Spend 12-16 hours a day coding/reading/and listening to podcasts on AI, attending every event you can, pitch your ideas whenever you can. Within 1-2 years you will be financially free."
                 },
                 {
                   title: "4. CONFIDENCE",
