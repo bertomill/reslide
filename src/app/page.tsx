@@ -58,7 +58,8 @@ export default function Home() {
                 "9. AUTOMATICITY - It's going to take you doing it so often every day it's the reflex, 14 hour workdays and 3 horus of painful training is a regular day in the life.",
                 "10. AGING - It's going to take the acknowledgement that we age quick and die quick so there's no point in holding back.",
                 "11. DETAILS - It's going to take an obsession with the details, the difference is in the details. It always is.",
-                "12. HIGH - It's going to take an understanding of how to get high off the work, and then consistently achieving the necessary high from it."
+                "12. HIGH - It's going to take an understanding of how to get high off the work, and then consistently achieving the necessary high from it.",
+                "12. SELL - To keep your energy and motivation going at its peak, continuously sell your product to dimes (aura), and to customers (AI)."
               ].map((text, index) => (
                 <EngravedText 
                   key={index} 
