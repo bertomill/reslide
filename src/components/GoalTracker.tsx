@@ -41,6 +41,7 @@ export default function GoalTracker() {
   const [goals, setGoals] = useState<Goal[]>([]);
   const [progressForms, setProgressForms] = useState<{[key: string]: { value: string; timestamp: string; note: string }}>({});
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -132,23 +133,22 @@ export default function GoalTracker() {
 
   const addProgressUpdate = async (goalId: string) => {
     try {
-      let value = progressForms[goalId]?.value;
-      
-      if (goalId === 'aura') {
-        value = `Date #${(goals.find(g => g.id === 'aura')?.progress.length || 0) + 1}`;
-      }
-
-      if (!value && goalId !== 'aura') {
-        console.error('No value provided for progress update');
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        setError('Please sign in to add progress');
         return;
       }
 
-      console.log('Attempting to add progress update:', {
-        goal_id: goalId,
-        value,
-        timestamp: new Date(progressForms[goalId].timestamp).toISOString(),
-        note: progressForms[goalId].note
-      });
+      let value = progressForms[goalId]?.value;
+      const currentGoal = goals.find(g => g.id === goalId);
+      const currentCount = currentGoal?.progress?.length || 0;
+      
+      if (goalId === 'aura') {
+        value = `Date #${currentCount + 1}`;
+      } else if (!value) {
+        setError('No value provided for progress update');
+        return;
+      }
 
       const { error } = await supabase
         .from('progress_updates')
@@ -156,24 +156,22 @@ export default function GoalTracker() {
           goal_id: goalId,
           value,
           timestamp: new Date(progressForms[goalId].timestamp).toISOString(),
-          note: progressForms[goalId].note
+          note: progressForms[goalId].note,
+          user_id: session.user.id
         }]);
 
-      if (error) {
-        console.error('Supabase error:', error);
-        throw error;
-      }
+      if (error) throw error;
 
-      console.log('Progress update added successfully');
-
-      // Reset only this goal's form
+      // Reset form and refresh data
       setProgressForms(prev => ({
         ...prev,
         [goalId]: { value: '', timestamp: new Date().toISOString().split('T')[0], note: '' }
       }));
-      fetchProgressUpdates();
-    } catch (error) {
+      setError(null);
+      await fetchProgressUpdates();
+    } catch (error: any) {
       console.error('Error adding progress update:', error);
+      setError(error.message || 'Failed to add progress update');
     }
   };
 
@@ -220,7 +218,7 @@ export default function GoalTracker() {
         </Box>
 
         <Text size="2" color="gray" align="center" mb="4" style={{ fontStyle: 'italic' }}>
-          Become the best AI developer and most attractive guy in the world through relentless focus on product and personal development.
+          Founder of Levery raises $10 series A, is also the hyrox world champion.
         </Text>
 
         {goals.map((goal) => (
@@ -286,22 +284,9 @@ export default function GoalTracker() {
                   }} 
                   style={formStyle}
                 >
-                  {goal.id !== 'aura' ? (
-                    <input
-                      type="text"
-                      name="value"
-                      placeholder={goal.id === 'ai-product' ? "Enter number of subscribers" : "Value"}
-                      value={progressForms[goal.id]?.value || ''}
-                      onChange={(e) => setProgressForms(prev => ({
-                        ...prev,
-                        [goal.id]: { ...prev[goal.id], value: e.target.value }
-                      }))}
-                      required
-                      style={inputStyle}
-                    />
-                  ) : (
-                    <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)' }}>
-                      Date #{(goals.find(g => g.id === 'aura')?.progress.length || 0) + 1}
+                  {goal.id === 'aura' && (
+                    <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)', padding: '8px' }}>
+                      Next: Date #{(goals.find(g => g.id === 'aura')?.progress.length || 0) + 1}
                     </div>
                   )}
                   <input
@@ -318,7 +303,7 @@ export default function GoalTracker() {
                   <input
                     type="text"
                     name="note"
-                    placeholder="Note"
+                    placeholder="Name/Location"
                     value={progressForms[goal.id]?.note || ''}
                     onChange={(e) => setProgressForms(prev => ({
                       ...prev,
@@ -327,7 +312,9 @@ export default function GoalTracker() {
                     className={styles.input}
                     style={inputStyle}
                   />
-                  <button type="submit" style={buttonStyle}>Add Progress</button>
+                  <button type="submit" style={buttonStyle}>
+                    {goal.id === 'aura' ? 'Add Date' : 'Add Progress'}
+                  </button>
                 </form>
 
                 {/* Goal Image */}
