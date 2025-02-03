@@ -44,39 +44,97 @@ export default function Home() {
             }} />
             <Flex direction="column" gap="5">
               {[
-                "DESTINY - Your destiny is to become the greatest FBH Full-Body Human in human history. It will manifest in a billion people inspired by your AI products, and a billion women obsessed with your aura. This will fire up millions of others to be their best, which will create a feedback loop for me.",
-                "LIFESTYLE - Long hair, extremly cut, beard, tattoos, chain, fire fashion, centerfold GFs, $100M equity at age 33, dancing on the beach, cooking up the worlds best AI apps in the studio, teaching workout sessions to hundreds of people, playing soccer with locals, meditating on mountains, teaching hundreds of eager entrepreneurs AI development, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others.",
-                "WHAT'S IT GOING TO TAKE?",
-                "1. PEOPLE - It's going to take being around great people. Find them. help them. Only spend time with dimes, entrepreneurs, and angels. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi.",
-                "2. PRODUCT - It's going to take the purest product. AI & Aura. People should feel it in their bones when they try your AI products. People should feel your aura deep within their bones when i'm around them or their watching my content. It's one of the most rewarding feeling in the world when people are true fans of your product.",
-                "3. MILITANT - It's going to take a millitant approach. No minutes wasted. Get things done with militant precision. It's about being relentless improving your products.",
-                "4. ABUNDANCE - It's going to take playing in abundance. Always choose love over fear. Love expands you, fear shrinks you. You can do more, you can be more, you can see more.",
-                "5. ENERGY - void any places or people that are going to drain your energy.",
-                "6. ADDICTION - It's going to take an irrational addiction to the game. Building your apps and your aura needs to become an addiction.",
-                "7. PASSION - It's going to take a fire deep within you. Draw from your most painful experiences, and let them fuel your fire.",
-                "8. PATIENCE - It's going to take a respect for the game that you never ask why. The process is painful. It's scary. It's lonely, but it's devotion to the details that bring the ultimate satisfaction.",
-                "9. AUTOMATICITY - It's going to take you doing it so often every day it's the reflex, 14 hour workdays and 3 horus of painful training is a regular day in the life.",
-                "10. AGING - It's going to take the acknowledgement that we age quick and die quick so there's no point in holding back.",
-                "11. DETAILS - It's going to take an obsession with the details, the difference is in the details. It always is.",
-                "12. HIGH - It's going to take an understanding of how to get high off the work, and then consistently achieving the necessary high from it.",
-                "12. SELL - To keep your energy and motivation going at its peak, continuously sell your product to dimes (aura), and to customers (AI)."
-              ].map((text, index) => (
-                <EngravedText 
-                  key={index} 
-                  size="large"
-                  highlight={text.includes("abundance") || text.includes("militant") || text.includes("Never do what doesn't light you up")}
-                  style={{
-                    ...(text === "WHAT'S IT GOING TO TAKE?" && {
-                      fontSize: '1.5em',
+                {
+                  title: "DESTINY",
+                  description: "Your destiny is to become the greatest FBH Full-Body Human in human history. It will manifest in a billion people inspired by your AI products, and a billion women obsessed with your aura. This will fire up millions of others to be their best, which will create a feedback loop for me."
+                },
+                {
+                  title: "LIFESTYLE",
+                  description: "Long hair, extremly cut, beard, tattoos, chain, fire fashion, centerfold GFs, $100M equity at age 33, dancing on the beach, cooking up the worlds best AI apps in the studio, teaching workout sessions to hundreds of people, playing soccer with locals, meditating on mountains, teaching hundreds of eager entrepreneurs AI development, world-class meals with family by the open fire, dancing every night. All done in a way that is earnest, kind, with a demonic dark-side, that was purely in service of others."
+                },
+                {
+                  title: "WHAT'S IT GOING TO TAKE?",
+                  description: ""
+                },
+                {
+                  title: "1. PEOPLE",
+                  description: "It's going to take being around great people. Find them. help them. Only spend time with dimes, entrepreneurs, and angels. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi. Sam U."
+                },
+                {
+                  title: "2. PRODUCT",
+                  description: "It's going to take the purest product. AI & Aura. People should feel it in their bones when they try your AI products. People should feel your aura deep within their bones when i'm around them or their watching my content. It's one of the most rewarding feeling in the world when people are true fans of your product."
+                },
+                {
+                  title: "3. MILITANT",
+                  description: "It's going to take a millitant approach. No minutes wasted. Get things done with militant precision. It's about being relentless improving your products."
+                },
+                {
+                  title: "4. ABUNDANCE",
+                  description: "It's going to take playing in abundance. Always choose love over fear. Love expands you, fear shrinks you. You can do more, you can be more, you can see more."
+                },
+                {
+                  title: "5. ENERGY",
+                  description: "void any places or people that are going to drain your energy."
+                },
+                {
+                  title: "6. ADDICTION",
+                  description: "It's going to 14 hours a day refining your product. Feeling antsy if you're not refining."
+                },
+                {
+                  title: "7. PASSION",
+                  description: "It's going to take a fire deep within you. Draw from your most painful experiences, and let them fuel your fire."
+                },
+                {
+                  title: "8. PATIENCE",
+                  description: "It's going to take a respect for the game that you never ask why. The process is painful. It's scary. It's lonely, but it's devotion to the details that bring the ultimate satisfaction."
+                },
+                {
+                  title: "9. AUTOMATICITY",
+                  description: "It's going to take you doing it so often every day it's the reflex, 14 hour workdays and 3 horus of painful training is a regular day in the life."
+                },
+                {
+                  title: "10. AGING",
+                  description: "It's going to take the acknowledgement that we age quick and die quick so there's no point in holding back."
+                },
+                {
+                  title: "11. DETAILS",
+                  description: "It's going to take an obsession with the details, the difference is in the details. It's the difference from $1M to $1B."
+                },
+                {
+                  title: "12. HIGH",
+                  description: "It's going to take an understanding of how to get high off the work, and then consistently achieving the necessary high from it."
+                },
+                {
+                  title: "12. SELL",
+                  description: "To keep your energy and motivation going at its peak, continuously sell your product to dimes (aura), and to customers (AI)."
+                }
+              ].map((item, index) => (
+                <Flex key={index} direction="column" gap="2">
+                  <EngravedText 
+                    size="large"
+                    highlight={item.title.toLowerCase().includes("abundance") || 
+                               item.title.toLowerCase().includes("militant")}
+                    style={{
+                      fontSize: item.title === "WHAT'S IT GOING TO TAKE?" ? '1.5em' : '1.2em',
                       fontWeight: 'bold',
-                      textAlign: 'center',
-                      margin: '1rem 0',
-                      color: 'var(--accent-9)'
-                    })
-                  }}
-                >
-                  {text}
-                </EngravedText>
+                      marginBottom: '4px'
+                    }}
+                  >
+                    {item.title}
+                  </EngravedText>
+                  {item.description && (
+                    <EngravedText 
+                      size="small"
+                      style={{
+                        fontSize: '0.85em',
+                        opacity: 0.8,
+                        paddingLeft: '12px'
+                      }}
+                    >
+                      {item.description}
+                    </EngravedText>
+                  )}
+                </Flex>
               ))}
             </Flex>
           </Card>

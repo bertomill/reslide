@@ -150,12 +150,11 @@ export default function WarriorKingPrinciples() {
     {
       title: "During meditation",
       habits: [
-        "CHAKRAS - Move upward from base chakra focus, to heart chakra, to intuition chakra",
-        "BREATH - Focus on the breath as an anchor to the present moment",
-        "STILLNESS - Find complete stillness in both body and mind",
+        "AURA - Done right, everyone you come into contact for the day will feel your loving energy without you trying.",
+        "OXYGENATE - Breathe so deeply and consistently your whole body feels a buzz",
         "OBSERVE - Watch thoughts pass by without attachment",
         "ENERGY - Feel the energy moving through the body",
-        "GRATITUDE - End with gratitude for this moment of peace"
+        "LOVE - Tag everything that comes up with love"
       ]
     }
   ];
