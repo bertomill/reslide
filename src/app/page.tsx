@@ -106,7 +106,7 @@ export default function Home() {
                 },
                 {
                   title: "13. DETAILS",
-                  description: "It's going to take an obsession with the details, the difference is in the details. It's the difference from $1M to $1B."
+                  description: "Obsess over every detail. No one can get nearly as granular as you. It's the difference from $1M to $1B."
                 },
                 {
                   title: "14. HIGH",
