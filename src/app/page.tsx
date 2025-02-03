@@ -42,11 +42,11 @@ export default function Home() {
               opacity: 0.4,
               mixBlendMode: 'overlay',
             }} />
-            <Flex direction="column" gap="5">
+            <Flex direction="column" gap="3">
               {[
                 {
                   title: "DESTINY",
-                  description: "Your destiny is to become the greatest FBH Full-Body Human in human history. It will manifest in a billion people inspired by your AI products, and a billion women obsessed with your aura. This will fire up millions of others to be their best, which will create a feedback loop for me."
+                  description: "You will be one of the special humans of your generation. It will manifest in a billion peoples lives inspired by your AI products, and a billion women inspired with your aura. This will fire up millions be their best, which will create a feedback loop for me."
                 },
                 {
                   title: "LIFESTYLE",
@@ -58,58 +58,66 @@ export default function Home() {
                 },
                 {
                   title: "1. PEOPLE",
-                  description: "It's going to take being around great people. Find them. help them. Only spend time with dimes, entrepreneurs, and angels. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi. Sam U."
+                  description: "Be around great people. Find them. help them. Only time with dimes, entrepreneurs, angels, fired up people. Nic, Michael P, Michael L, Jeff B, Kree, Monique. David. Mom. Dad. Tomi. Sam U."
                 },
                 {
                   title: "2. PRODUCT",
-                  description: "It's going to take the purest product. AI & Aura. People should feel it in their bones when they try your AI products. People should feel your aura deep within their bones when i'm around them or their watching my content. It's one of the most rewarding feeling in the world when people are true fans of your product."
+                  description: "Purest product. AI & Aura. People feel it in their bones. It takes 16 hours a day coding AI while listening to AI podcasts. It's going to take immaculate eating and training and sleeping and practice dating girls."
                 },
                 {
-                  title: "3. MILITANT",
+                  title: "3. URGENCY",
+                  description: "Understand that AI is blowing up, and the way to catch this wave it to learn faster than anyone else. Do this by spending 12-16 hours a day coding/reading/and listening to podcasts on AI, attending every in person event you can, and pitch your ideas whenever you can."
+                },
+                {
+                  title: "4. CONFIDENCE",
+                  description: "Unwavering confidence. You will never become the $10M AI founder or go on dates with supermodels unless its absolute. Confidence comes from the work. Work all day everyday - 16 hours a day - the closer you get to perfect, the more addicted you become."
+                },
+                {
+                  title: "5. MILITANT",
                   description: "It's going to take a millitant approach. No minutes wasted. Get things done with militant precision. It's about being relentless improving your products."
                 },
                 {
-                  title: "4. ABUNDANCE",
+                  title: "6. ABUNDANCE",
                   description: "It's going to take playing in abundance. Always choose love over fear. Love expands you, fear shrinks you. You can do more, you can be more, you can see more."
                 },
                 {
-                  title: "5. ENERGY",
+                  title: "7. ENERGY",
                   description: "void any places or people that are going to drain your energy."
                 },
                 {
-                  title: "6. ADDICTION",
+                  title: "8. ADDICTION",
                   description: "It's going to 14 hours a day refining your product. Feeling antsy if you're not refining."
                 },
                 {
-                  title: "7. PASSION",
+                  title: "9. PASSION",
                   description: "It's going to take a fire deep within you. Draw from your most painful experiences, and let them fuel your fire."
                 },
                 {
-                  title: "8. PATIENCE",
+                  title: "10. PATIENCE",
                   description: "It's going to take a respect for the game that you never ask why. The process is painful. It's scary. It's lonely, but it's devotion to the details that bring the ultimate satisfaction."
                 },
                 {
-                  title: "9. AUTOMATICITY",
+                  title: "11. AUTOMATICITY",
                   description: "It's going to take you doing it so often every day it's the reflex, 14 hour workdays and 3 horus of painful training is a regular day in the life."
                 },
                 {
-                  title: "10. AGING",
+                  title: "12. AGING",
                   description: "It's going to take the acknowledgement that we age quick and die quick so there's no point in holding back."
                 },
                 {
-                  title: "11. DETAILS",
+                  title: "13. DETAILS",
                   description: "It's going to take an obsession with the details, the difference is in the details. It's the difference from $1M to $1B."
                 },
                 {
-                  title: "12. HIGH",
+                  title: "14. HIGH",
                   description: "It's going to take an understanding of how to get high off the work, and then consistently achieving the necessary high from it."
                 },
                 {
-                  title: "12. SELL",
+                  title: "14. SELL",
                   description: "To keep your energy and motivation going at its peak, continuously sell your product to dimes (aura), and to customers (AI)."
                 }
               ].map((item, index) => (
-                <Flex key={index} direction="column" gap="2">
+                <Flex key={index} direction="column" gap="1">
                   <EngravedText 
                     size="large"
                     highlight={item.title.toLowerCase().includes("abundance") || 
@@ -117,7 +125,7 @@ export default function Home() {
                     style={{
                       fontSize: item.title === "WHAT'S IT GOING TO TAKE?" ? '1.5em' : '1.2em',
                       fontWeight: 'bold',
-                      marginBottom: '4px'
+                      marginBottom: '2px'
                     }}
                   >
                     {item.title}
@@ -128,7 +136,8 @@ export default function Home() {
                       style={{
                         fontSize: '0.85em',
                         opacity: 0.8,
-                        paddingLeft: '12px'
+                        paddingLeft: '12px',
+                        marginBottom: '4px'
                       }}
                     >
                       {item.description}
