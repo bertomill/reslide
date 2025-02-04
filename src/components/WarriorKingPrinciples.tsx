@@ -47,6 +47,7 @@ export default function WarriorKingPrinciples() {
       habits: [
         "YOGA - I stretch 2 minutes",
         "MEDITATE - I meditate 30 mins+",
+        "FOUNDER - I listen to a founder podcast",
         "CREATINE - I have creatine",
         "BIG WATER -I have a big glass of water",
         "SUNLIGHT - I get my 30 minutes of sunlight",
