@@ -331,7 +331,7 @@ Continue the current entry naturally, maintaining the same style and tone. Only 
               <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--gray-4)', borderRadius: '4px', overflow: 'hidden' }}>
                 <div 
                   style={{ 
-                    width: `${Math.min((entries.recovery_score / GOALS.recovery_score) * 100, 100)}%`,
+                    width: `${Math.min((Number(entries.recovery_score || 0) / Number(GOALS.recovery_score)) * 100, 100)}%`,
                     height: '100%',
                     backgroundColor: 'var(--accent-9)',
                     transition: 'width 0.3s ease-in-out'
@@ -358,7 +358,7 @@ Continue the current entry naturally, maintaining the same style and tone. Only 
               <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--gray-4)', borderRadius: '4px', overflow: 'hidden' }}>
                 <div 
                   style={{ 
-                    width: `${Math.min((entries.hrv / GOALS.hrv) * 100, 100)}%`,
+                    width: `${Math.min((Number(entries.hrv || 0) / Number(GOALS.hrv)) * 100, 100)}%`,
                     height: '100%',
                     backgroundColor: 'var(--accent-9)',
                     transition: 'width 0.3s ease-in-out'
@@ -401,7 +401,7 @@ Continue the current entry naturally, maintaining the same style and tone. Only 
               <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--gray-4)', borderRadius: '4px', overflow: 'hidden' }}>
                 <div 
                   style={{ 
-                    width: `${Math.min((entries.hours_coded / GOALS.hours_coded) * 100, 100)}%`,
+                    width: `${Math.min((Number(entries.hours_coded || 0) / Number(GOALS.hours_coded)) * 100, 100)}%`,
                     height: '100%',
                     backgroundColor: 'var(--accent-9)',
                     transition: 'width 0.3s ease-in-out'
