@@ -228,7 +228,12 @@ Continue the current entry naturally, maintaining the same style and tone. Only 
       });
 
       if (!response.ok) {
-        throw new Error('Failed to get suggestion');
+        const data = await response.json();
+        if (data.error) {
+          console.error('Error generating suggestion:', data.error);
+          setError('Failed to get suggestion. Please try again.');
+        }
+        return;
       }
 
       const data = await response.json();
