@@ -160,10 +160,8 @@ export default function GoalTracker() {
               transition: 'all 0.2s ease',
               backgroundColor: selectedGoal === goal.id ? 'rgba(255,255,255,0.05)' : 'transparent',
               opacity: isUpdating && selectedGoal === goal.id ? 0.5 : 1,
-              '&:hover': {
-                backgroundColor: 'rgba(255,255,255,0.05)'
-              }
             }}
+            className="hover:bg-[rgba(255,255,255,0.05)]"
           >
             <Flex gap="3" align="center" style={{ flex: 1 }}>
               <EngravedText 
