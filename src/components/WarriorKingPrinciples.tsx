@@ -47,13 +47,13 @@ export default function WarriorKingPrinciples() {
       habits: [
         "YOGA - I stretch 2 minutes",
         "MEDITATE - I meditate 30 mins+",
-        "FOUNDER - I listen to a founder podcast",
+        "DELAY COFFEE - Wait 30 minutes before coffee, let your adenocene naturally clear",
+        "PODCAST - I bias my mind towards the best thoughts",
         "CREATINE - I have creatine",
         "BIG WATER -I have a big glass of water",
         "SUNLIGHT - I get my 30 minutes of sunlight",
         "WORKOUT - I never skip the morning workout or my day is ruined",
-        "FOUNDER - I get inspired by reading blogs from founders while stretching",
-        "HOT|COLD|HOT|COLD - A shot of espresso followed immediately a hot cold hot cold shower is an excellent way to get you feeling great to start work.",
+        "HOT|COLD|HOT|COLD - A hot cold hot cold shower is an excellent way to get you feeling great to start work.",
       ]
     },
     {
@@ -63,39 +63,29 @@ export default function WarriorKingPrinciples() {
         "STRETCH - Im stretching my muscles as deep as possible",
         "PLIABILITY - I'm massaging my muscles as deep as possible",
         "CONTENT -I capture one piece of content every workout",
-        "DEMON - Sometimes I let the demon out, and the demon wants to damage my body",
+        "DEMON - I let the demon out, and the demon wants damage",
         "FIND PAIN - I find the spot of most pain, and focus my energy there",
         "HIGH PUMP - I can get high off the pump, to the feeling of cumming.",
         "CADIO DAILY -I do cardio every evening otherwise I can't sleep",
-        "SADNESS - There's a twinge of sadness in my workouts, because I need them to keep myself form hurting myself otherwise",
+        "NO ONE OUT - No ones making it out today"
       ]
     },
     {
       title: "When walking",
       habits: [
-        "CLEAR MIND - I don't listen to anything - giving my mind some time to clear, and significantly reducing my anxiety."
+        "CLEAR MIND - Give your mind time to clean, do the necessary work to reset."
       ]
     },
     {
       title: "At work",
       habits: [
-        "CODE EVERYDAY - If i'm not coding every day, I lose all the momemntum I built",
-        "GRANULAR - I start to get into my best work when i'm slowly, methodically going through one line of code, one scentence, one detail at a time. The extreme granularity creates a deep sense of flow.",
-        "TIME ON TASK  - I put in 10 hours a day, 7 days a week, for years on end on AI app dev.",
-        "FIND DOPAMINE - When you hit the wall in work don't panic, scroll social media for a few mins and you're back.",
-        "STUDIO - I'm in the studio - cooking uwp insanely great AI products.",
-        "CURIOSITY - I let curiosity be my engine and rudder.",
-        "FAST TIL NOON - I fast til noon. It does miracles for my focus and my skin.",
-        "HIGH FLOW - I can get high off a flowy work session - to the point of euphoria.",
+        "ALL DAY - I do it all day 7 days a week",
+        "DETAIL - I obsess over every detail",
+        "FIND DOPE - Dopamine lets you continue",
         "1 COFFEE - I have 1 or less coffees or it will ruin my sleep",
-        "SAVE - I never waste money, debt is a chain",
         "NAP - Naps save my life",
-        "DNCE&CLEAN - You wil get anxious when things are not going well. The best break and i've done this a thousand times is to dance and clean, when your body has cortisol, you need to move/shake to dispense it.",
-        "FRONTIER - I relentlessly push to be on the froniter of knowlegde",
-        "DISTRACTION - I avoid distraction that pushes my work out of the top spot, or I'll waste this valuable type of thinking on the distraction instead. (Exception: Don't avoid love.)",
-        "COLLEAGUES - Colleagues don't just affect your work, though; they also affect you. So work with people you want to become like, because you will.",
-        "OUTLIER - I boldly chase outlier ideas",
-        "ME - I make what I would want",
+        "DNCE&CLEAN - When i'ms tressed I get up and move",
+        "FOCUS - The only thing that matters is progressing the task",
       ]
     },
     {
@@ -108,23 +98,20 @@ export default function WarriorKingPrinciples() {
     {
       title: "With others",
       habits: [
-        "IMPRESSION - The very first impression you leave on someone is often the most important one you'll get.",
-        "LOVE - Just be an addict for making friendships. Let all the other actions fall into place naturally. The best friendships you've ever made are the ones where you can just turn off your thinking and be 100% authentic.",
+        "10X - I don't give a fuck who you are, you're getting 10X from me.",
+        "LISTEN - I listen my ass of. The greastest gift you can give someone is your attention..",
         "NEVER HEADPHONES - I never wear headphones around people",
-        "TALK - I try to not even talk to people unless they energize me, sorry, my time is too short.",
+        "ENERGY - Keep your energy so positive it attracts other high energy people.",
         "SAY YES - I always say yes to possibility",
-        "REALEST - The hottest girls want te be with me because I'm the realest person they've ever met.",
-        "DIMES - Approach dimes, it's a win-win, huge confidence, or huge motivation",
-        "GET REPS -  Let the dates accumulate, and watch them get easier and more enjoyable."
+        "GO FIRST - I introduce myself first."
       ]
     },
     {
       title: "In the kitchen",
       habits: [
-        "MILITANT - I like i'm in the military",
-        "FASTING - I enjoy food through fasting, not through added flavoring",
         "INSPIRATION - I'll watch a fitness video with dinner if i'm alone",
         "CLEAN - I eat extremely clean otherwise I get anxiety later in the day.",
+        "PROTEIN - I eat really clean protein",
         "DAIRY - I don't eat dairy, it creates the microbiome that craves more",
         "GLUTEN - I don't eat gluten, it creates the microbiome that craves more",
         "SUGAR - I don't eat added sugar, it creates the microbiome that craves more",
@@ -136,7 +123,7 @@ export default function WarriorKingPrinciples() {
       title: "Before bed",
       habits: [
         "DIGESTED - I need to give my body at lease a few hours to digest before I sleep ",
-        "READ - I read for 30 minutes",
+        "READ - I read for 30 minutes, this re-weights my mental parameters toewards greatness",
         "STRETCH - I stretch for two minutes",
         "PRAYER - I take the time to pray before bed, becasue it works"
       ]

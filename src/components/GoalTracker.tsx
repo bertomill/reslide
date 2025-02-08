@@ -1,351 +1,248 @@
 'use client';
 
-import { useState, useEffect, CSSProperties } from 'react';
-import { Card, Text, Heading, Flex, Box } from '@radix-ui/themes';
-import Image from 'next/image';
+import { Card, Text, Flex, Button, TextField } from '@radix-ui/themes';
+import { useState, useEffect } from 'react';
+import { EngravedText } from './EngravedText';
 import { createBrowserClient } from '@supabase/ssr';
-import { 
-  StarIcon, 
-  EyeOpenIcon, 
-  HeartIcon, 
-  MoonIcon, 
-  PersonIcon,
-  TriangleUpIcon,
-  HeartFilledIcon 
-} from '@radix-ui/react-icons';
-import styles from './GoalTracker.module.css';
-
-type ProgressUpdate = {
-  value: string;
-  timestamp: string;
-  note?: string;
-};
-
-type Metric = {
-  title: string;
-  target: string;
-  description: string;
-  progress: ProgressUpdate[];
-};
 
 type Goal = {
   id: string;
   title: string;
-  imageUrl: string;
-  progress: ProgressUpdate[];
-  description?: string;
-  metrics?: Metric[];
+  target: string;
+  current: string;
+  latestUpdate?: GoalUpdate;
+};
+
+type GoalUpdate = {
+  id: string;
+  previous_value: string;
+  new_value: string;
+  note?: string;
+  created_at: string;
 };
 
 export default function GoalTracker() {
   const [goals, setGoals] = useState<Goal[]>([]);
-  const [progressForms, setProgressForms] = useState<{[key: string]: { value: string; timestamp: string; note: string }}>({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+  const [newValue, setNewValue] = useState('');
+  const [updateNote, setUpdateNote] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
-  const staticGoals: Goal[] = [
-    // Main Goals
-    {
-      id: "ai-product",
-      title: "1. Get 100 investment researchers subscribed to Levery",
-      imageUrl: "/Ivan.png",
-      progress: [],
-      description: "Leverage Toronto in-person meetups, leverage 12 hour days coding, leverage your finance connections within CIBC, leverage your relationship with Evident, leverage your unmatched enery. Leverage content.",
-      metrics: [
-        {
-          title: "Sleep Score",
-          target: "80%",
-          description: "An indicator your mind is operating at its peak over time",
-          progress: []
-        },
-        {
-          title: "Deep Focus Hours",
-          target: "10 hours/day",
-          description: "A signal you are at the forefront of the AI field",
-          progress: []
-        }
-      ]
-    },
-    {
-      id: "aura",
-      title: "2. Go on 50 dates with dimes in 2025",
-      imageUrl: "/dates.png",
-      progress: [],
-      description: "Leverage unity to become the most cut, leverage meditation to become the most kind, leverage nutrition to glow, leverage dance to meet girls, leverage social media to create dating opportunity",
-      metrics: [
-        {
-          title: "Hyrox Time",
-          target: "Sub 70 minutes",
-          description: "Indicates your body is in the absolute best shape",
-          progress: []
-        },
-        {
-          title: "Meditation Hours",
-          target: "500 hours",
-          description: "Indicates your mind is at its most empathetic",
-          progress: []
-        }
-      ]
-    }
-  ];
-
-  const fetchProgressUpdates = async () => {
+  const fetchGoals = async () => {
     try {
-      const goalsWithProgress = await Promise.all(
-        staticGoals.map(async (goal) => {
-          const { data: progressData, error: progressError } = await supabase
-            .from('progress_updates')
+      const { data: goalsData, error: goalsError } = await supabase
+        .from('goals_2025')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (goalsError) throw goalsError;
+
+      const goalsWithUpdates = await Promise.all(
+        goalsData.map(async (goal) => {
+          const { data: updates, error: updatesError } = await supabase
+            .from('goals_2025_updates')
             .select('*')
             .eq('goal_id', goal.id)
-            .order('timestamp', { ascending: false });
+            .order('created_at', { ascending: false })
+            .limit(1);
 
-          if (progressError) throw progressError;
+          if (updatesError) throw updatesError;
 
           return {
             ...goal,
-            progress: progressData || []
+            latestUpdate: updates?.[0]
           };
         })
       );
 
-      setGoals(goalsWithProgress);
+      setGoals(goalsWithUpdates);
     } catch (error) {
-      console.error('Error fetching progress updates:', error);
+      console.error('Error fetching goals:', error);
+    }
+  };
+
+  const handleUpdateGoal = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isUpdating) return;
+
+    const goalId = selectedGoal;
+    if (!goalId) return;
+
+    const goal = goals.find(g => g.id === goalId);
+    if (!goal || !newValue.trim()) {
+      console.error('Missing goal or new value');
+      return;
+    }
+
+    setIsUpdating(true);
+
+    try {
+      // First update the goal
+      const { error: goalError } = await supabase
+        .from('goals_2025')
+        .update({ current: newValue.trim() })
+        .eq('id', goalId);
+
+      if (goalError) throw goalError;
+
+      // Then create the update record
+      const { error: updateError } = await supabase
+        .from('goals_2025_updates')
+        .insert({
+          goal_id: goalId,
+          previous_value: goal.current,
+          new_value: newValue.trim(),
+          note: updateNote.trim() || null
+        });
+
+      if (updateError) throw updateError;
+
+      // Reset form state after successful update
+      setNewValue('');
+      setUpdateNote('');
+      setSelectedGoal(null);
+      await fetchGoals();
+    } catch (error) {
+      console.error('Error updating goal:', error);
     } finally {
-      setIsLoading(false);
+      setIsUpdating(false);
     }
   };
 
   useEffect(() => {
-    fetchProgressUpdates();
-    // Initialize progress forms for each goal
-    const initialForms = staticGoals.reduce((acc, goal) => ({
-      ...acc,
-      [goal.id]: { value: '', timestamp: new Date().toISOString().split('T')[0], note: '' }
-    }), {});
-    setProgressForms(initialForms);
+    fetchGoals();
   }, []);
 
-  const addProgressUpdate = async (goalId: string) => {
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        setError('Please sign in to add progress');
-        return;
-      }
-
-      let value = progressForms[goalId]?.value;
-      const currentGoal = goals.find(g => g.id === goalId);
-      const currentCount = currentGoal?.progress?.length || 0;
-      
-      if (goalId === 'aura') {
-        value = `Date #${currentCount + 1}`;
-      } else if (!value) {
-        setError('No value provided for progress update');
-        return;
-      }
-
-      const { error } = await supabase
-        .from('progress_updates')
-        .insert([{
-          goal_id: goalId,
-          value,
-          timestamp: new Date(progressForms[goalId].timestamp).toISOString(),
-          note: progressForms[goalId].note,
-          user_id: session.user.id
-        }]);
-
-      if (error) throw error;
-
-      // Reset form and refresh data
-      setProgressForms(prev => ({
-        ...prev,
-        [goalId]: { value: '', timestamp: new Date().toISOString().split('T')[0], note: '' }
-      }));
-      setError(null);
-      await fetchProgressUpdates();
-    } catch (error: any) {
-      console.error('Error adding progress update:', error);
-      setError(error.message || 'Failed to add progress update');
-    }
-  };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  const formStyle: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
-    marginTop: '10px',
-    padding: '8px',
-    borderRadius: '6px',
-    backgroundColor: 'var(--gray-1)',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-  };
-
-  const inputStyle: CSSProperties = {
-    padding: '6px',
-    borderRadius: '3px',
-    border: '1px solid var(--gray-4)',
-    fontSize: '12px',
-    backgroundColor: 'var(--gray-3)',
-    color: 'var(--gray-12)',
-  };
-
-  const buttonStyle: CSSProperties = {
-    padding: '8px',
-    borderRadius: '3px',
-    backgroundColor: 'var(--blue-9)',
-    color: 'white',
-    border: 'none',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    fontSize: '12px'
-  };
-
   return (
-    <Card size="3" style={{ maxWidth: 500, margin: '0 auto' }}>
-      <Flex direction="column" gap="1" p="2">
-        <Box mb="1">
-          <Heading size="6" align="center" mb="1">2025 Goals</Heading>
-        </Box>
+    <Card style={{ 
+      background: 'linear-gradient(145deg, #1a1a1a, #111111)',
+      padding: '1.5rem',
+      borderRadius: '12px',
+      boxShadow: 'inset 2px 2px 4px rgba(255,255,255,0.05), inset -2px -2px 4px rgba(0,0,0,0.5)',
+      color: '#fff',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.15"/%3E%3C/svg%3E")',
+        opacity: 0.3,
+        mixBlendMode: 'overlay',
+      }} />
 
-        <Text size="2" color="gray" align="center" mb="4" style={{ fontStyle: 'italic' }}>
-          Founder of Levery raises $10 series A, is also the hyrox world champion.
-        </Text>
+      <Flex direction="column" gap="2">
+        <EngravedText size="large" style={{ fontSize: '1.2em', marginBottom: '8px' }}>
+          2025 Goals
+        </EngravedText>
 
         {goals.map((goal) => (
-          <Box key={goal.id}>
-            <Box 
-              style={{
-                padding: '16px',
-                borderRadius: 'var(--radius-2)',
-                border: '1px solid var(--gray-5)',
-                backgroundColor: 'var(--gray-2)',
-                marginBottom: '16px'
-              }}
-            >
-              <Flex direction="column" gap="3">
-                {/* Goal Title */}
-                <Flex align="center" gap="2">
-                  <Box>
-                    {goal.id === 'aura' && <HeartFilledIcon width="20" height="20" />}
-                    {goal.id === 'ai-product' && <TriangleUpIcon width="20" height="20" />}
-                  </Box>
-                  <Heading size="4">{goal.title}</Heading>
-                </Flex>
+          <Flex 
+            key={goal.id} 
+            align="center" 
+            justify="between"
+            onClick={() => !isUpdating && setSelectedGoal(selectedGoal === goal.id ? null : goal.id)}
+            style={{
+              borderBottom: '1px solid rgba(255,255,255,0.1)',
+              paddingBottom: '4px',
+              marginBottom: '4px',
+              cursor: isUpdating ? 'not-allowed' : 'pointer',
+              padding: '8px',
+              borderRadius: '4px',
+              transition: 'all 0.2s ease',
+              backgroundColor: selectedGoal === goal.id ? 'rgba(255,255,255,0.05)' : 'transparent',
+              opacity: isUpdating && selectedGoal === goal.id ? 0.5 : 1,
+              '&:hover': {
+                backgroundColor: 'rgba(255,255,255,0.05)'
+              }
+            }}
+          >
+            <Flex gap="3" align="center" style={{ flex: 1 }}>
+              <EngravedText 
+                size="small"
+                style={{
+                  fontSize: '0.9em',
+                  fontWeight: 'bold',
+                }}
+              >
+                {goal.title}
+              </EngravedText>
+              <EngravedText 
+                size="small"
+                style={{
+                  fontSize: '0.8em',
+                  opacity: 0.7
+                }}
+              >
+                {goal.current} / {goal.target}
+              </EngravedText>
+            </Flex>
 
-                {/* Goal Description */}
-                {goal.description && (
-                  <Text size="2" color="gray" style={{ fontStyle: 'italic' }}>
-                    {goal.description}
-                  </Text>
-                )}
+            {goal.latestUpdate?.note && (
+              <EngravedText 
+                size="small"
+                style={{
+                  fontSize: '0.8em',
+                  opacity: 0.6,
+                  fontStyle: 'italic'
+                }}
+              >
+                {goal.latestUpdate.note}
+              </EngravedText>
+            )}
 
-                {/* Supporting Metrics */}
-                {goal.metrics && goal.metrics.length > 0 && (
-                  <Box style={{ backgroundColor: 'var(--gray-3)', padding: '12px', borderRadius: '6px' }}>
-                    <Text size="2" weight="bold" mb="2">Supporting Metrics:</Text>
-                    {goal.metrics.map((metric, idx) => (
-                      <Flex key={idx} direction="column" gap="1" mb="2">
-                        <Text size="2" weight="bold" style={{ color: 'var(--blue-9)' }}>
-                          {metric.title}: {metric.target}
-                        </Text>
-                        <Text size="1" color="gray">
-                          {metric.description}
-                        </Text>
-                      </Flex>
-                    ))}
-                  </Box>
-                )}
-
-                {/* Progress Updates */}
-                <Flex direction="column" gap="2">
-                  {goal.progress.map((update, idx) => (
-                    <Text key={idx} size="2" style={{ color: 'var(--gray-11)' }}>
-                      {update.value} - {new Date(update.timestamp).toLocaleDateString()} 
-                      {update.note && ` (${update.note})`}
-                    </Text>
-                  ))}
-                </Flex>
-
-                {/* Progress Form */}
-                <form 
-                  onSubmit={(e) => { 
-                    e.preventDefault(); 
-                    addProgressUpdate(goal.id); 
-                  }} 
-                  style={formStyle}
-                >
-                  {goal.id === 'aura' && (
-                    <div style={{ ...inputStyle, backgroundColor: 'var(--gray-3)', padding: '8px' }}>
-                      Next: Date #{(goals.find(g => g.id === 'aura')?.progress.length || 0) + 1}
-                    </div>
-                  )}
-                  <input
-                    type="date"
-                    name="timestamp"
-                    value={progressForms[goal.id]?.timestamp || new Date().toISOString().split('T')[0]}
-                    onChange={(e) => setProgressForms(prev => ({
-                      ...prev,
-                      [goal.id]: { ...prev[goal.id], timestamp: e.target.value }
-                    }))}
-                    required
-                    style={inputStyle}
-                  />
-                  <input
-                    type="text"
-                    name="note"
-                    placeholder="Name/Location"
-                    value={progressForms[goal.id]?.note || ''}
-                    onChange={(e) => setProgressForms(prev => ({
-                      ...prev,
-                      [goal.id]: { ...prev[goal.id], note: e.target.value }
-                    }))}
-                    className={styles.input}
-                    style={inputStyle}
-                  />
-                  <button type="submit" style={buttonStyle}>
-                    {goal.id === 'aura' ? 'Add Date' : 'Add Progress'}
-                  </button>
-                </form>
-
-                {/* Goal Image */}
-                {goal.imageUrl && (
-                  <Box
+            {selectedGoal === goal.id && (
+              <form onSubmit={handleUpdateGoal}>
+                <Flex gap="2" align="center" style={{ marginLeft: '8px' }}>
+                  <TextField.Input 
+                    size="1"
+                    placeholder="New value"
+                    value={newValue}
+                    onChange={(e) => setNewValue(e.target.value)}
+                    disabled={isUpdating}
                     style={{
-                      position: 'relative',
-                      width: '100%',
-                      height: '150px',
-                      borderRadius: 'var(--radius-2)',
-                      overflow: 'hidden',
-                      marginTop: '4px'
+                      background: 'rgba(255,255,255,0.1)',
+                      border: 'none',
+                      color: 'white'
+                    }}
+                  />
+                  <TextField.Input 
+                    size="1"
+                    placeholder="Note"
+                    value={updateNote}
+                    onChange={(e) => setUpdateNote(e.target.value)}
+                    disabled={isUpdating}
+                    style={{
+                      background: 'rgba(255,255,255,0.1)',
+                      border: 'none',
+                      color: 'white'
+                    }}
+                  />
+                  <Button 
+                    type="submit"
+                    size="1" 
+                    disabled={isUpdating || !newValue.trim()}
+                    style={{
+                      background: 'rgba(255,255,255,0.1)',
+                      border: 'none',
+                      cursor: isUpdating || !newValue.trim() ? 'not-allowed' : 'pointer',
+                      opacity: isUpdating || !newValue.trim() ? 0.5 : 1
                     }}
                   >
-                    <Image
-                      src={goal.imageUrl}
-                      alt={goal.title}
-                      fill
-                      style={{ 
-                        objectFit: 'cover',
-                        objectPosition: goal.id === 'ai-product' ? 'center 30%' : 
-                                       goal.id === 'aura' ? 'center 15%' : 
-                                       'center center'
-                      }}
-                      sizes="(max-width: 500px) 100vw, 500px"
-                    />
-                  </Box>
-                )}
-              </Flex>
-            </Box>
-          </Box>
+                    {isUpdating ? 'Updating...' : 'Update'}
+                  </Button>
+                </Flex>
+              </form>
+            )}
+          </Flex>
         ))}
       </Flex>
     </Card>

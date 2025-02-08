@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Card, Text, Button, TextArea, Flex, TextField, Grid, IconButton } from '@radix-ui/themes';
 import { createBrowserClient } from '@supabase/ssr';
 import { LightningBoltIcon } from '@radix-ui/react-icons';
-import Together from "together-ai";
 
 const PROMPTS = {
   gratitude: "What am I grateful for?",
@@ -15,7 +14,8 @@ const PROMPTS = {
   beyond_today: "What will I do today to go above and beyond for others?",
   fitness: "How am I going to work my fitness today?",
   nutrition: "How am I going to eat optimally today?",
-  craft: "How am I going to work my craft today?"
+  craft: "How am I going to work my craft today?",
+  perfect_day: "What is my perfect day today?"
 };
 
 const GOALS = {
@@ -25,10 +25,12 @@ const GOALS = {
 };
 
 type JournalEntry = {
-  recovery_score: number;
-  hrv: number;
-  sleep_score: number;
-  hours_coded: number;
+  recovery_score: string;
+  hrv: string;
+  sleep_score: string;
+  hours_coded: string;
+  published_blog_post: boolean;
+  published_application: boolean;
   gratitude: string;
   scared_yesterday: string;
   beyond_yesterday: string;
@@ -38,24 +40,21 @@ type JournalEntry = {
   fitness: string;
   nutrition: string;
   craft: string;
+  perfect_day: string;
   created_at?: string;
   user_id?: string;
 };
 
-// Initialize Together client outside the component
-const together = new Together({ 
-  apiKey: '650442c69fb97cb64cf9eb9c2ff81593ea52be60ab3cb641ed50ac5921838f85'
-});
-
-// Add this type at the top with other type definitions
 type PromptKey = keyof typeof PROMPTS;
 
 export default function Journal() {
   const [entries, setEntries] = useState<JournalEntry>({
-    recovery_score: 0,
-    hrv: 0,
-    sleep_score: 0,
-    hours_coded: 0,
+    recovery_score: '',
+    hrv: '',
+    sleep_score: '',
+    hours_coded: '',
+    published_blog_post: false,
+    published_application: false,
     gratitude: '',
     scared_yesterday: '',
     beyond_yesterday: '',
@@ -64,7 +63,8 @@ export default function Journal() {
     beyond_today: '',
     fitness: '',
     nutrition: '',
-    craft: ''
+    craft: '',
+    perfect_day: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -81,10 +81,12 @@ export default function Journal() {
   // Reset form on mount
   useEffect(() => {
     setEntries({
-      recovery_score: 0,
-      hrv: 0,
-      sleep_score: 0,
-      hours_coded: 0,
+      recovery_score: '',
+      hrv: '',
+      sleep_score: '',
+      hours_coded: '',
+      published_blog_post: false,
+      published_application: false,
       gratitude: '',
       scared_yesterday: '',
       beyond_yesterday: '',
@@ -93,7 +95,8 @@ export default function Journal() {
       beyond_today: '',
       fitness: '',
       nutrition: '',
-      craft: ''
+      craft: '',
+      perfect_day: ''
     });
     setError('');
     setSuccessMessage('');
@@ -122,6 +125,8 @@ export default function Journal() {
           hrv: entries.hrv,
           sleep_score: entries.sleep_score,
           hours_coded: entries.hours_coded,
+          published_blog_post: entries.published_blog_post,
+          published_application: entries.published_application,
           gratitude: entries.gratitude,
           scared_yesterday: entries.scared_yesterday,
           beyond_yesterday: entries.beyond_yesterday,
@@ -130,7 +135,8 @@ export default function Journal() {
           beyond_today: entries.beyond_today,
           fitness: entries.fitness,
           nutrition: entries.nutrition,
-          craft: entries.craft
+          craft: entries.craft,
+          perfect_day: entries.perfect_day
         }]);
 
       if (supabaseError) throw supabaseError;
@@ -138,10 +144,12 @@ export default function Journal() {
       setSuccessMessage('Journal entry saved successfully!');
       // Clear form after successful submission
       setEntries({
-        recovery_score: 0,
-        hrv: 0,
-        sleep_score: 0,
-        hours_coded: 0,
+        recovery_score: '',
+        hrv: '',
+        sleep_score: '',
+        hours_coded: '',
+        published_blog_post: false,
+        published_application: false,
         gratitude: '',
         scared_yesterday: '',
         beyond_yesterday: '',
@@ -150,7 +158,8 @@ export default function Journal() {
         beyond_today: '',
         fitness: '',
         nutrition: '',
-        craft: ''
+        craft: '',
+        perfect_day: ''
       });
     } catch (err) {
       console.error('Error saving journal entry:', err);
@@ -181,93 +190,115 @@ export default function Journal() {
   };
 
   const getSuggestion = async (promptKey: PromptKey) => {
-    setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: true }));
-    setIsStreaming(true);
-    let fullSuggestion = '';
-    
     try {
-      const recentEntries = await getRecentEntries();
-      
-      // Format recent entries with dates for better context
-      const relevantHistory = recentEntries
-        .map(entry => {
-          const date = new Date(entry.created_at || '').toLocaleDateString();
-          return `${date} - ${PROMPTS[promptKey]}: ${entry[promptKey]}
-          Recovery: ${entry.recovery_score}%, HRV: ${entry.hrv}, Sleep: ${entry.sleep_score}%, Hours Coded: ${entry.hours_coded}hrs`;
-        })
-        .join('\n\n');
+      setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: true }));
 
-      const systemPrompt = `I am an ambitious athlete-entrepreneur combining elite fitness with innovative AI development.
-      My key traits:
-      - I code AI apps 10+ hours daily with militant focus
-      - I maintain peak physical condition through intense workouts
-      - I meditate deeply and practice mindfulness
-      - I'm building revolutionary AI products while cultivating an inspiring presence
-      - I value authenticity, discipline, and continuous improvement
-      
-      Here are my recent journal entries for context:
-      
-      ${relevantHistory}`;
+      // Fetch last 3 entries for this prompt
+      const { data: recentEntries, error: fetchError } = await supabase
+        .from('journal_entries')
+        .select(promptKey)
+        .order('created_at', { ascending: false })
+        .limit(3);
 
-      const promptTemplates: Record<PromptKey, string> = {
-        gratitude: "Based on my journey and recent entries, write a specific 40-word gratitude reflection focused on my progress in tech and fitness: ",
-        scared_yesterday: "Analyzing my growth pattern and recent challenges in building AI products and maintaining peak fitness, write a focused 40-word reflection about: ",
-        beyond_yesterday: "Given my dedication to both tech and fitness excellence, write a specific 40-word response about how I went beyond by: ",
-        areas_to_improve: "Considering my dual focus on AI development and physical optimization, write a precise 40-word response about what I can refine: ",
-        scared_today: "Understanding my ambitious goals in tech and fitness, write a specific 40-word response about embracing necessary discomfort: ",
-        beyond_today: "With my vision of becoming a legendary tech-fitness hybrid, write a focused 40-word plan about: ",
-        fitness: "As someone pursuing both mental and physical excellence, write a specific 40-word workout plan considering: ",
-        nutrition: "Given my need for peak mental and physical performance, write a specific 40-word nutrition plan that: ",
-        craft: "As an AI developer with a unique fitness-meditation background, write a focused 40-word plan about: "
-      };
+      if (fetchError) throw fetchError;
 
-      const basePrompt = promptTemplates[promptKey] || 
-        "Based on my unique journey combining tech and fitness, write a specific 40-word response about: ";
-      
-      const response = await together.chat.completions.create({
-        messages: [
-          {
-            role: "system",
-            content: systemPrompt
-          },
-          {
-            role: "user",
-            content: `${basePrompt} ${PROMPTS[promptKey]}. Keep response under 40 words and make it highly specific to my journey.`
-          }
-        ],
-        model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-        max_tokens: 60,
-        temperature: 0.8,
-        top_p: 0.9,
-        top_k: 50,
-        repetition_penalty: 1,
-        stream: true
+      // Get current text in the field
+      const currentText = entries[promptKey];
+
+      // Create context from recent entries and current text
+      const recentContext = recentEntries
+        ?.map(entry => entry[promptKey as keyof typeof entry])
+        .filter(Boolean)
+        .join('\n');
+
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: `You are continuing a journal entry. Here are some recent similar entries for context:
+
+${recentContext}
+
+The current entry starts with:
+${currentText}
+
+Continue the current entry naturally, maintaining the same style and tone. Only provide the continuation, do not repeat what was already written.`,
+          max_tokens: 150
+        }),
       });
 
-      // Handle streaming response
-      for await (const token of response) {
-        const newContent = token.choices[0]?.delta?.content || '';
-        fullSuggestion += newContent;
-        
-        // Update the actual text area instead of showing a separate suggestion
-        setEntries(prev => ({
-          ...prev,
-          [promptKey]: fullSuggestion
-        }));
+      if (!response.ok) {
+        throw new Error('Failed to get suggestion');
       }
 
-    } catch (error) {
-      console.error('Error getting AI suggestion:', error);
-      // Show error in the text area
+      const data = await response.json();
+      
+      // Append the suggestion to the current text
       setEntries(prev => ({
         ...prev,
-        [promptKey]: "Sorry, I couldn't generate a suggestion right now. Please try again."
+        [promptKey]: (prev[promptKey] + ' ' + data.text).trim()
       }));
+
+    } catch (error) {
+      console.error('Error getting suggestion:', error);
+      setError('Failed to get suggestion. Please try again.');
     } finally {
       setIsLoadingSuggestion(prev => ({ ...prev, [promptKey]: false }));
-      setIsStreaming(false);
     }
   };
+
+  const questions = [
+    {
+      id: 'gratitude',
+      question: PROMPTS.gratitude,
+      value: entries.gratitude,
+    },
+    {
+      id: 'scared_yesterday',
+      question: PROMPTS.scared_yesterday,
+      value: entries.scared_yesterday,
+    },
+    {
+      id: 'beyond_yesterday',
+      question: PROMPTS.beyond_yesterday,
+      value: entries.beyond_yesterday,
+    },
+    {
+      id: 'areas_to_improve',
+      question: PROMPTS.areas_to_improve,
+      value: entries.areas_to_improve,
+    },
+    {
+      id: 'scared_today',
+      question: PROMPTS.scared_today,
+      value: entries.scared_today,
+    },
+    {
+      id: 'beyond_today',
+      question: PROMPTS.beyond_today,
+      value: entries.beyond_today,
+    },
+    {
+      id: 'fitness',
+      question: PROMPTS.fitness,
+      value: entries.fitness,
+    },
+    {
+      id: 'nutrition',
+      question: PROMPTS.nutrition,
+      value: entries.nutrition,
+    },
+    {
+      id: 'craft',
+      question: PROMPTS.craft,
+      value: entries.craft,
+    },
+    {
+      id: 'perfect_day',
+      question: PROMPTS.perfect_day,
+      value: entries.perfect_day,
+    },
+  ];
 
   return (
     <Card size="3">
@@ -292,7 +323,7 @@ export default function Journal() {
                   value={entries.recovery_score || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
-                    recovery_score: Number(e.target.value)
+                    recovery_score: e.target.value
                   }))}
                   placeholder="Enter score"
                 />
@@ -319,7 +350,7 @@ export default function Journal() {
                   value={entries.hrv || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
-                    hrv: Number(e.target.value)
+                    hrv: e.target.value
                   }))}
                   placeholder="Enter HRV"
                 />
@@ -345,7 +376,7 @@ export default function Journal() {
                   value={entries.sleep_score || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
-                    sleep_score: Number(e.target.value)
+                    sleep_score: e.target.value
                   }))}
                   placeholder="Enter score"
                 />
@@ -362,7 +393,7 @@ export default function Journal() {
                   value={entries.hours_coded || ''}
                   onChange={(e) => setEntries(prev => ({
                     ...prev,
-                    hours_coded: Number(e.target.value)
+                    hours_coded: e.target.value
                   }))}
                   placeholder="Enter hours"
                 />
@@ -380,30 +411,74 @@ export default function Journal() {
             </Flex>
           </Grid>
 
-          {Object.entries(PROMPTS).map(([key, prompt]) => (
-            <Flex key={key} direction="column" gap="2">
+          <Grid columns="2" gap="4" width="auto">
+            <Flex direction="column" gap="2">
               <Flex justify="between" align="center">
-                <Text size="2" weight="bold">{prompt}</Text>
+                <Text size="2">Published Blog Post?</Text>
+              </Flex>
+              <Button
+                size="2"
+                variant={entries.published_blog_post ? "solid" : "outline"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEntries(prev => ({ ...prev, published_blog_post: !prev.published_blog_post }));
+                }}
+                style={{
+                  background: entries.published_blog_post ? '#22c55e' : 'transparent',
+                  color: entries.published_blog_post ? 'white' : 'currentColor',
+                  cursor: 'pointer'
+                }}
+              >
+                {entries.published_blog_post ? 'Yes ✓' : 'No'}
+              </Button>
+            </Flex>
+
+            <Flex direction="column" gap="2">
+              <Flex justify="between" align="center">
+                <Text size="2">Published Application?</Text>
+              </Flex>
+              <Button
+                size="2"
+                variant={entries.published_application ? "solid" : "outline"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEntries(prev => ({ ...prev, published_application: !prev.published_application }));
+                }}
+                style={{
+                  background: entries.published_application ? '#22c55e' : 'transparent',
+                  color: entries.published_application ? 'white' : 'currentColor',
+                  cursor: 'pointer'
+                }}
+              >
+                {entries.published_application ? 'Yes ✓' : 'No'}
+              </Button>
+            </Flex>
+          </Grid>
+
+          {questions.map(({ id, question, value }) => (
+            <Flex key={id} direction="column" gap="2">
+              <Flex justify="between" align="center">
+                <Text size="2" weight="bold">{question}</Text>
                 <IconButton 
                   size="1" 
                   variant="soft" 
-                  onClick={() => getSuggestion(key as PromptKey)}
-                  disabled={isLoadingSuggestion[key as PromptKey]}
+                  onClick={() => getSuggestion(id as PromptKey)}
+                  disabled={isLoadingSuggestion[id as PromptKey]}
                 >
                   <LightningBoltIcon />
                 </IconButton>
               </Flex>
               <TextArea
-                value={entries[key as keyof JournalEntry]}
+                value={value}
                 onChange={(e) => setEntries(prev => ({
                   ...prev,
-                  [key]: e.target.value
+                  [id]: e.target.value
                 }))}
                 placeholder="Write your thoughts here..."
                 style={{ 
                   minHeight: '100px', 
                   lineHeight: '1.5',
-                  opacity: isLoadingSuggestion[key as PromptKey] ? 0.7 : 1 
+                  opacity: isLoadingSuggestion[id as PromptKey] ? 0.7 : 1 
                 }}
               />
             </Flex>
