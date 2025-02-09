@@ -115,11 +115,13 @@ const ExponentialChart = () => {
                 }} 
               />
               <Line
+                key="exponential-line"
                 type="monotone"
                 dataKey="y"
                 stroke="var(--blue-9)"
                 dot={({ cx, cy, payload }: { cx: number; cy: number; payload: any }) => (
                   <svg 
+                    key={`dot-${payload.x}`}
                     x={cx - 4} 
                     y={cy - 4} 
                     width={8} 
