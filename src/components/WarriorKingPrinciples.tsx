@@ -48,7 +48,6 @@ export default function WarriorKingPrinciples() {
         "YOGA - I stretch 2 minutes",
         "MEDITATE - I meditate 30 mins+",
         "DELAY COFFEE - Wait 30 minutes before coffee, let your adenocene naturally clear",
-        "PODCAST - I bias my mind towards the best thoughts",
         "CREATINE - I have creatine",
         "BIG WATER -I have a big glass of water",
         "SUNLIGHT - I get my 30 minutes of sunlight",
@@ -60,14 +59,15 @@ export default function WarriorKingPrinciples() {
       title: "At the gym",
       habits: [
         "AUDIOBOOK - During active recovery, I listen to audiobooks",
-        "STRETCH - Im stretching my muscles as deep as possible",
+        "DEEP STRETCH - Im stretching my muscles as deep as possible",
         "PLIABILITY - I'm massaging my muscles as deep as possible",
         "CONTENT -I capture one piece of content every workout",
         "DEMON - I let the demon out, and the demon wants damage",
         "FIND PAIN - I find the spot of most pain, and focus my energy there",
         "HIGH PUMP - I can get high off the pump, to the feeling of cumming.",
-        "CADIO DAILY -I do cardio every evening otherwise I can't sleep",
-        "NO ONE OUT - No ones making it out today"
+        "CARDIO DAILY - I do cardio every evening otherwise I can't sleep",
+        "NO ONE OUT - No ones making it out today",
+        "MIN 3 WITH - I make sure I get at least 3 workouts with others per week to reap the ultimate serotonin from friendship"
       ]
     },
     {
@@ -83,9 +83,10 @@ export default function WarriorKingPrinciples() {
         "DETAIL - I obsess over every detail",
         "FIND DOPE - Dopamine lets you continue",
         "1 COFFEE - I have 1 or less coffees or it will ruin my sleep",
-        "NAP - Naps save my life",
-        "DNCE&CLEAN - When i'ms tressed I get up and move",
+        "NAP - Your body naturally has a dip in energy around 2pm, leverage it to replenish your mind with a nap",
+        "DNCE&CLEAN - When i'm stressed I get up and move",
         "FOCUS - The only thing that matters is progressing the task",
+        "SOLVE STRUGGLE - Everything I do at work is about understanding the progress people are trying to achieve, and what struggles are in the way of that, and then solving the struggle"
       ]
     },
     {
@@ -99,33 +100,33 @@ export default function WarriorKingPrinciples() {
       title: "With others",
       habits: [
         "10X - I don't give a fuck who you are, you're getting 10X from me.",
-        "LISTEN - I listen my ass of. The greastest gift you can give someone is your attention..",
-        "NEVER HEADPHONES - I never wear headphones around people",
-        "ENERGY - Keep your energy so positive it attracts other high energy people.",
-        "SAY YES - I always say yes to possibility",
-        "GO FIRST - I introduce myself first."
+        "LISTEN - I listen intently to what they are saying",
+        "CARE - I care deeply about their success",
+        "LOVE - I love them, and I let them know",
+        "SHARE - I share everything I know",
+        "BE AUTHENTIC - Remove any filter on your thoughts"
       ]
     },
     {
       title: "In the kitchen",
       habits: [
-        "INSPIRATION - I'll watch a fitness video with dinner if i'm alone",
+        "INSPIRING VIDEO - I'll watch a fitness video with dinner if i'm alone",
         "CLEAN - I eat extremely clean otherwise I get anxiety later in the day.",
         "PROTEIN - I eat really clean protein",
+        "FIBER - I eat as much fiber as I can so I can have really effective nutrient absorption",
         "DAIRY - I don't eat dairy, it creates the microbiome that craves more",
         "GLUTEN - I don't eat gluten, it creates the microbiome that craves more",
         "SUGAR - I don't eat added sugar, it creates the microbiome that craves more",
         "ALCOHOL - I don't drink alcohol, it creates the microbiome that craves more",
-        "HIGH - I feel the high of eating perfect fibre and protein and proportion 2 hours after the meal consistently."
+        "END EARLY - I finish eating at least 2 hours before bed so I can get the ultimate restorative sleep"
       ]
     },
     {
       title: "Before bed",
       habits: [
         "DIGESTED - I need to give my body at lease a few hours to digest before I sleep ",
-        "READ - I read for 30 minutes, this re-weights my mental parameters toewards greatness",
-        "STRETCH - I stretch for two minutes",
-        "PRAYER - I take the time to pray before bed, becasue it works"
+        "READ 5 - I read at least 5 pages before bed every night",
+        "STRETCH PRAY 5 - 5 minutes of stretching and praying replenish the body and the heart"
       ]
     },
     {
@@ -141,7 +142,6 @@ export default function WarriorKingPrinciples() {
         "AURA - Done right, everyone you come into contact for the day will feel your loving energy without you trying.",
         "OXYGENATE - Breathe so deeply and consistently your whole body feels a buzz",
         "OBSERVE - Watch thoughts pass by without attachment",
-        "ENERGY - Feel the energy moving through the body",
         "LOVE - Tag everything that comes up with love"
       ]
     }

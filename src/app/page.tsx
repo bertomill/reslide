@@ -46,11 +46,11 @@ export default function Home() {
               {[
                 {
                   title: "VISION",
-                  description: "To become the kid from Windsor who went on to found a billion dollar Sillicon Valley startup. Long hair & beard, extremly cut, tattoos, gold chain, simple but fire fashion, centerfold GF, $100M equity. Teaching fitness to millions of fans. Cooking up the worlds best AI apps in the studio. dancing on the beach with the locals, playing soccer with locals, meditating on mountains. Teaching AI development to millions of young entrepreneurs. Making world-class meals with my family by the open fire. Leaving everyone I meet with a twinkle of inspiration and love. I'm extremely earnest and kind. All I do is work. No one has ever trained like you, meditated like you, and worked on the most powerful tech in history like you, I'm convinced I can do something really special if I just stick to the process."
+                  description: "To become the **kid from Windsor** who went on to found a billion dollar **Silicon Valley startup**. Long hair & beard, extremly cut, tattoos, gold chain, simple but fire fashion, centerfold GF, $100M equity. Teaching **fitness to millions** of fans. Cooking up the worlds best AI apps in the studio. **Dancing on the beach** with the locals, playing soccer with locals, meditating on mountains. Teaching AI development to millions of **young entrepreneurs**. Making world-class **meals with my family** by the open fire. Leaving everyone I meet with a twinkle of **inspiration** and love. I'm extremely earnest and kind. All I do is work. **No one has ever** trained like you, meditated like you, and worked on the most powerful tech in history like you, I'm convinced I can do **something really special** if I just stick to the process."
                 },
                 {
                   title: "WHAT IT TAKES",
-                  description: "Worship of the process. Methodical Monk. Militant. Step by step, following the process. No deviation, no shortcuts, just pure dedication to each step of the journey. Like a monk in his monastery, every action is deliberate, every moment is sacred. The process is your religion, and each day is a ceremony of progress."
+                  description: "Worship of the **process**. Methodical **Monk**. Militant. Step by step, following the **process**. No deviation, no shortcuts, just pure **devotion** to each step of the journey. Like a monk in his monastery, every action is deliberate, every moment is sacred. The **process** is your **religion**, and each day is a ceremony of progress."
                 }
               ].map((item, index) => (
                 <Box key={index} style={{ marginBottom: '0.5rem' }}>

@@ -3,6 +3,8 @@
 import styles from './EngravedText.module.css';
 import { cn } from '@/lib/utils';
 import { CSSProperties } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { AnimatedText } from './AnimatedText';
 
 export type EngravedTextProps = {
   children: React.ReactNode;
@@ -40,7 +42,15 @@ export function EngravedText({
         className
       )}
     >
-      {children}
+      {typeof children === 'string' ? (
+        <ReactMarkdown
+          components={{
+            strong: ({ children }) => <AnimatedText>{children}</AnimatedText>
+          }}
+        >
+          {children}
+        </ReactMarkdown>
+      ) : children}
     </div>
   );
 }
