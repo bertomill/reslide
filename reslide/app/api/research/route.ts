@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { researchTopic } from '@/lib/perplexity';
-import { ResearchParams } from '@/types/research';
+import { researchTopic } from '../../../lib/perplexity';
+import { ResearchParams } from '../../../types/research';
 
 export async function POST(request: NextRequest) {
   try {
